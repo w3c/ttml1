@@ -126,6 +126,34 @@
         </schemavalidate>
     </target>
 
+    <target name="validate-example-2" description="Validates Example 2.">
+        <!-- validate using RNC schema -->
+        <java fork="true" jar="${jing.jar}">
+            <arg value="-c"/>
+            <arg value="${rnc.schema}"/>
+            <arg value="${examples.dir}/ex2-paint-on.xml"/>
+        </java>
+        <java fork="true" jar="${jing.jar}">
+            <arg value="-c"/>
+            <arg value="${rnc.schema}"/>
+            <arg value="${examples.dir}/ex2-pop-on.xml"/>
+        </java>
+        <java fork="true" jar="${jing.jar}">
+            <arg value="-c"/>
+            <arg value="${rnc.schema}"/>
+            <arg value="${examples.dir}/ex2-roll-up.xml"/>
+        </java>
+        <!-- validate using XSD schema -->
+        <schemavalidate fullchecking="true" warn="true">
+          <schema namespace="http://www.w3.org/ns/ttml" file="${xsd.schema}"/>
+          <fileset dir="${examples.dir}">
+            <include name="ex3-paint-on.xml"/>
+            <include name="ex3-pop-on.xml"/>
+            <include name="ex3-roll-up.xml"/>
+          </fileset>
+        </schemavalidate>
+    </target>
+
     <target name="validate-example-3" description="Validates Example 3.">
         <!-- validate using RNC schema -->
         <java fork="true" jar="${jing.jar}">
@@ -149,7 +177,7 @@
     </target>
 
     <target name="validate-examples"
-	    depends="validate-example-1, validate-example-3"/>
+	    depends="validate-example-1, validate-example-2, validate-example-3"/>
 
     <target name="validate-xsl" description="Validates all XML files.">
         <xmlvalidate lenient="true">
