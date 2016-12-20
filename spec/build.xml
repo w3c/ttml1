@@ -147,9 +147,9 @@
         <schemavalidate fullchecking="true" warn="true">
           <schema namespace="http://www.w3.org/ns/ttml" file="${xsd.schema}"/>
           <fileset dir="${examples.dir}">
-            <include name="ex3-paint-on.xml"/>
-            <include name="ex3-pop-on.xml"/>
-            <include name="ex3-roll-up.xml"/>
+            <include name="ex2-paint-on.xml"/>
+            <include name="ex2-pop-on.xml"/>
+            <include name="ex2-roll-up.xml"/>
           </fileset>
         </schemavalidate>
     </target>
