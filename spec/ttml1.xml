@@ -5045,6 +5045,17 @@ then a presentation processor must use the closest supported value.</p>
 the computed padding and the supported padding is minimized. If there are multiple closest supported values equally distant from
 the computed value, then the value most distant from 0, i.e., the greatest padding, is used.</p>
 </note>
+<note role="elaboration">
+	<p>Padding space is applied as inset space to the part of the region's area that corresponds to the large allocation rectangle 
+	in <bibref ref="xsl11"/>. Because the extent of a TTML region defines the fixed dimensions of the large allocation rectangle, 
+	padding effectively reduces the available space for a content rectangle in the XSL-FO model. 
+	This needs to be taken into account when the region's extent is conceptually mapped to dimensions of a content rectangle. For this 
+	mapping the sum of the padding-before value and padding-after value and the sum of padding-start value and padding-end value need 
+	to be subtracted from the region's width and height (subject to the value of the region's writingMode).
+	To get the top left vertex of the content rectangle the values for padding-start and padding-before need to be added the region's 
+	origin (subject to the value of the region's writingMode).
+	</p>		
+</note>
 <p>The <att>tts:padding</att> style is illustrated by the following example.</p>
 <table id="style-attribute-padding-example-1" role="example">
 <caption>Example Fragment &ndash; Padding</caption>
@@ -7505,8 +7516,8 @@ defined by the simple page master produced above;</p>
 <p>map each non-empty <el>region</el> element to an <el>fo:block-container</el>
 element with an <att>absolute-position</att> attribute with value
 <code>absolute</code>, with <att>top</att>, <att>left</att>, <att>bottom</att>, and <att>right</att>
-attributes that express a rectangle equivalent to the region's origin and
-extent, and with a <att>line-stacking-strategy</att> attribute with value <code>line-height</code>;</p>
+attributes that express a rectangle equivalent to the region's origin, 
+extent and padding, and with a <att>line-stacking-strategy</att> attribute with value <code>line-height</code>;</p>
 </item>
 <item>
 <p>for each <el>body</el>, <el>div</el>, and <el>p</el> element that is not
