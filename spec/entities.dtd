@@ -1,14 +1,14 @@
 
 <!-- comment / uncomment the appropriate entity -->
-<!-- <!ENTITY % sub.entities SYSTEM "entitiesedcopy.dtd" > -->
+<!ENTITY % sub.entities SYSTEM "entitiesedcopy.dtd" >
 <!-- <!ENTITY % sub.entities SYSTEM "entitieswd.dtd" > -->
 <!-- <!ENTITY % sub.entities SYSTEM "entitiescr.dtd" > -->
 <!-- <!ENTITY % sub.entities SYSTEM "entitiesper.dtd" > -->
-<!ENTITY % sub.entities SYSTEM "entitiesrec.dtd" >
+<!-- <!ENTITY % sub.entities SYSTEM "entitiesrec.dtd" > -->
 %sub.entities;
 
 <!-- Titles -->
-<!ENTITY title "Timed Text Markup Language 1 (TTML1) (Second Edition)" >
+<!ENTITY title "Timed Text Markup Language 1 (TTML1) (Third Edition)" >
 
 <!-- XML Namespaces used in the drafts -->
 <!ENTITY nsuri "http://www.w3.org/ns/ttml" >
