@@ -4022,6 +4022,10 @@ represented by this attribute are based upon that defined by <bibref ref="xsl11"
 <p>The <att>tts:extent</att> attribute is used to specify the
 <emph>width</emph> and <emph>height</emph> of a region area
 (which may be the <emph>Root Container Region</emph>).</p>
+<note role="clarification">
+<p>If padding is applied to a region, then the region's extent includes that padding, i.e., padding is applied as an inset, and, therefore,
+is interior to the region's extent.</p>
+</note>
 <p>This attribute may be specified by any
 element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
@@ -4987,6 +4991,10 @@ represented by this attribute are based upon that defined by <bibref ref="xsl11"
 <head>tts:padding</head>
 <p>The <att>tts:padding</att> attribute is used to specify padding (or inset)
 space on all sides of a region area.</p>
+<note role="clarification">
+<p>Padding is applied as an inset to a region area, which is to say, the content rectangle of a region area is reduced by
+the presence of padding applied to the region.</p>
+</note>
 <p>This attribute may be specified by any
 element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
@@ -5045,17 +5053,6 @@ then a presentation processor must use the closest supported value.</p>
 the computed padding and the supported padding is minimized. If there are multiple closest supported values equally distant from
 the computed value, then the value most distant from 0, i.e., the greatest padding, is used.</p>
 </note>
-<note role="elaboration">
-	<p>Padding space is applied as inset space to the part of the region's area that corresponds to the large allocation rectangle 
-	in <bibref ref="xsl11"/>. Because the extent of a TTML region defines the fixed dimensions of the large allocation rectangle, 
-	padding effectively reduces the available space for a content rectangle in the XSL-FO model. 
-	This needs to be taken into account when the region's extent is conceptually mapped to dimensions of a content rectangle. For this 
-	mapping the sum of the padding-before value and padding-after value and the sum of padding-start value and padding-end value need 
-	to be subtracted from the region's width and height (subject to the value of the region's writingMode).
-	To get the top left vertex of the content rectangle the values for padding-start and padding-before need to be added the region's 
-	origin (subject to the value of the region's writingMode).
-	</p>		
-</note>
 <p>The <att>tts:padding</att> style is illustrated by the following example.</p>
 <table id="style-attribute-padding-example-1" role="example">
 <caption>Example Fragment &ndash; Padding</caption>
@@ -5095,6 +5092,14 @@ applies to the area is rendered into the padded portion of the area.</p>
 </tr>
 </tbody>
 </table>
+<note role="clarification">
+<p>The above example depicts how padding is applied as an inset to a region area. In particular,
+<code>10px</code> of padding is applied to the before (top) and after (bottom) edges, and
+<code>40px</code> of padding is applied at the start (left) and end (right) edges. Subtracting
+these from the extent of the region area results in the region's content rectangle having <code>366px</code> width
+and <code>84px</code> height. The black background color of the region appears in the region's padding rectangle
+while the red background color of the paragraph appears in the region's content rectangle.</p>
+</note>
 <note role="derivation">
 <p>The semantics of the style property
 represented by this attribute are based upon that defined by <bibref ref="xsl11"/>,
@@ -7517,7 +7522,7 @@ defined by the simple page master produced above;</p>
 element with an <att>absolute-position</att> attribute with value
 <code>absolute</code>, with <att>top</att>, <att>left</att>, <att>bottom</att>, and <att>right</att>
 attributes that express a rectangle equivalent to the region's origin, 
-extent and padding, and with a <att>line-stacking-strategy</att> attribute with value <code>line-height</code>;</p>
+extent (including padding), and with a <att>line-stacking-strategy</att> attribute with value <code>line-height</code>;</p>
 </item>
 <item>
 <p>for each <el>body</el>, <el>div</el>, and <el>p</el> element that is not
