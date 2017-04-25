@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Apache Ant script to build spec. Philippe Le Hegaret, W3C -->
       
-<project name="TimedText" default="generate" basedir=".">
+<project name="TimedText" default="generate" basedir="." xmlns:if="ant:if" xmlns:unless="ant:unless">
     <path id="saxon8.classpath">
         <pathelement location="saxon8/saxon8.jar"/>
     </path>
@@ -311,17 +311,25 @@
     </target>
 
     <target name="kwexpand">
-        <exec executable="hg">
-          <arg value="kwexpand"/>
+        <exec executable="git" resultproperty="ttml1.diff" failonerror="false">
+          <arg value="diff"/>
+          <arg value="--quiet"/>
+          <arg value="ttml1.xml"/>
+        </exec>
+        <condition property="ttml1.dirty">
+          <equals arg1="${ttml1.diff}" arg2="1"/>
+        </condition>
+        <fail message="Unable to expand keywords, ttml1.xml has uncommitted modifications." if:set="ttml1.dirty"/>
+        <delete file="ttml1.xml"/>
+        <echo message="Checkout fresh copy while expanding keywords."/>
+        <exec executable="git">
+          <arg value="checkout"/>
+          <arg value="--"/>
           <arg value="ttml1.xml"/>
         </exec>
     </target>
 
     <target name="kwshrink">
-        <exec executable="hg">
-          <arg value="kwshrink"/>
-          <arg value="ttml1.xml"/>
-        </exec>
     </target>
 
     <target name="rg" description="Regenerate using shortened generation, while expanding keywords."
@@ -329,10 +337,14 @@
     </target>
 
     <target name="commit">
-        <exec executable="hg">
+        <exec executable="git">
+          <arg value="add"/>
+          <arg value="ttml1.html"/>
+        </exec>
+        <exec executable="git">
           <arg value="commit"/>
           <arg value="-m"/>
-          <arg value="[ttml1] regenerate ED"/>
+          <arg value="Regenerate ED."/>
         </exec>
     </target>
 
