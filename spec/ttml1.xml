@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- $Id: ttml1.xml,v 6991d7d867ef 2013/09/19 23:00:50 glenn $ -->
+<!-- $Id$ -->
 <!DOCTYPE spec PUBLIC "-//W3C//DTD Specification V2.10//EN" "xmlspec-ttml1.dtd" [
 <!ENTITY % entities SYSTEM "entities.dtd" >
 %entities;
 <!ENTITY status SYSTEM "status.xml">
-<!ENTITY document.status "Editors' copy $Date: 2013/09/19 23:00:50 $">
+<!ENTITY document.status "Editors' copy $Date$">
 <!ENTITY title "&title;">
 <!ENTITY prevloc "http://www.w3.org/TR/2010/REC-ttaf1-dfxp-20101118/">
 <!ENTITY versionOfTT "1">
@@ -126,7 +126,7 @@ ref="smil21"/> document.</p>
 </abstract>
 &status;
 <langusage><language id='en-us'>English</language></langusage>
-<revisiondesc><p>Last Modified: $Date: 2013/09/19 23:00:50 $</p></revisiondesc>
+<revisiondesc><p>Last Modified: $Date$</p></revisiondesc>
 </header>
 <body>
 <div1 id="intro">
@@ -3330,12 +3330,13 @@ but an implementation of this model by a TTML Presentation Processor
 that provides externally observable results that are consistent with this model is
 likely to lead to a user experience that closely resembles the experience intended by
 the documents' authors.</p>
-<p>The semantics of TTML style presentation are described in terms of the model 
+<note role="explanation">
+<p>The semantics of TTML style presentation are described in terms of the layout and formatting model defined
 in <bibref ref="xsl11"/>. The effects of the attributes in this section 
-are intended to be compatible with the layout and formatting model of XSL; however, Presentation agents
-may use any technology to satisfy the authorial intent of the document. In particular 
-since <bibref ref="css2"/> is a subset of this model, a CSS processor may be used 
-for the features that the models have in common.</p>
+are intended to be compatible with this model; however, presentation agents
+may use any technology to satisfy the authorial intent of the document. For example, a <bibref ref="css2"/> processor may be used 
+to implement features it has in common with this model.</p>
+</note>
 <p>No normative use of an
 <code>&lt;?xml-stylesheet ... ?&gt;</code> processing instruction is defined
 by this specification.</p>
@@ -11395,12 +11396,6 @@ express maximum compliance for both transformation and presentation processing.<
 <head>References</head>
 <p><emph>This appendix is normative.</emph></p>
 <blist>
-<bibl id="css2" key="CSS2">Bert Bos et al.,
-<titleref
-href="http://www.w3.org/TR/2011/REC-CSS2-20110607/">Cascading
-Style Sheets, Level 2 Revision 1</titleref>, W3C Recommendation, 07 June 2011.
-(See <xspecref href="http://www.w3.org/TR/2011/REC-CSS2-20110607/">http://www.w3.org/TR/2011/REC-CSS2-20110607/</xspecref>.)
-</bibl>
 <bibl id="css3-color" key="CSS3 Color">Tantek &Ccedil;elik and Chris Lilley,
 <titleref href="http://www.w3.org/TR/2011/REC-css3-color-20110607/">CSS Color
 Module Level 3</titleref>, W3C Recommendation, 07 June 2011. (See
@@ -11540,6 +11535,12 @@ Consumer Electronics Association (CEA).
 CEA-708-E,
 <titleref href="http://www.ce.org/">Digital Television (DTV) Closed Captioning</titleref>, CEA Standard,
 Consumer Electronics Association (CEA).
+</bibl>
+<bibl id="css2" key="CSS2">Bert Bos et al.,
+<titleref
+href="http://www.w3.org/TR/2011/REC-CSS2-20110607/">Cascading
+Style Sheets, Level 2 Revision 1</titleref>, W3C Recommendation, 07 June 2011.
+(See <xspecref href="http://www.w3.org/TR/2011/REC-CSS2-20110607/">http://www.w3.org/TR/2011/REC-CSS2-20110607/</xspecref>.)
 </bibl>
 <bibl id="dcmes" key="DCMES 1.1">Dublin Core Metadata Initiative,
 <titleref href="http://dublincore.org/documents/dces/">Dublin Core Metadata Element Set, Version 1.1: Reference Description</titleref>. (See
