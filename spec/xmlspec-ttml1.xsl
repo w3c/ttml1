@@ -195,7 +195,9 @@ table.example-images-bordered td { border: 1px solid red; text-align: left }
     </h2>
     <dl>
       <xsl:apply-templates select="publoc"/>
+      <xsl:apply-templates select="latestedloc"/>
       <xsl:apply-templates select="latestloc"/>
+      <xsl:apply-templates select="latestrec"/>
       <xsl:apply-templates select="prevlocs"/>
       <xsl:apply-templates select="prevrecs"/>
       <xsl:apply-templates select="authlist"/>
@@ -251,6 +253,56 @@ table.example-images-bordered td { border: 1px solid red; text-align: left }
   <xsl:apply-templates select="abstract"/>
   <xsl:apply-templates select="status"/>
   <xsl:apply-templates select="revisiondesc"/>
+</xsl:template>
+
+<!-- latestedloc: latest location for this spec -->
+<!-- called in a <dl> context from header -->
+<xsl:template match="latestedloc">
+  <xsl:choose>
+    <xsl:when test="count(loc) &gt; 1">
+      <xsl:for-each select="loc">
+        <dt>
+          <xsl:apply-templates select="node()"/>
+        </dt>
+        <dd>
+          <a href="{@href}">
+            <xsl:value-of select="@href"/>
+          </a>
+        </dd>
+      </xsl:for-each>
+    </xsl:when>
+    <xsl:otherwise>
+      <dt>Latest editor's draft:</dt>
+      <dd>
+        <xsl:apply-templates/>
+      </dd>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<!-- latestrec: latest location for this spec -->
+<!-- called in a <dl> context from header -->
+<xsl:template match="latestrec">
+  <xsl:choose>
+    <xsl:when test="count(loc) &gt; 1">
+      <xsl:for-each select="loc">
+        <dt>
+          <xsl:apply-templates select="node()"/>
+        </dt>
+        <dd>
+          <a href="{@href}">
+            <xsl:value-of select="@href"/>
+          </a>
+        </dd>
+      </xsl:for-each>
+    </xsl:when>
+    <xsl:otherwise>
+      <dt>Latest recommendation:</dt>
+      <dd>
+        <xsl:apply-templates/>
+      </dd>
+    </xsl:otherwise>
+  </xsl:choose>
 </xsl:template>
 
 <!-- prevrecs: previous locations for this spec -->
