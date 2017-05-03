@@ -677,7 +677,7 @@ processor.</p>
 <def>
 <p>A logical construct that models authorial intention regarding
 desired or potential presentation processing, and which is represented as
-a rectangular area of a presentation surface into which content
+a rectangular area of a presentation surface, i.e., a <emph>region area</emph>, into which content
 is composed and rendered during presentation processing.</p>
 </def>
 </gitem>
