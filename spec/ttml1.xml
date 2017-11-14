@@ -8970,6 +8970,10 @@ attribute
 and (2) is capable of displaying or generating an output display
 signal that distinguishes between at least sixteen (16) values of color,
 including all primary and secondary colors of the SRGB color space.</p>
+<note role="explanation">
+<p>Support for this feature is intended to imply support for the following features: <code>#backgroundColor-block</code>,
+<code>#backgroundColor-region</code>, and <code>#backgroundColor-inline</code>.</p>
+</note>
 </div3>
 <div3 id="feature-backgroundColor-block">
 <head>#backgroundColor-block</head>
