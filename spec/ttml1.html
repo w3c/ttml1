@@ -4214,18 +4214,7 @@ didactic purposes.</p></div><a id="region-mapping-example-1-i0"></a><table class
         &lt;style tts:fontSize="40px"/&gt;
         &lt;style tts:fontWeight="bold"/&gt;
         &lt;style tts:backgroundColor="black"/&gt;
-        &lt;style tts:color="yellow"/&gt;
-        &lt;style tts:textAlign="center"/&gt;
-        &lt;style tts:displayAlign="center"/&gt;
-        &lt;body xml:id="b1-2"&gt;
-          &lt;div xml:id="d1-2"&gt;
-            &lt;p xml:id="p2"&gt;Text 2&lt;/p&gt;
-          &lt;/div&gt;
-        &lt;/body&gt;
-      &lt;/region&gt;
-    &lt;/layout&gt;
-  &lt;/head&gt;
-&lt;/tt&gt;
+  
 </pre></div>
 </td></tr></tbody></table><p>An XSL FO document instance that would yield rendering consistent with TTML, and 
 which may be produced by performing flow processing upon the first intermediate 
@@ -4250,50 +4239,7 @@ document is illustrated below.</p><a id="region-mapping-example-1-f0"></a><table
             space-after.optimum="96px"
             space-after.maximum="96px"
             space-after.conditionality="retain"/&gt;
-          &lt;!-- div (d1) --&gt;
-          &lt;fo:block id="d1-1"&gt;
-            &lt;!-- p (p1) --&gt;
-            &lt;fo:block id="p1" text-align="center"&gt;
-              &lt;fo:inline font-size="40px" font-weight="bold"
-              color="red"&gt;Text 1&lt;/fo:inline&gt;
-            &lt;/fo:block&gt;
-          &lt;/fo:block&gt;
-          &lt;!-- body's space (after) filler --&gt;
-          &lt;fo:block
-            space-after.optimum="96px"
-            space-after.maximum="96px"
-            space-after.conditionality="retain"/&gt;
-        &lt;/fo:block&gt;
-      &lt;/fo:block-container&gt;
-      &lt;!-- region (r2) --&gt;
-      &lt;fo:block-container id="r2" absolute-position="absolute"
-        left="10px" top="300px" width="620px" height="96px"
-        background-color="black" display-align="center"&gt;
-        &lt;!-- body (b1) --&gt;
-        &lt;fo:block id="b1-2"&gt;
-          &lt;!-- body's space (before) filler --&gt;
-          &lt;fo:block
-            space-after.optimum="96px"
-            space-after.maximum="96px"
-            space-after.conditionality="retain"/&gt;
-          &lt;!-- div (d1) --&gt;
-          &lt;fo:block id="d1-2"&gt;
-            &lt;!-- p (p2) --&gt;
-            &lt;fo:block id="p2" text-align="center"&gt;
-              &lt;fo:inline font-size="40px" font-weight="bold"
-              color="yellow"&gt;Text 2&lt;/fo:inline&gt;
-            &lt;/fo:block&gt;
-          &lt;/fo:block&gt;
-          &lt;!-- body's space (after) filler --&gt;
-          &lt;fo:block
-            space-after.optimum="96px"
-            space-after.maximum="96px"
-            space-after.conditionality="retain"/&gt;
-        &lt;/fo:block&gt;
-      &lt;/fo:block-container&gt;
-    &lt;/fo:flow&gt;
-  &lt;/fo:page-sequence&gt;
-&lt;/fo:root&gt;
+          &lt;!-- d
 </pre></div>
 </td></tr></tbody></table><p>The following, second intermediate document shows the synchronic state for
 time interval [1,2), during which time both divisions <code>d1</code> and
@@ -6000,87 +5946,7 @@ express minimum compliance for transformation processing.</p><div class="example
     &lt;feature value="optional"&gt;#fontSize&lt;/feature&gt;
     &lt;feature value="optional"&gt;#fontStyle-italic&lt;/feature&gt;
     &lt;feature value="optional"&gt;#fontStyle-oblique&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#fontStyle&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#fontWeight-bold&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#fontWeight&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#frameRate&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#frameRateMultiplier&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#layout&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#length-cell&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#length-em&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#length-integer&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#length-negative&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#length-percentage&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#length-pixel&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#length-positive&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#length-real&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#length&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#lineBreak-uax14&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#lineHeight&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#markerMode-continuous&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#markerMode-discontinuous&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#markerMode&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#metadata&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#nested-div&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#nested-span&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#opacity&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#origin&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#overflow-visible&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#overflow&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#padding-1&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#padding-2&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#padding-3&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#padding-4&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#padding&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#pixelAspectRatio&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#presentation&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#showBackground&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#styling-chained&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#styling-inheritance-content&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#styling-inheritance-region&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#styling-inline&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#styling-nested&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#styling-referential&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#styling&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#subFrameRate&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#textAlign-absolute&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#textAlign-relative&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#textAlign&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#textDecoration-over&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#textDecoration-through&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#textDecoration-under&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#textDecoration&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#textOutline-blurred&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#textOutline-unblurred&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#textOutline&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#tickRate&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#time-clock-with-frames&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#time-clock&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#time-offset-with-frames&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#time-offset-with-ticks&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#timeBase-clock&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#timeBase-media&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#timeBase-smpte&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#timeContainer&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#unicodeBidi&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#visibility-block&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#visibility-inline&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#visibility-region&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#visibility&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#wrapOption&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#writingMode-horizontal-lr&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#writingMode-horizontal-rl&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#writingMode-horizontal&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#writingMode-vertical&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#writingMode&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#zIndex&lt;/feature&gt;
-  &lt;/features&gt;
-  &lt;extensions xml:base="http://www.w3.org/ns/ttml/extension/"&gt;
-    &lt;!-- required (mandatory) extension support --&gt;
-    &lt;!-- optional (voluntary) extension support --&gt;
-  &lt;/extensions&gt;
-&lt;/profile&gt;
-
+    &lt;feature value="optional"&gt;#fontStyle&lt;
 </pre></div></div><div class="div2">
 <h3><a id="profile-dfxp-presentation"></a>F.2 DFXP Presentation Profile</h3><p>The DFXP Presentation Profile is intended to be used to
 express minimum compliance for presentation processing.</p><div class="exampleInner"><pre>&lt;?xml version="1.0" encoding="utf-8"?&gt;
@@ -6153,63 +6019,6 @@ express minimum compliance for presentation processing.</p><div class="exampleIn
     &lt;feature value="optional"&gt;#nested-div&lt;/feature&gt;
     &lt;feature value="optional"&gt;#nested-span&lt;/feature&gt;
     &lt;feature value="optional"&gt;#opacity&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#origin&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#overflow-visible&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#overflow&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#padding-1&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#padding-2&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#padding-3&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#padding-4&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#padding&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#pixelAspectRatio&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#showBackground&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#styling-chained&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#styling-inheritance-content&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#styling-inheritance-region&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#styling-inline&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#styling-nested&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#styling-referential&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#styling&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#subFrameRate&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#textAlign-absolute&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#textAlign-relative&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#textAlign&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#textDecoration-over&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#textDecoration-through&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#textDecoration-under&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#textDecoration&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#textOutline-blurred&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#textOutline-unblurred&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#textOutline&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#tickRate&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#time-clock-with-frames&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#time-clock&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#time-offset-with-frames&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#time-offset-with-ticks&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#timeBase-clock&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#timeBase-media&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#timeBase-smpte&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#timeContainer&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#transformation&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#unicodeBidi&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#visibility-block&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#visibility-inline&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#visibility-region&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#visibility&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#wrapOption&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#writingMode-horizontal-lr&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#writingMode-horizontal-rl&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#writingMode-horizontal&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#writingMode-vertical&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#writingMode&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#zIndex&lt;/feature&gt;
-  &lt;/features&gt;
-  &lt;extensions xml:base="http://www.w3.org/ns/ttml/extension/"&gt;
-    &lt;!-- required (mandatory) extension support --&gt;
-    &lt;!-- optional (voluntary) extension support --&gt;
-  &lt;/extensions&gt;
-&lt;/profile&gt;
-
 </pre></div></div><div class="div2">
 <h3><a id="profile-dfxp-full"></a>F.3 DFXP Full Profile</h3><p>The DFXP Full Profile is intended to be used to
 express maximum compliance for both transformation and presentation processing.</p><div class="exampleInner"><pre>&lt;?xml version="1.0" encoding="utf-8"?&gt;
@@ -6243,102 +6052,7 @@ express maximum compliance for both transformation and presentation processing.<
     &lt;feature value="required"&gt;#dropMode&lt;/feature&gt;
     &lt;feature value="required"&gt;#extent-region&lt;/feature&gt;
     &lt;feature value="required"&gt;#extent-root&lt;/feature&gt;
-    &lt;feature value="required"&gt;#extent&lt;/feature&gt;
-    &lt;feature value="required"&gt;#fontFamily-generic&lt;/feature&gt;
-    &lt;feature value="required"&gt;#fontFamily-non-generic&lt;/feature&gt;
-    &lt;feature value="required"&gt;#fontFamily&lt;/feature&gt;
-    &lt;feature value="required"&gt;#fontSize-anamorphic&lt;/feature&gt;
-    &lt;feature value="required"&gt;#fontSize-isomorphic&lt;/feature&gt;
-    &lt;feature value="required"&gt;#fontSize&lt;/feature&gt;
-    &lt;feature value="required"&gt;#fontStyle-italic&lt;/feature&gt;
-    &lt;feature value="required"&gt;#fontStyle-oblique&lt;/feature&gt;
-    &lt;feature value="required"&gt;#fontStyle&lt;/feature&gt;
-    &lt;feature value="required"&gt;#fontWeight-bold&lt;/feature&gt;
-    &lt;feature value="required"&gt;#fontWeight&lt;/feature&gt;
-    &lt;feature value="required"&gt;#frameRate&lt;/feature&gt;
-    &lt;feature value="required"&gt;#frameRateMultiplier&lt;/feature&gt;
-    &lt;feature value="required"&gt;#layout&lt;/feature&gt;
-    &lt;feature value="required"&gt;#length-cell&lt;/feature&gt;
-    &lt;feature value="required"&gt;#length-em&lt;/feature&gt;
-    &lt;feature value="required"&gt;#length-integer&lt;/feature&gt;
-    &lt;feature value="required"&gt;#length-negative&lt;/feature&gt;
-    &lt;feature value="required"&gt;#length-percentage&lt;/feature&gt;
-    &lt;feature value="required"&gt;#length-pixel&lt;/feature&gt;
-    &lt;feature value="required"&gt;#length-positive&lt;/feature&gt;
-    &lt;feature value="required"&gt;#length-real&lt;/feature&gt;
-    &lt;feature value="required"&gt;#length&lt;/feature&gt;
-    &lt;feature value="required"&gt;#lineBreak-uax14&lt;/feature&gt;
-    &lt;feature value="required"&gt;#lineHeight&lt;/feature&gt;
-    &lt;feature value="required"&gt;#markerMode-continuous&lt;/feature&gt;
-    &lt;feature value="required"&gt;#markerMode-discontinuous&lt;/feature&gt;
-    &lt;feature value="required"&gt;#markerMode&lt;/feature&gt;
-    &lt;feature value="required"&gt;#metadata&lt;/feature&gt;
-    &lt;feature value="required"&gt;#nested-div&lt;/feature&gt;
-    &lt;feature value="required"&gt;#nested-span&lt;/feature&gt;
-    &lt;feature value="required"&gt;#opacity&lt;/feature&gt;
-    &lt;feature value="required"&gt;#origin&lt;/feature&gt;
-    &lt;feature value="required"&gt;#overflow-visible&lt;/feature&gt;
-    &lt;feature value="required"&gt;#overflow&lt;/feature&gt;
-    &lt;feature value="required"&gt;#padding-1&lt;/feature&gt;
-    &lt;feature value="required"&gt;#padding-2&lt;/feature&gt;
-    &lt;feature value="required"&gt;#padding-3&lt;/feature&gt;
-    &lt;feature value="required"&gt;#padding-4&lt;/feature&gt;
-    &lt;feature value="required"&gt;#padding&lt;/feature&gt;
-    &lt;feature value="required"&gt;#pixelAspectRatio&lt;/feature&gt;
-    &lt;feature value="required"&gt;#presentation&lt;/feature&gt;
-    &lt;feature value="required"&gt;#profile&lt;/feature&gt;
-    &lt;feature value="required"&gt;#showBackground&lt;/feature&gt;
-    &lt;feature value="required"&gt;#structure&lt;/feature&gt;
-    &lt;feature value="required"&gt;#styling-chained&lt;/feature&gt;
-    &lt;feature value="required"&gt;#styling-inheritance-content&lt;/feature&gt;
-    &lt;feature value="required"&gt;#styling-inheritance-region&lt;/feature&gt;
-    &lt;feature value="required"&gt;#styling-inline&lt;/feature&gt;
-    &lt;feature value="required"&gt;#styling-nested&lt;/feature&gt;
-    &lt;feature value="required"&gt;#styling-referential&lt;/feature&gt;
-    &lt;feature value="required"&gt;#styling&lt;/feature&gt;
-    &lt;feature value="required"&gt;#subFrameRate&lt;/feature&gt;
-    &lt;feature value="required"&gt;#textAlign-absolute&lt;/feature&gt;
-    &lt;feature value="required"&gt;#textAlign-relative&lt;/feature&gt;
-    &lt;feature value="required"&gt;#textAlign&lt;/feature&gt;
-    &lt;feature value="required"&gt;#textDecoration-over&lt;/feature&gt;
-    &lt;feature value="required"&gt;#textDecoration-through&lt;/feature&gt;
-    &lt;feature value="required"&gt;#textDecoration-under&lt;/feature&gt;
-    &lt;feature value="required"&gt;#textDecoration&lt;/feature&gt;
-    &lt;feature value="required"&gt;#textOutline-blurred&lt;/feature&gt;
-    &lt;feature value="required"&gt;#textOutline-unblurred&lt;/feature&gt;
-    &lt;feature value="required"&gt;#textOutline&lt;/feature&gt;
-    &lt;feature value="required"&gt;#tickRate&lt;/feature&gt;
-    &lt;feature value="required"&gt;#time-clock-with-frames&lt;/feature&gt;
-    &lt;feature value="required"&gt;#time-clock&lt;/feature&gt;
-    &lt;feature value="required"&gt;#time-offset-with-frames&lt;/feature&gt;
-    &lt;feature value="required"&gt;#time-offset-with-ticks&lt;/feature&gt;
-    &lt;feature value="required"&gt;#time-offset&lt;/feature&gt;
-    &lt;feature value="required"&gt;#timeBase-clock&lt;/feature&gt;
-    &lt;feature value="required"&gt;#timeBase-media&lt;/feature&gt;
-    &lt;feature value="required"&gt;#timeBase-smpte&lt;/feature&gt;
-    &lt;feature value="required"&gt;#timeContainer&lt;/feature&gt;
-    &lt;feature value="required"&gt;#timing&lt;/feature&gt;
-    &lt;feature value="required"&gt;#transformation&lt;/feature&gt;
-    &lt;feature value="required"&gt;#unicodeBidi&lt;/feature&gt;
-    &lt;feature value="required"&gt;#visibility-block&lt;/feature&gt;
-    &lt;feature value="required"&gt;#visibility-inline&lt;/feature&gt;
-    &lt;feature value="required"&gt;#visibility-region&lt;/feature&gt;
-    &lt;feature value="required"&gt;#visibility&lt;/feature&gt;
-    &lt;feature value="required"&gt;#wrapOption&lt;/feature&gt;
-    &lt;feature value="required"&gt;#writingMode-horizontal-lr&lt;/feature&gt;
-    &lt;feature value="required"&gt;#writingMode-horizontal-rl&lt;/feature&gt;
-    &lt;feature value="required"&gt;#writingMode-horizontal&lt;/feature&gt;
-    &lt;feature value="required"&gt;#writingMode-vertical&lt;/feature&gt;
-    &lt;feature value="required"&gt;#writingMode&lt;/feature&gt;
-    &lt;feature value="required"&gt;#zIndex&lt;/feature&gt;
-    &lt;!-- optional (voluntary) feature support --&gt;
-  &lt;/features&gt;
-  &lt;extensions xml:base="http://www.w3.org/ns/ttml/extension/"&gt;
-    &lt;!-- required (mandatory) extension support --&gt;
-    &lt;!-- optional (voluntary) extension support --&gt;
-  &lt;/extensions&gt;
-&lt;/profile&gt;
-
+    &lt;feature value="require
 </pre></div></div></div><div class="div1">
 <h2><a id="references"></a>G References</h2><p><em>This appendix is normative.</em></p><dl><dt class="label"><a id="css3-color"></a>CSS3 Color</dt><dd>Tantek Çelik and Chris Lilley,
 <a href="http://www.w3.org/TR/2011/REC-css3-color-20110607/"><cite>CSS Color
@@ -6845,8 +6559,8 @@ of its targeted region.</p><a id="pop-on-example-1-s"></a><table class="example"
   xmlns:ttp="http://www.w3.org/ns/ttml#parameter" xmlns:tts="http://www.w3.org/ns/ttml#styling"&gt;
   &lt;head&gt;
     &lt;layout&gt;
-      &lt;region xml:id="r1" tts:color="white" tts:origin="10c 4c" tts:extent="40c 1c" tts:displayAlign="after"/&gt;
-      &lt;region xml:id="r2" tts:color="yellow" tts:origin="10c 8c" tts:extent="40c 1c" tts:displayAlign="after"/&gt;
+      &lt;region xml:id="r1" tts:color="white" tts:origin="10c 4c" tts:extent="40c 1c"/&gt;
+      &lt;region xml:id="r2" tts:color="yellow" tts:origin="10c 8c" tts:extent="40c 1c"/&gt;
     &lt;/layout&gt;
   &lt;/head&gt;
   &lt;body&gt;
