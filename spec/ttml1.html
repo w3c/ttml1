@@ -80,9 +80,9 @@ table.example-images-bordered td { border: 1px solid red; text-align: left }
 .strong { font-weight: bold }
 .reqattr { font-weight: bold }
 .optattr { font-style: italic }
-</style><link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/W3C-ED.css"></head><body>Last Modified: $Date: Tue May 2 21:33:41 2017 -0600 $<div id="revisions"></div><div class="head">
+</style><link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/W3C-ED.css"></head><body>Last Modified: $Date$<div id="revisions"></div><div class="head">
 <h1><a id="title"></a>Timed Text Markup Language 1 (TTML1) (Third Edition)</h1>
-<h2><a id="w3c-doctype"></a>Editors' copy $Date: Tue May 2 21:33:41 2017 -0600 $ @@ @@@@ @@@@</h2><dl><dt>This version:</dt><dd>
+<h2><a id="w3c-doctype"></a>Editors' copy $Date$ @@ @@@@ @@@@</h2><dl><dt>This version:</dt><dd>
 <a href="ttml1.html">ttml1.html</a>
 </dd><dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/ttml1/spec/ttml1.html">https://w3c.github.io/ttml1/spec/ttml1.html</a></dd><dt>Latest version:</dt><dd><a href="https://www.w3.org/TR/ttml1/">https://www.w3.org/TR/ttml1/</a></dd><dt>Previous version:</dt><dd>
 <a href="https://www.w3.org/TR/2013/REC-ttml1-20130924/">https://www.w3.org/TR/2013/REC-ttml1-20130924/</a>
@@ -2606,18 +2606,18 @@ as a style property only to those element types indicated in the following table
 <a href="#style-value-length">&lt;length&gt;</a>
 </td></tr><tr><td><em>Initial:</em></td><td><code>normal</code></td></tr><tr><td><em>Applies to:</em></td><td>
 <a href="#content-vocabulary-p"><code>p</code></a>
-</td></tr><tr><td><em>Inherited:</em></td><td>yes</td></tr><tr><td><em>Percentages:</em></td><td>relative to this element's font size</td></tr><tr><td><em>Animatable:</em></td><td>discrete</td></tr></tbody></table><p>If the value of this attribute is <code>normal</code>, then the
-computed value of the style property must be considered to be no less than the
+</td></tr><tr><td><em>Inherited:</em></td><td>yes</td></tr><tr><td><em>Percentages:</em></td><td>relative to this element's font size</td></tr><tr><td><em>Animatable:</em></td><td>discrete</td></tr></tbody></table><p>If the computed value of this attribute is <code>normal</code>, then the
+used value of the style property must be considered to be no less than the
 size of the largest font size that applies to the element and its
 descendant elements in the intermediate synchronic document as determined by
-<a href="#semantics-region-layout-step-1"><b>9.3.2 Intermediate Synchronic Document Construction</b></a>.</p><div class="note"><p class="prefix"><b>Note:</b></p><p>It is recommended that presentation processors use a computed line height that is
-125% of the size of the largest applicable font size when the value <code>normal</code>
-is specified. The choice of 125% allows use of a font size of <code>0.8c</code> in order
+<a href="#semantics-region-layout-step-1"><b>9.3.2 Intermediate Synchronic Document Construction</b></a>.</p><div class="note"><p class="prefix"><b>Note:</b></p><p>If the computed value of this attribute is <code>normal</code>, it is recommended that presentation processors
+use a line height that is 125% of the size of the largest applicable font size.
+The choice of 125% allows use of a font size of <code>0.8c</code> in order
 to obtain a line height of <code>1c</code>.</p></div><p>If specified as a <a href="#style-value-length">&lt;length&gt;</a>, then the length must
-be non-negative.</p><p>If a computed value of the property associated with this attribute is not supported,
+be non-negative.</p><p>If the used value of the property associated with this attribute is not supported,
 then a presentation processor must use the closest supported value.</p><div class="note"><p class="prefix"><b>Note:</b></p><p>In this context, the phrase <em>closest supported value</em> means the value for which the Euclidean distance between
-the computed line height and the supported line height is minimized. If there are multiple closest supported values equally distant from
-the computed value, then the value most distant from 0, i.e., the largest line height, is used.</p></div><p>The <code>tts:lineHeight</code> style is illustrated by the following example.</p><a id="style-attribute-lineHeight-example-1"></a><table class="example"><caption>Example Fragment – Line Height</caption><tbody><tr><td>
+the used line height and the supported line height is minimized. If there are multiple closest supported values equally distant from
+the used value, then the value most distant from 0, i.e., the largest line height, is used.</p></div><p>The <code>tts:lineHeight</code> style is illustrated by the following example.</p><a id="style-attribute-lineHeight-example-1"></a><table class="example"><caption>Example Fragment – Line Height</caption><tbody><tr><td>
 <div class="exampleInner"><pre>
 &lt;region xml:id="r1"&gt;
   &lt;style tts:extent="255px 190px"/&gt;
