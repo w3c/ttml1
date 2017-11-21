@@ -230,7 +230,7 @@
     </target>
 
     <target name="generate" description="Generate the specification"
-	    depends="generate-schema-archives,validate-tt-specs,html">
+	    depends="generate-schema-archives,validate-tt-specs,html,kwexpand">
     </target>
     
     <target name="sg" description="Shortened generation of the specification, but without rebuilding escapes."
@@ -337,21 +337,39 @@
         <condition property="ttml1.dirty">
           <equals arg1="${ttml1.diff}" arg2="1"/>
         </condition>
-        <fail message="Unable to expand keywords, ttml1.xml has uncommitted modifications." if:set="ttml1.dirty"/>
-        <delete file="ttml1.xml"/>
-        <echo message="Checkout fresh copy while expanding keywords."/>
-        <exec executable="git">
-          <arg value="checkout"/>
-          <arg value="--"/>
-          <arg value="ttml1.xml"/>
+        <echo message="Warning ttml1.xml has uncommitted modifications." if:set="ttml1.dirty"/>
+        <echo message="Expanding keywords in ttml1.html."/>
+        <tstamp>
+            <format property="today.mm" pattern="MM"/>
+        </tstamp>
+        <tstamp>
+            <format property="today.month" pattern="MMMM"/>
+        </tstamp>
+        <tstamp>
+            <format property="today.dd" pattern="dd"/>
+        </tstamp>
+        <tstamp>
+            <format property="today.day" pattern="EEEE"/>
+        </tstamp>
+        <tstamp>
+            <format property="today.year" pattern="yyyy"/>
+        </tstamp>
+        <exec executable="git" outputproperty="dateHash" failonerror="false">
+          <arg value="log"/>
+          <arg value="--quiet"/>
+          <arg value="-1"/>
+          <arg value="--oneline"/>
         </exec>
-    </target>
-
-    <target name="kwshrink">
+        <replace file="ttml1.html" token="$Date$" value="${dateHash}"/>
+        <replace file="ttml1.html" token="$dateMM$" value="${today.mm}"/>
+        <replace file="ttml1.html" token="$dateMonth$" value="${today.month}"/>
+        <replace file="ttml1.html" token="$dateDD$" value="${today.dd}"/>
+        <replace file="ttml1.html" token="$dateDay$" value="${today.dd}"/>
+        <replace file="ttml1.html" token="$dateYear$" value="${today.year}"/>
     </target>
 
     <target name="rg" description="Regenerate using shortened generation, while expanding keywords."
-            depends="kwexpand,sg,kwshrink">
+            depends="kwexpand,sg">
     </target>
 
     <target name="commit">
