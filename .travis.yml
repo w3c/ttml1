@@ -1,5 +1,7 @@
 language: java
-install: ant build
+install:
+    - cd spec
+    - ant build
 deploy:
   provider: pages
   local_dir: build
