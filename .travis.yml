@@ -8,3 +8,4 @@ deploy:
   target_branch: ${TRAVIS_BRANCH}-build
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
+  all_branches: true
