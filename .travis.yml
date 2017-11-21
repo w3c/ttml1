@@ -1,0 +1,8 @@
+language: java
+install: ant build
+deploy:
+  provider: pages
+  local_dir: build
+  target_branch: $TRAVIS_BRANCH-build
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
