@@ -236,6 +236,24 @@
     <target name="sg" description="Shortened generation of the specification, but without rebuilding escapes."
 	    depends="generate-schema-archives,validate-tt-specs-dont-build-escapes,html">
     </target>
+    
+    <property name="build.name" value="build"/>
+    <property name="build.target" value="${basedir}/${build.name}"/>
+    <target name="build" description="Build complete specification" depends="generate">
+        <delete includeemptydirs="true" quiet="true">
+          <fileset dir="${build.target}"/>
+        </delete>
+        <mkdir dir="${build.target}"/>
+        <mkdir dir="${build.target}/images"/>
+        <mkdir dir="${build.target}/rnc"/>
+        <mkdir dir="${build.target}/xsd"/>
+        <copy file="${html.dir}/${html.name}" tofile="${build.target}/Overview.html"/>
+        <copy todir="${build.target}/images">
+          <fileset dir="${basedir}/images" includes="*.png"/>
+        </copy>
+        <copy file="${rnc.dir}/schema.zip" todir="${build.target}/rnc"/>
+        <copy file="${xsd.dir}/schema.zip" todir="${build.target}/xsd"/>
+    </target>
 
     <property name="per.name" value="PER-ttaf1-dfxp-20130709"/>
     <property name="per.target" value="${basedir}/${per.name}"/>
