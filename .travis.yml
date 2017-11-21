@@ -1,5 +1,5 @@
 language: java
-install:
+script:
     - cd spec
     - ant build
 deploy:
