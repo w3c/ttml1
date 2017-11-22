@@ -247,7 +247,7 @@
         <mkdir dir="${build.target}/images"/>
         <mkdir dir="${build.target}/rnc"/>
         <mkdir dir="${build.target}/xsd"/>
-        <copy file="${html.dir}/${html.name}" tofile="${build.target}/Overview.html"/>
+        <copy file="${html.dir}/${html.name}" tofile="${build.target}/index.html"/>
         <copy todir="${build.target}/images">
           <fileset dir="${basedir}/images" includes="*.png"/>
         </copy>
