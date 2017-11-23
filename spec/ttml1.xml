@@ -6075,7 +6075,7 @@ the computed value, then the value least distant from 0, i.e., closest to the ba
 <note role="derivation">
 <p>The semantics of the style property
 represented by this attribute are based upon that defined by <bibref ref="xsl11"/>,
-&sect; 7.30.18</p>
+&sect; 7.30.18.</p>
 </note>
 </div3>
 </div2>
