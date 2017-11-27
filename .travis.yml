@@ -1,7 +1,17 @@
 language: java
+
 script:
     - cd spec
     - ant build
+    
+deploy:
+  provider: pages
+  local_dir: build
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: master
+    
 deploy:
   provider: pages
   local_dir: build
@@ -10,3 +20,4 @@ deploy:
   github_token: $GITHUB_TOKEN
   on:
     all_branches: true
+    condition: ${TRAVIS_BRANCH} != master
