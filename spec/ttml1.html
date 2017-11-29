@@ -80,14 +80,14 @@ table.example-images-bordered td { border: 1px solid red; text-align: left }
 .strong { font-weight: bold }
 .reqattr { font-weight: bold }
 .optattr { font-style: italic }
-</style><link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/W3C-ED.css"></head><body>Last Modified: $Date$<div id="revisions"></div><div class="head">
+</style><link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/W3C-ED.css"></head><body>Commit: 6c72ec3 Replaced ttp:frameRateMultipler with ttp:frameRateMultiplier (#236)<div id="revisions"></div><div class="head">
 <h1><a id="title"></a>Timed Text Markup Language 1 (TTML1) (Third Edition)</h1>
-<h2><a id="w3c-doctype"></a>Editors' copy $Date$ @@ @@@@ @@@@</h2><dl><dt>This version:</dt><dd>
+<h2><a id="w3c-doctype"></a>W3C Editors' Draft 29 November 2017</h2><dl><dt>This version:</dt><dd>
 <a href="ttml1.html">ttml1.html</a>
 </dd><dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/ttml1/spec/ttml1.html">https://w3c.github.io/ttml1/spec/ttml1.html</a></dd><dt>Latest version:</dt><dd><a href="https://www.w3.org/TR/ttml1/">https://www.w3.org/TR/ttml1/</a></dd><dt>Previous version:</dt><dd>
 <a href="https://www.w3.org/TR/2013/REC-ttml1-20130924/">https://www.w3.org/TR/2013/REC-ttml1-20130924/</a>
 </dd><dt>Previous recommendation:</dt><dd><a href="https://www.w3.org/TR/2013/REC-ttml1-20130924/">https://www.w3.org/TR/2013/REC-ttml1-20130924/</a></dd><dt>Editor:</dt><dd>Glenn Adams, Skynav</dd><dt>Contributing Authors:</dt><dd>Mike Dolan, Invited Expert</dd><dd>Geoff Freed, WGBH National Center for Accessible Media</dd><dd>Sean Hayes, Microsoft</dd><dd>Erik Hodge, RealNetworks</dd><dd>David Kirby, British Broadcasting Corporation (BBC)</dd><dd>Thierry Michel, W3C</dd><dd>Dave Singer, Apple Computer</dd><dd>Andreas Tai, Invited Expert</dd></dl><p>Please refer to the <a href="ttml1-errata.html"><strong>errata</strong></a> for this document, which may
-    include normative corrections.</p><p>See also <a href="http://www.w3.org/2003/03/Translations/byTechnology?technology=ttml1"><strong>translations</strong></a>.</p><p class="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;@@@@&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved. W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p></div><hr><div>
+    include normative corrections.</p><p>See also <a href="http://www.w3.org/2003/03/Translations/byTechnology?technology=ttml1"><strong>translations</strong></a>.</p><p class="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2017&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved. W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p></div><hr><div>
 <h2><a id="abstract"></a>Abstract</h2><p>This document specifies Timed Text Markup Language (TTML), Version 1, also known as TTML1, in
 terms of a vocabulary and semantics thereof.</p><p>The Timed Text Markup Language is a content type that represents
 timed text media for the purpose of interchange among authoring
@@ -4283,7 +4283,17 @@ document is illustrated below.</p><a id="region-mapping-example-1-f0"></a><table
               &lt;fo:inline font-size="40px" font-weight="bold"
               color="yellow"&gt;Text 2&lt;/fo:inline&gt;
             &lt;/fo:block&gt;
-          &lt;
+          &lt;/fo:block&gt;
+          &lt;!-- body's space (after) filler --&gt;
+          &lt;fo:block
+            space-after.optimum="96px"
+            space-after.maximum="96px"
+            space-after.conditionality="retain"/&gt;
+        &lt;/fo:block&gt;
+      &lt;/fo:block-container&gt;
+    &lt;/fo:flow&gt;
+  &lt;/fo:page-sequence&gt;
+&lt;/fo:root&gt;
 </pre></div>
 </td></tr></tbody></table><p>The following, second intermediate document shows the synchronic state for
 time interval [1,2), during which time both divisions <code>d1</code> and
@@ -6004,7 +6014,73 @@ express minimum compliance for transformation processing.</p><div class="example
     &lt;feature value="optional"&gt;#length-pixel&lt;/feature&gt;
     &lt;feature value="optional"&gt;#length-positive&lt;/feature&gt;
     &lt;feature value="optional"&gt;#length-real&lt;/feature&gt;
-    &lt;feature va
+    &lt;feature value="optional"&gt;#length&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#lineBreak-uax14&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#lineHeight&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#markerMode-continuous&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#markerMode-discontinuous&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#markerMode&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#metadata&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#nested-div&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#nested-span&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#opacity&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#origin&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#overflow-visible&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#overflow&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#padding-1&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#padding-2&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#padding-3&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#padding-4&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#padding&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#pixelAspectRatio&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#presentation&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#showBackground&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#styling-chained&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#styling-inheritance-content&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#styling-inheritance-region&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#styling-inline&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#styling-nested&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#styling-referential&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#styling&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#subFrameRate&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#textAlign-absolute&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#textAlign-relative&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#textAlign&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#textDecoration-over&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#textDecoration-through&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#textDecoration-under&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#textDecoration&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#textOutline-blurred&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#textOutline-unblurred&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#textOutline&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#tickRate&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#time-clock-with-frames&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#time-clock&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#time-offset-with-frames&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#time-offset-with-ticks&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#timeBase-clock&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#timeBase-media&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#timeBase-smpte&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#timeContainer&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#unicodeBidi&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#visibility-block&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#visibility-inline&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#visibility-region&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#visibility&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#wrapOption&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#writingMode-horizontal-lr&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#writingMode-horizontal-rl&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#writingMode-horizontal&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#writingMode-vertical&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#writingMode&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#zIndex&lt;/feature&gt;
+  &lt;/features&gt;
+  &lt;extensions xml:base="http://www.w3.org/ns/ttml/extension/"&gt;
+    &lt;!-- required (mandatory) extension support --&gt;
+    &lt;!-- optional (voluntary) extension support --&gt;
+  &lt;/extensions&gt;
+&lt;/profile&gt;
+
 </pre></div></div><div class="div2">
 <h3><a id="profile-dfxp-presentation"></a>F.2 DFXP Presentation Profile</h3><p>The DFXP Presentation Profile is intended to be used to
 express minimum compliance for presentation processing.</p><div class="exampleInner"><pre>&lt;?xml version="1.0" encoding="utf-8"?&gt;
@@ -6057,7 +6133,83 @@ express minimum compliance for presentation processing.</p><div class="exampleIn
     &lt;feature value="optional"&gt;#fontWeight-bold&lt;/feature&gt;
     &lt;feature value="optional"&gt;#fontWeight&lt;/feature&gt;
     &lt;feature value="optional"&gt;#frameRate&lt;/feature&gt;
-    &lt;feature value="optional"&gt;#frameRateMulti
+    &lt;feature value="optional"&gt;#frameRateMultiplier&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#layout&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#length-cell&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#length-em&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#length-integer&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#length-negative&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#length-percentage&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#length-pixel&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#length-positive&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#length-real&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#length&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#lineBreak-uax14&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#lineHeight&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#markerMode-continuous&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#markerMode-discontinuous&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#markerMode&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#metadata&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#nested-div&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#nested-span&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#opacity&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#origin&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#overflow-visible&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#overflow&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#padding-1&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#padding-2&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#padding-3&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#padding-4&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#padding&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#pixelAspectRatio&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#showBackground&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#styling-chained&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#styling-inheritance-content&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#styling-inheritance-region&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#styling-inline&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#styling-nested&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#styling-referential&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#styling&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#subFrameRate&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#textAlign-absolute&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#textAlign-relative&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#textAlign&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#textDecoration-over&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#textDecoration-through&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#textDecoration-under&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#textDecoration&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#textOutline-blurred&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#textOutline-unblurred&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#textOutline&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#tickRate&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#time-clock-with-frames&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#time-clock&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#time-offset-with-frames&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#time-offset-with-ticks&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#timeBase-clock&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#timeBase-media&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#timeBase-smpte&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#timeContainer&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#transformation&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#unicodeBidi&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#visibility-block&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#visibility-inline&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#visibility-region&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#visibility&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#wrapOption&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#writingMode-horizontal-lr&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#writingMode-horizontal-rl&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#writingMode-horizontal&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#writingMode-vertical&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#writingMode&lt;/feature&gt;
+    &lt;feature value="optional"&gt;#zIndex&lt;/feature&gt;
+  &lt;/features&gt;
+  &lt;extensions xml:base="http://www.w3.org/ns/ttml/extension/"&gt;
+    &lt;!-- required (mandatory) extension support --&gt;
+    &lt;!-- optional (voluntary) extension support --&gt;
+  &lt;/extensions&gt;
+&lt;/profile&gt;
+
 </pre></div></div><div class="div2">
 <h3><a id="profile-dfxp-full"></a>F.3 DFXP Full Profile</h3><p>The DFXP Full Profile is intended to be used to
 express maximum compliance for both transformation and presentation processing.</p><div class="exampleInner"><pre>&lt;?xml version="1.0" encoding="utf-8"?&gt;
@@ -6104,7 +6256,89 @@ express maximum compliance for both transformation and presentation processing.<
     &lt;feature value="required"&gt;#fontWeight-bold&lt;/feature&gt;
     &lt;feature value="required"&gt;#fontWeight&lt;/feature&gt;
     &lt;feature value="required"&gt;#frameRate&lt;/feature&gt;
-    &lt;feature value="required"&gt;#frameRate
+    &lt;feature value="required"&gt;#frameRateMultiplier&lt;/feature&gt;
+    &lt;feature value="required"&gt;#layout&lt;/feature&gt;
+    &lt;feature value="required"&gt;#length-cell&lt;/feature&gt;
+    &lt;feature value="required"&gt;#length-em&lt;/feature&gt;
+    &lt;feature value="required"&gt;#length-integer&lt;/feature&gt;
+    &lt;feature value="required"&gt;#length-negative&lt;/feature&gt;
+    &lt;feature value="required"&gt;#length-percentage&lt;/feature&gt;
+    &lt;feature value="required"&gt;#length-pixel&lt;/feature&gt;
+    &lt;feature value="required"&gt;#length-positive&lt;/feature&gt;
+    &lt;feature value="required"&gt;#length-real&lt;/feature&gt;
+    &lt;feature value="required"&gt;#length&lt;/feature&gt;
+    &lt;feature value="required"&gt;#lineBreak-uax14&lt;/feature&gt;
+    &lt;feature value="required"&gt;#lineHeight&lt;/feature&gt;
+    &lt;feature value="required"&gt;#markerMode-continuous&lt;/feature&gt;
+    &lt;feature value="required"&gt;#markerMode-discontinuous&lt;/feature&gt;
+    &lt;feature value="required"&gt;#markerMode&lt;/feature&gt;
+    &lt;feature value="required"&gt;#metadata&lt;/feature&gt;
+    &lt;feature value="required"&gt;#nested-div&lt;/feature&gt;
+    &lt;feature value="required"&gt;#nested-span&lt;/feature&gt;
+    &lt;feature value="required"&gt;#opacity&lt;/feature&gt;
+    &lt;feature value="required"&gt;#origin&lt;/feature&gt;
+    &lt;feature value="required"&gt;#overflow-visible&lt;/feature&gt;
+    &lt;feature value="required"&gt;#overflow&lt;/feature&gt;
+    &lt;feature value="required"&gt;#padding-1&lt;/feature&gt;
+    &lt;feature value="required"&gt;#padding-2&lt;/feature&gt;
+    &lt;feature value="required"&gt;#padding-3&lt;/feature&gt;
+    &lt;feature value="required"&gt;#padding-4&lt;/feature&gt;
+    &lt;feature value="required"&gt;#padding&lt;/feature&gt;
+    &lt;feature value="required"&gt;#pixelAspectRatio&lt;/feature&gt;
+    &lt;feature value="required"&gt;#presentation&lt;/feature&gt;
+    &lt;feature value="required"&gt;#profile&lt;/feature&gt;
+    &lt;feature value="required"&gt;#showBackground&lt;/feature&gt;
+    &lt;feature value="required"&gt;#structure&lt;/feature&gt;
+    &lt;feature value="required"&gt;#styling-chained&lt;/feature&gt;
+    &lt;feature value="required"&gt;#styling-inheritance-content&lt;/feature&gt;
+    &lt;feature value="required"&gt;#styling-inheritance-region&lt;/feature&gt;
+    &lt;feature value="required"&gt;#styling-inline&lt;/feature&gt;
+    &lt;feature value="required"&gt;#styling-nested&lt;/feature&gt;
+    &lt;feature value="required"&gt;#styling-referential&lt;/feature&gt;
+    &lt;feature value="required"&gt;#styling&lt;/feature&gt;
+    &lt;feature value="required"&gt;#subFrameRate&lt;/feature&gt;
+    &lt;feature value="required"&gt;#textAlign-absolute&lt;/feature&gt;
+    &lt;feature value="required"&gt;#textAlign-relative&lt;/feature&gt;
+    &lt;feature value="required"&gt;#textAlign&lt;/feature&gt;
+    &lt;feature value="required"&gt;#textDecoration-over&lt;/feature&gt;
+    &lt;feature value="required"&gt;#textDecoration-through&lt;/feature&gt;
+    &lt;feature value="required"&gt;#textDecoration-under&lt;/feature&gt;
+    &lt;feature value="required"&gt;#textDecoration&lt;/feature&gt;
+    &lt;feature value="required"&gt;#textOutline-blurred&lt;/feature&gt;
+    &lt;feature value="required"&gt;#textOutline-unblurred&lt;/feature&gt;
+    &lt;feature value="required"&gt;#textOutline&lt;/feature&gt;
+    &lt;feature value="required"&gt;#tickRate&lt;/feature&gt;
+    &lt;feature value="required"&gt;#time-clock-with-frames&lt;/feature&gt;
+    &lt;feature value="required"&gt;#time-clock&lt;/feature&gt;
+    &lt;feature value="required"&gt;#time-offset-with-frames&lt;/feature&gt;
+    &lt;feature value="required"&gt;#time-offset-with-ticks&lt;/feature&gt;
+    &lt;feature value="required"&gt;#time-offset&lt;/feature&gt;
+    &lt;feature value="required"&gt;#timeBase-clock&lt;/feature&gt;
+    &lt;feature value="required"&gt;#timeBase-media&lt;/feature&gt;
+    &lt;feature value="required"&gt;#timeBase-smpte&lt;/feature&gt;
+    &lt;feature value="required"&gt;#timeContainer&lt;/feature&gt;
+    &lt;feature value="required"&gt;#timing&lt;/feature&gt;
+    &lt;feature value="required"&gt;#transformation&lt;/feature&gt;
+    &lt;feature value="required"&gt;#unicodeBidi&lt;/feature&gt;
+    &lt;feature value="required"&gt;#visibility-block&lt;/feature&gt;
+    &lt;feature value="required"&gt;#visibility-inline&lt;/feature&gt;
+    &lt;feature value="required"&gt;#visibility-region&lt;/feature&gt;
+    &lt;feature value="required"&gt;#visibility&lt;/feature&gt;
+    &lt;feature value="required"&gt;#wrapOption&lt;/feature&gt;
+    &lt;feature value="required"&gt;#writingMode-horizontal-lr&lt;/feature&gt;
+    &lt;feature value="required"&gt;#writingMode-horizontal-rl&lt;/feature&gt;
+    &lt;feature value="required"&gt;#writingMode-horizontal&lt;/feature&gt;
+    &lt;feature value="required"&gt;#writingMode-vertical&lt;/feature&gt;
+    &lt;feature value="required"&gt;#writingMode&lt;/feature&gt;
+    &lt;feature value="required"&gt;#zIndex&lt;/feature&gt;
+    &lt;!-- optional (voluntary) feature support --&gt;
+  &lt;/features&gt;
+  &lt;extensions xml:base="http://www.w3.org/ns/ttml/extension/"&gt;
+    &lt;!-- required (mandatory) extension support --&gt;
+    &lt;!-- optional (voluntary) extension support --&gt;
+  &lt;/extensions&gt;
+&lt;/profile&gt;
+
 </pre></div></div></div><div class="div1">
 <h2><a id="references"></a>G References</h2><p><em>This appendix is normative.</em></p><dl><dt class="label"><a id="css3-color"></a>CSS3 Color</dt><dd>Tantek Çelik and Chris Lilley,
 <a href="http://www.w3.org/TR/2011/REC-css3-color-20110607/"><cite>CSS Color
@@ -6683,7 +6917,23 @@ each inline element coincides with the end of the <code>div</code> element's par
         &lt;span begin="13s"&gt;labore&lt;/span&gt;
      &lt;/p&gt;
      &lt;p&gt;
-        &lt;span begin="14s"&gt;et&lt;/
+        &lt;span begin="14s"&gt;et&lt;/span&gt;
+        &lt;span begin="15s"&gt;dolore&lt;/span&gt;
+        &lt;span begin="16s"&gt;magna&lt;/span&gt;
+        &lt;span begin="17s"&gt;aliqua&lt;/span&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;span begin="18s"&gt;Ut&lt;/span&gt;
+        &lt;span begin="19s"&gt;enim&lt;/span&gt;
+        &lt;span begin="20s"&gt;ad&lt;/span&gt;
+        &lt;span begin="21s"&gt;minim&lt;/span&gt;
+        &lt;span begin="22s"&gt;veniam&lt;/span&gt;
+        &lt;span begin="23s"&gt;quis,&lt;/span&gt;
+        &lt;span begin="24s"&gt;nostrud&lt;/span&gt;
+      &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/tt&gt;
 </pre></div>
 </td></tr></tbody></table></div></div><div class="div1">
 <h2><a id="acknowledgments"></a>P Acknowledgments (Non-Normative)</h2><p>The editor acknowledges the current and former members of the Timed Text Working
