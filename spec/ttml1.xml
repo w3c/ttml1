@@ -4,7 +4,7 @@
 <!ENTITY % entities SYSTEM "entities.dtd" >
 %entities;
 <!ENTITY status SYSTEM "status.xml">
-<!ENTITY document.status "Editors' copy $Date$">
+<!ENTITY document.status "W3C Editors' Draft">
 <!ENTITY title "&title;">
 <!ENTITY prevloc "http://www.w3.org/TR/2013/REC-ttml1-20130924/">
 <!ENTITY latestedloc "https://w3c.github.io/ttml1/spec/ttml1.html">
@@ -134,7 +134,7 @@ ref="smil21"/> document.</p>
 </abstract>
 &status;
 <langusage><language id='en-us'>English</language></langusage>
-<revisiondesc><p>Last Modified: $Date$</p></revisiondesc>
+<revisiondesc><p>Commit: $Date$</p></revisiondesc>
 </header>
 <body>
 <div1 id="intro">
