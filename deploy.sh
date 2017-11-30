@@ -76,11 +76,11 @@ echo -e "\nNote:\n" >>README.md
 echo -e "\nThis branch was automatically built from $SOURCE_BRANCH" >>README.md
 
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-  echo -e " [pull request](https://github.com/w3c/ttml1/pull/$TRAVIS_PULL_REQUEST)" >>README.md
+  echo -e " from [pull request](https://github.com/w3c/ttml1/pull/$TRAVIS_PULL_REQUEST)" >>README.md
 fi
 
 if [ "$TRAVIS_PULL_REQUEST_SHA" != "" ]; then
-  echo -e " [commit](https://github.com/w3c/ttml1/commit/$TRAVIS_PULL_REQUEST_SHA)" >>README.md
+  echo -e " and [commit](https://github.com/w3c/ttml1/commit/$TRAVIS_PULL_REQUEST_SHA)" >>README.md
 fi
 
 echo -e "\n\n" >>README.md
