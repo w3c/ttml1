@@ -7782,7 +7782,7 @@ interval; i.e., the interval is left-wise closed.</p>
 by <bibref ref="smil21"/>, &sect; 10.4.1,
 while taking into account any overriding semantics defined by this specification.</p>
 <note role="clarification">
-<p>In the absence of an explicit setting of the begin time, <bibref ref="smil21"/> defines time-container-dependent default values.</p>
+<p>See <bibref ref="smil21"/>, § 10.4.1, <emph>Begin value semantics</emph> when no <code>begin</code> attribute is specified.</p>
 </note>
 </div3>
 <div3 id="timing-attribute-end">
