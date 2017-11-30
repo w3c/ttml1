@@ -11,12 +11,13 @@ SOURCE_BRANCH="$TRAVIS_PULL_REQUEST_BRANCH"
 TARGET_BRANCH="$TRAVIS_PULL_REQUEST-$TRAVIS_PULL_REQUEST_BRANCH"
 
 if [ "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" != "master" ]; then
-   echo "[ABORT] We're not in master ($TRAVIS_BRANCH) nor in a pull request ($TRAVIS_PULL_REQUEST), so exiting. "
+   echo "[ABORT] We're in a push build (not in master nor in a pull request), so exiting. "
    exit 0
 fi
 
 if [ "$TRAVIS_PULL_REQUEST" != "false" -a "$TRAVIS_PULL_REQUEST_BRANCH" = "master" ]; then
-   echo "[ABORT] We're in a pull request but we're in master ($TRAVIS_PULL_REQUEST_BRANCH) ...."
+   echo "[ERROR] We're in a pull request but we're in the master branch?!?!"
+   echo " This shouldn't happen..."
    exit 1
 fi
 
@@ -45,16 +46,15 @@ rm -rf out/**/* || exit 0
 
 # Copy content from build into  existing contents
 
-echo Compiling the specification
+echo "[TRACE] Building the specification"
 cd spec
 ant build
 
 # Make sure we're in the right directory
 
-echo Copying the specification
+echo "[TRACE] Copying the specification"
 
 cp -R build/* ../out/
-
 
 # Now let's go have some fun with the cloned repo
 cd ../out
@@ -83,5 +83,5 @@ eval `ssh-agent -s`
 ssh-add ../deploy_key
 
 # Now that we're all set up, we can push.
-echo "ready to push"
-echo "git push $SSH_REPO $TARGET_BRANCH "
+echo "Ready to push"
+git push $SSH_REPO $TARGET_BRANCH
