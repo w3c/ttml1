@@ -60,18 +60,30 @@ cd ../out
 
 rm .travis.yml
 rm w3c.json
+rm CODE_OF_CONDUCT.md
+rm CONTRIBUTING.md
+rm LICENSE.md
 rm -rf spec
 rm -rf .gitfilters
+rm -rf .gitattributes
+rm -rf .gitignore
 
 # Useful additional information
 
-echo "\nNote:" >>README.md
+echo "[![Build Status](https://travis-ci.org/w3c/ttml1.svg?branch=$SOURCE_BRANCH)](https://travis-ci.org/w3c/ttml1)" >README.md
+echo -e "\n\n# Specification TTML 1\n" >>README.md
+echo -e "\nNote:\n" >>README.md
+echo -e "\nThis branch was automatically built from $SOURCE_BRANCH" >>README.md
 
-echo "\nThis branch was automatically built from $SOURCE_BRANCH" >>README.md
+if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+  echo -e " [pull request](https://github.com/w3c/ttml1/pull/$TRAVIS_PULL_REQUEST)" >>README.md
+fi
 
 if [ "$TRAVIS_PULL_REQUEST_SHA" != "" ]; then
-  echo "\nusing commit $TRAVIS_PULL_REQUEST_SHA" >>README.md
+  echo -e " [commit](https://github.com/w3c/ttml1/commit/$TRAVIS_PULL_REQUEST_SHA)" >>README.md
 fi
+
+echo -e "\n\n" >>README.md
 
 # Now let's go have some fun with the cloned repo
 cd ../out
