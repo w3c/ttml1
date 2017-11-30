@@ -8,12 +8,16 @@ TARGET_BRANCH="$TRAVIS_BRANCH\-build"
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
 if [ "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" != "master" ]; then
-   echo "We're not in master ($TRAVIS_BRANCH) nor in a pull request ($TRAVIS_PULL_REQUEST), so exiting. "
+   echo "[ABORT] We're not in master ($TRAVIS_BRANCH) nor in a pull request ($TRAVIS_PULL_REQUEST), so exiting. "
    exit 0
 fi
 
+if [ "$TRAVIS_PULL_REQUEST" = "true" -a "$TRAVIS_BRANCH" = "master" ]; then
+   echo "[ABORT] We're in a pull request but we're in master ($TRAVIS_BRANCH) ...."
+   exit 1
+fi
+
 if [ "$TRAVIS_PULL_REQUEST" = "false"  -a "$SOURCE_BRANCH" = "master" ]; then
-  echo "We're on master"
   SOURCE_BRANCH="master"
   TARGET_BRANCH="gh-pages"
 fi
