@@ -4,19 +4,19 @@ set -e # Exit with nonzero exit code if anything fails
 # From https://gist.github.com/domenic/ec8b0fc8ab45f39403dd
 
 echo "[TRACE] TRAVIS_BRANCH: $TRAVIS_BRANCH"
+echo "[TRACE] TRAVIS_PULL_REQUEST_BRANCH: $TRAVIS_PULL_REQUEST_BRANCH"
 echo "[TRACE] TRAVIS_PULL_REQUEST: $TRAVIS_PULL_REQUEST"
 
 SOURCE_BRANCH="$TRAVIS_BRANCH"
-TARGET_BRANCH="$TRAVIS_BRANCH-travis-build"
+TARGET_BRANCH="$TRAVIS_PULL_REQUEST-$TRAVIS_PULL_REQUEST_BRANCH-"
 
-# Pull requests and commits to other branches shouldn't try to deploy, just build to verify
 if [ "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" != "master" ]; then
    echo "[ABORT] We're not in master ($TRAVIS_BRANCH) nor in a pull request ($TRAVIS_PULL_REQUEST), so exiting. "
    exit 0
 fi
 
-if [ "$TRAVIS_PULL_REQUEST" = "true" -a "$TRAVIS_BRANCH" = "master" ]; then
-   echo "[ABORT] We're in a pull request but we're in master ($TRAVIS_BRANCH) ...."
+if [ "$TRAVIS_PULL_REQUEST" != "false" -a "$TRAVIS_PULL_REQUEST_BRANCH" = "master" ]; then
+   echo "[ABORT] We're in a pull request but we're in master ($TRAVIS_PULL_REQUEST_BRANCH) ...."
    exit 1
 fi
 
@@ -25,7 +25,8 @@ if [ "$TRAVIS_PULL_REQUEST" = "false"  -a "$SOURCE_BRANCH" = "master" ]; then
   TARGET_BRANCH="gh-pages"
 fi
 
-echo "[TRACE] Using $SOURCE_BRANCH to generate into $TARGET_BRANCH"
+echo "[TRACE] SOURCE_BRANCH: $SOURCE_BRANCH"
+echo "[TRACE] TARGET_BRANCH: $TARGET_BRANCH"
 
 # Save some useful information
 REPO=`git config remote.origin.url`
@@ -44,17 +45,19 @@ rm -rf out/**/* || exit 0
 
 # Copy content from build into  existing contents
 
+echo Compiling the specification
 cd spec
 ant build
 
 # Make sure we're in the right directory
-cd ../spec
 
-cp -R build/* out/
+echo Copying the specification
+
+cp -R build/* ../out/
 
 
 # Now let's go have some fun with the cloned repo
-cd out
+cd ../out
 git config user.name "Travis CI"
 git config user.email "$COMMIT_AUTHOR_EMAIL"
 
