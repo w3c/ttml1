@@ -3,6 +3,9 @@ set -e # Exit with nonzero exit code if anything fails
 
 # From https://gist.github.com/domenic/ec8b0fc8ab45f39403dd
 
+echo "[TRACE] TRAVIS_BRANCH: $TRAVIS_BRANCH"
+echo "[TRACE] TRAVIS_PULL_REQUEST: $TRAVIS_PULL_REQUEST"
+
 SOURCE_BRANCH="$TRAVIS_BRANCH"
 TARGET_BRANCH="$TRAVIS_BRANCH-travis-build"
 
@@ -47,7 +50,7 @@ ant build
 # Make sure we're in the right directory
 cd ../spec
 
-cp -R build/* out/*
+cp -R build/* out/
 
 
 # Now let's go have some fun with the cloned repo
