@@ -3,6 +3,8 @@ set -e # Exit with nonzero exit code if anything fails
 
 # From https://gist.github.com/domenic/ec8b0fc8ab45f39403dd
 
+echo -e "\nStarting building and deployment\n\n"
+
 echo "[TRACE] TRAVIS_BRANCH: $TRAVIS_BRANCH"
 echo "[TRACE] TRAVIS_PULL_REQUEST_BRANCH: $TRAVIS_PULL_REQUEST_BRANCH"
 echo "[TRACE] TRAVIS_PULL_REQUEST: $TRAVIS_PULL_REQUEST"
@@ -46,23 +48,23 @@ rm -rf out/**/* || exit 0
 
 # Copy content from build into  existing contents
 
-echo "[TRACE] Building the specification"
+echo -e "\n[TRACE] Building the specification"
 cd spec
 ant build
 
 # Make sure we're in the right directory
 
-echo "[TRACE] Copying the specification and cleaning out"
+echo -e "\n[TRACE] Copying the specification and cleaning out"
 
 cp -R build/* ../out/
 
 cd ../out
 
-rm .travis.yml
-rm w3c.json
-rm CODE_OF_CONDUCT.md
-rm CONTRIBUTING.md
-rm LICENSE.md
+rm -f .travis.yml
+rm -f w3c.json
+rm -f CODE_OF_CONDUCT.md
+rm -f CONTRIBUTING.md
+rm -f LICENSE.md
 rm -rf spec
 rm -rf .gitfilters
 rm -rf .gitattributes
@@ -73,14 +75,14 @@ rm -rf .gitignore
 echo "[![Build Status](https://travis-ci.org/w3c/ttml1.svg?branch=$SOURCE_BRANCH)](https://travis-ci.org/w3c/ttml1)" >README.md
 echo -e "\n\n# Specification TTML 1\n" >>README.md
 echo -e "\nNote:\n" >>README.md
-echo -e "\nThis branch was automatically built from $SOURCE_BRANCH" >>README.md
+echo -e "\nThis branch was automatically built from branch $SOURCE_BRANCH\n" >>README.md
 
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-  echo -e " from [pull request](https://github.com/w3c/ttml1/pull/$TRAVIS_PULL_REQUEST)" >>README.md
+  echo -e "\n Pull request: [#$TRAVIS_PULL_REQUEST](https://github.com/w3c/ttml1/pull/$TRAVIS_PULL_REQUEST)\n" >>README.md
 fi
 
 if [ "$TRAVIS_PULL_REQUEST_SHA" != "" ]; then
-  echo -e " and [commit](https://github.com/w3c/ttml1/commit/$TRAVIS_PULL_REQUEST_SHA)" >>README.md
+  echo -e "\n Commit: [$TRAVIS_PULL_REQUEST_SHA](https://github.com/w3c/ttml1/commit/$TRAVIS_PULL_REQUEST_SHA)" >>README.md
 fi
 
 echo -e "\n\n" >>README.md
