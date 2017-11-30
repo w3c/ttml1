@@ -6,27 +6,20 @@ set -e # Exit with nonzero exit code if anything fails
 SOURCE_BRANCH="$TRAVIS_BRANCH"
 TARGET_BRANCH="$TRAVIS_BRANCH\-build"
 
-if [ "$TRAVIS_PULL_REQUEST" != "true" -a "$TRAVIS_BRANCH" != "master" ]; then
+if [ "$TRAVIS_PULL_REQUEST" = "false" -a "$SOURCE_BRANCH" != "master" ]; then
    echo $TRAVIS_PULL_REQUEST
    echo $TRAVIS_BRANCH
    echo "We're not in master nor in a pull request ($TRAVIS_BRANCH), so exiting. "
    exit 0
 fi
 
-if [ "$TRAVIS_PULL_REQUEST" != "true" ]; then
+if [ "$TRAVIS_PULL_REQUEST" = "false"  -a "$SOURCE_BRANCH" = "master" ]; then
+  echo "We're on master"
   SOURCE_BRANCH="master"
   TARGET_BRANCH="gh-pages"
 fi
 
-echo "Using $SOURCE_BRANCH to generate into $TARGET_BRANCH"
-
-function doCompile {
-   cd spec
-   ant build
-   cp -R build/* ../out
-   cd ..
-   
-}
+echo "[TRACE] Using $SOURCE_BRANCH to generate into $TARGET_BRANCH"
 
 # Save some useful information
 REPO=`git config remote.origin.url`
@@ -43,10 +36,16 @@ cd ..
 # Clean out existing contents
 rm -rf out/**/* || exit 0
 
-# Run our compile script
-doCompile
+# Copy content from build into  existing contents
 
-ls
+cd spec
+ant build
+
+# Make sure we're in the right directory
+cd ../spec
+
+cp -R build/* out/*
+
 
 # Now let's go have some fun with the cloned repo
 cd out
@@ -75,4 +74,5 @@ eval `ssh-agent -s`
 ssh-add ../deploy_key
 
 # Now that we're all set up, we can push.
-git push $SSH_REPO $TARGET_BRANCH
+echo "ready to push"
+echo "git push $SSH_REPO $TARGET_BRANCH "
