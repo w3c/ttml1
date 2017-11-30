@@ -3,8 +3,6 @@ set -e # Exit with nonzero exit code if anything fails
 
 # From https://gist.github.com/domenic/ec8b0fc8ab45f39403dd
 
-echo -e "\nStarting building and deployment\n\n"
-
 echo "[TRACE] TRAVIS_BRANCH: $TRAVIS_BRANCH"
 echo "[TRACE] TRAVIS_PULL_REQUEST_BRANCH: $TRAVIS_PULL_REQUEST_BRANCH"
 echo "[TRACE] TRAVIS_PULL_REQUEST: $TRAVIS_PULL_REQUEST"
@@ -76,7 +74,7 @@ if [ "$SOURCE_BRANCH" != "master" ]; then
   echo "[![Build Status](https://travis-ci.org/w3c/ttml1.svg?branch=$SOURCE_BRANCH)](https://travis-ci.org/w3c/ttml1)" >README.md
   echo -e "\n\n# Specification TTML 1\n" >>README.md
   echo -e "\nNote:\n" >>README.md
-  echo -e "\nThis branch was automatically built by Travis CI. <b>DO NOT EDIT</b>.\n"
+  echo -e "\nThis branch was automatically built by Travis CI. <b>DO NOT EDIT</b>.\n" >>README.md
 
   echo -e "\n Branch [$SOURCE_BRANCH](https://github.com/w3c/ttml1/tree/$SOURCE_BRANCH)\n" >>README.md
 
