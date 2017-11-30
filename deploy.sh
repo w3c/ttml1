@@ -6,10 +6,9 @@ set -e # Exit with nonzero exit code if anything fails
 SOURCE_BRANCH="$TRAVIS_BRANCH"
 TARGET_BRANCH="$TRAVIS_BRANCH\-build"
 
-if [ "$TRAVIS_PULL_REQUEST" = "false" -a "$SOURCE_BRANCH" != "master" ]; then
-   echo $TRAVIS_PULL_REQUEST
-   echo $TRAVIS_BRANCH
-   echo "We're not in master nor in a pull request ($TRAVIS_BRANCH), so exiting. "
+# Pull requests and commits to other branches shouldn't try to deploy, just build to verify
+if [ "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" != "master" ]; then
+   echo "We're not in master ($TRAVIS_BRANCH) nor in a pull request ($TRAVIS_PULL_REQUEST), so exiting. "
    exit 0
 fi
 
