@@ -1,23 +1,9 @@
 language: java
 
 script:
-    - cd spec
-    - ant build
-    
-deploy:
-  provider: pages
-  local_dir: build
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  on:
-    branch: master
-    
-deploy:
-  provider: pages
-  local_dir: build
-  target_branch: ${TRAVIS_BRANCH}-build
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  on:
-    all_branches: true
-    condition: ${TRAVIS_BRANCH} != master
+    - bash ./deploy.sh
+
+env:
+  global:
+  - ENCRYPTION_LABEL: "72662b420eda"
+  - COMMIT_AUTHOR_EMAIL: "plh@w3.org"
