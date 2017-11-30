@@ -21,6 +21,7 @@ echo "Using $SOURCE_BRANCH to generate into $TARGET_BRANCH"
 function doCompile {
    cd spec
    ant build
+   cd ..
 }
 
 # Save some useful information
