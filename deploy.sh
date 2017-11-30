@@ -7,7 +7,9 @@ SOURCE_BRANCH="$TRAVIS_BRANCH"
 TARGET_BRANCH="$TRAVIS_BRANCH\-build"
 
 if [ "$TRAVIS_PULL_REQUEST" != "true" -a "$TRAVIS_BRANCH" != "master" ]; then
-   echo "We're not in master nor in a pull request, so exiting"
+   echo $TRAVIS_PULL_REQUEST
+   echo $TRAVIS_BRANCH
+   echo "We're not in master nor in a pull request ($TRAVIS_BRANCH), so exiting. "
    exit 0
 fi
 
@@ -21,6 +23,7 @@ echo "Using $SOURCE_BRANCH to generate into $TARGET_BRANCH"
 function doCompile {
    cd spec
    ant build
+   ls
 }
 
 # Save some useful information
@@ -40,6 +43,8 @@ rm -rf out/**/* || exit 0
 
 # Run our compile script
 doCompile
+
+ls
 
 # Now let's go have some fun with the cloned repo
 cd out
