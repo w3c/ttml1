@@ -70,22 +70,26 @@ rm -rf .gitfilters
 rm -rf .gitattributes
 rm -rf .gitignore
 
-# Useful additional information
+# Useful additional information for PR branches
 
-echo "[![Build Status](https://travis-ci.org/w3c/ttml1.svg?branch=$SOURCE_BRANCH)](https://travis-ci.org/w3c/ttml1)" >README.md
-echo -e "\n\n# Specification TTML 1\n" >>README.md
-echo -e "\nNote:\n" >>README.md
-echo -e "\nThis branch was automatically built from branch $SOURCE_BRANCH\n" >>README.md
+if [ "$SOURCE_BRANCH" != "master" ]; then
+  echo "[![Build Status](https://travis-ci.org/w3c/ttml1.svg?branch=$SOURCE_BRANCH)](https://travis-ci.org/w3c/ttml1)" >README.md
+  echo -e "\n\n# Specification TTML 1\n" >>README.md
+  echo -e "\nNote:\n" >>README.md
+  echo -e "\nThis branch was automatically built by Travis CI. <b>DO NOT EDIT</b>.\n"
 
-if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-  echo -e "\n Pull request: [#$TRAVIS_PULL_REQUEST](https://github.com/w3c/ttml1/pull/$TRAVIS_PULL_REQUEST)\n" >>README.md
+  echo -e "\n Branch [$SOURCE_BRANCH](https://github.com/w3c/ttml1/tree/$SOURCE_BRANCH)\n" >>README.md
+
+  if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+    echo -e "\n Pull request: [#$TRAVIS_PULL_REQUEST](https://github.com/w3c/ttml1/pull/$TRAVIS_PULL_REQUEST)\n" >>README.md
+  fi
+
+  if [ "$TRAVIS_PULL_REQUEST_SHA" != "" ]; then
+    echo -e "\n Commit: [$TRAVIS_PULL_REQUEST_SHA](https://github.com/w3c/ttml1/commit/$TRAVIS_PULL_REQUEST_SHA)" >>README.md
+  fi
+
+  echo -e "\n\n" >>README.md
 fi
-
-if [ "$TRAVIS_PULL_REQUEST_SHA" != "" ]; then
-  echo -e "\n Commit: [$TRAVIS_PULL_REQUEST_SHA](https://github.com/w3c/ttml1/commit/$TRAVIS_PULL_REQUEST_SHA)" >>README.md
-fi
-
-echo -e "\n\n" >>README.md
 
 # Now let's go have some fun with the cloned repo
 cd ../out
