@@ -3322,7 +3322,7 @@ by <bibref ref="xsl11"/>, &sect; 7.17.3, 7.16.7, 7.16.12, and 7.16.8, respective
 </note>
 <note role="clarification">
 <p>No presentation semantics are specified for the TAB (U+0009) character. Furthermore, the TAB (U+0009) character 
-is not collapsed when <code>xml:space="default"</code>, and can generate a glyph area. As a result, the use of the TAB (U+0009) character 
+can generate a glyph area. As a result, the use of the TAB (U+0009) character 
 in <code>#PCDATA</code> content within <code>p</code> and <code>span</code> elements is not recommended.</p>
 </note>
 </div3>
