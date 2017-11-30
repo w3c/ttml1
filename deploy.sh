@@ -52,9 +52,26 @@ ant build
 
 # Make sure we're in the right directory
 
-echo "[TRACE] Copying the specification"
+echo "[TRACE] Copying the specification and cleaning out"
 
 cp -R build/* ../out/
+
+cd ../out
+
+rm .travis.yml
+rm w3c.json
+rm -rf spec
+rm -rf .gitfilters
+
+# Useful additional information
+
+echo "\nNote:" >>README.md
+
+echo "\nThis branch was automatically built from $SOURCE_BRANCH" >>README.md
+
+if [ "$TRAVIS_PULL_REQUEST_SHA" != "" ]; then
+  echo "\nusing commit $TRAVIS_PULL_REQUEST_SHA" >>README.md
+fi
 
 # Now let's go have some fun with the cloned repo
 cd ../out
