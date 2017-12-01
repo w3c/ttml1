@@ -86,6 +86,8 @@ if [ "$SOURCE_BRANCH" != "master" ]; then
     echo -e "\n Commit: [$TRAVIS_PULL_REQUEST_SHA](https://github.com/w3c/ttml1/commit/$TRAVIS_PULL_REQUEST_SHA)" >>README.md
   fi
 
+  echo -e "\nPull request specification can be previewed at https://rawgit.com/w3c/ttml1/$TARGET_BRANCH/index.html" >>README.md
+
   echo -e "\n\n" >>README.md
 fi
 
