@@ -7405,7 +7405,8 @@ headed by the <el>body</el> element;</p>
 </item>
 <item>
 <p>evaluating this sub-tree in a postorder traversal, prune elements if they
-are not a <loc href="#element-vocab-type-content">Content</loc> element, if they are temporally inactive, if they are empty,
+are not a <loc href="#element-vocab-type-content">Content</loc> or <loc href="#element-vocab-type-animation">Animation</loc> element, 
+if they are temporally inactive, if they are empty,
 or if they aren't associated with region <emph>R</emph> according to the
 <phrase role="strong">[associate region]</phrase> procedure;</p>
 </item>
