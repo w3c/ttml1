@@ -4598,12 +4598,19 @@ as a style property only to those element types indicated in the following table
 computed value of the style property must be considered to be no less than the
 size of the largest font size that applies to the element and its
 descendant elements in the intermediate synchronic document as determined by
-<specref ref="semantics-region-layout-step-1"/>. However, the value <code>normal</code> is not relative,
-and is therefore inherited as-is, as specified at <specref ref="semantics-style-resolution-processing-css"/>.</p>
+<specref ref="semantics-region-layout-step-1"/>. Furthermore,
+when performing <specref ref="semantics-style-resolution-processing-css"/>, step (4), [relative value resolution],
+the value <code>normal</code> is considered to be <emph>relative</emph> only on the most nested elements to which this property applies, namely,
+on <el>p</el> elements; otherwise, it is not considered to relative.</p>
 <note role="elaboration">
-<p>If the value of this attribute is <code>normal</code>, it is recommended that presentation processors
-use a line height that is 125% of the size of the largest applicable font size.
-The choice of 125% allows use of a font size of <code>0.8c</code> in order
+<p>Since the value <code>normal</code> is considered to be non-relative for all ancestors of <el>p</el>,
+this value is inherited as is without further resolution; however, when the computed style set is obtained on
+a <el>p</el> element, the value <code>normal</code> is treated as a relative value, and, therefore, is resolved
+to an absolute form during [relative value resolution].</p></note>
+<note role="elaboration">
+<p>It is recommended that presentation processors use a computed line height that is
+125% of the size of the largest applicable font size when the value of this attribute is <code>normal</code>.
+The choice of 125% allows use of a font size of <code>0.8c</code> in order  
 to obtain a line height of <code>1c</code>.</p>
 </note>
 <p>If specified as a <loc
@@ -4613,7 +4620,8 @@ be non-negative.</p>
 then a presentation processor must use the closest supported value.</p>
 <note role="elaboration">
 <p>In this context, the phrase <emph>closest supported value</emph> means the value for which the Euclidean distance between
-the computed line height and the supported line height is minimized. If there are multiple closest supported values equally distant from the computed value, then the value most distant from 0, i.e., the largest line height, is used.</p>
+the computed line height and the supported line height is minimized. If there are multiple closest supported values equally distant from
+the computed value, then the value most distant from 0, i.e., the largest line height, is used.</p>
 </note>
 <p>The <att>tts:lineHeight</att> style is illustrated by the following example.</p>
 <table id="style-attribute-lineHeight-example-1" role="example">
@@ -7107,9 +7115,8 @@ context of a layout or <loc href="#element-vocab-type-content">Content</loc> ele
 context, and not in the non-presentation, declaration context
 of a referentiable <el>style</el> element.</p>
 </note>
-<note role="clarification">
-<p>Step (4) is not applied for the style property <code>["http://www.w3.org/ns/ttml#styling", "lineHeight"]</code> when its value expression is <code>normal</code>, which is not considered relative.</p>
-</note>
+<note role="clarification"><p>See individual style properties for information regarding what values are
+considered to be relative for the purpose of interpreting step (4) above.</p></note>
 </div4>
 <div4 id="semantics-style-resolution-process-overall">
 <head>Style Resolution Process</head>
