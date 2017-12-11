@@ -16,11 +16,12 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" -a "$TRAVIS_PULL_REQUEST_BRANCH" = "maste
    exit 1
 fi
 
-
 if [ "$TRAVIS_PULL_REQUEST" = "false"  -a "$TRAVIS_BRANCH" = "master" ]; then
   SOURCE_BRANCH="master"
   TARGET_BRANCH="gh-pages"
-else
+fi  
+  
+if [ "$TRAVIS_PULL_REQUEST" = "false"  -a "$TRAVIS_BRANCH" != "master" ]; then
    echo "[ABORT] We're in a push build (not in master nor in a pull request), so exiting. "
    exit 0
 fi
