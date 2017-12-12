@@ -7787,6 +7787,9 @@ interval; i.e., the interval is left-wise closed.</p>
 <p>The semantics of the <att>begin</att> attribute are those defined
 by <bibref ref="smil21"/>, &sect; 10.4.1,
 while taking into account any overriding semantics defined by this specification.</p>
+<note role="clarification">
+<p>See <bibref ref="smil21"/>, § 10.4.1, <emph>Begin value semantics</emph> when no <code>begin</code> attribute is specified.</p>
+</note>
 </div3>
 <div3 id="timing-attribute-end">
 <head>end</head>
