@@ -2,11 +2,11 @@
   xmlns:ttp="http://www.w3.org/ns/ttml#parameter" xmlns:tts="http://www.w3.org/ns/ttml#styling">
   <head>
     <layout>
-      <region xml:id="r1" tts:color="white" tts:origin="10c 4c" tts:extent="40c 5c"/>
+      <region xml:id="r1" tts:color="white" tts:origin="10c 4c" tts:extent="40c 5c" tts:displayAlign="after"/>
     </layout>
   </head>
   <body>
-    <div begin="0s" end="25s">
+    <div region="r1" begin="0s" end="25s">
       <p>
         <span begin="0s">Lorem</span>
         <span begin="1s">ipsum</span>
