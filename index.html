@@ -80,7 +80,7 @@ table.example-images-bordered td { border: 1px solid red; text-align: left }
 .strong { font-weight: bold }
 .reqattr { font-weight: bold }
 .optattr { font-style: italic }
-</style><link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/W3C-ED.css"></head><body>Commit: 594843e Clarified cell metrics for tts:textOutline (#218)<div id="revisions"></div><div class="head">
+</style><link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/W3C-ED.css"></head><body>Commit: 1a5d253 Replaced ttp:frameRateMultipler with ttp:frameRateMultiplier (#236)<div id="revisions"></div><div class="head">
 <h1><a id="title"></a>Timed Text Markup Language 1 (TTML1) (Third Edition)</h1>
 <h2><a id="w3c-doctype"></a>W3C Editors' Draft 12 December 2017</h2><dl><dt>This version:</dt><dd>
 <a href="ttml1.html">ttml1.html</a>
@@ -1076,7 +1076,7 @@ Parameter Attributes
 <a href="#parameter-attribute-clockMode">ttp:clockMode</a>,
 <a href="#parameter-attribute-dropMode">ttp:dropMode</a>,
 <a href="#parameter-attribute-frameRate">ttp:frameRate</a>,
-<a href="#parameter-attribute-frameRateMultiplier">ttp:frameRateMultipler</a>,
+<a href="#parameter-attribute-frameRateMultiplier">ttp:frameRateMultiplier</a>,
 <a href="#parameter-attribute-markerMode">ttp:markerMode</a>,
 <a href="#parameter-attribute-pixelAspectRatio">ttp:pixelAspectRatio</a>,
 <a href="#parameter-attribute-profile">ttp:profile</a>,
@@ -6745,7 +6745,7 @@ an epoch <code>E</code>, and where the value of <code>epochOffset</code> is the 
 </p></blockquote>
 </td></tr></tbody></table><p>Time value expressions, as denoted by a <a href="#timing-value-timeExpression">&lt;timeExpression&gt;</a>, are related to
 media time <span class="strong"><code>M</code></span> in accordance to the
-<code>ttp:frameRate</code>, <code>ttp:subFrameRate</code>, and <code>ttp:frameRateMultipler</code> parameters as follows:</p><a id="time-expressions-and-media-time"></a><table class="semantics"><caption>TTML Semantics – Time Expressions and Media Time Relationship</caption><tbody><tr><td>
+<code>ttp:frameRate</code>, <code>ttp:subFrameRate</code>, and <code>ttp:frameRateMultiplier</code> parameters as follows:</p><a id="time-expressions-and-media-time"></a><table class="semantics"><caption>TTML Semantics – Time Expressions and Media Time Relationship</caption><tbody><tr><td>
 <blockquote><p><br>
 If a time expression uses a <em>clock-time</em> form or an <em>offset-time</em> form that doesn't use the ticks (<code>t</code>) metric, then:
 <br><br>
@@ -6766,9 +6766,9 @@ are extracted from time expression if present, or zero if not present;
 <br><br>
 <code>subFrameRate</code> is the computed value of the <code>ttp:subFrameRate</code> parameter;
 <br><br>
-and <code>effectiveFrameRate</code> (in frames per second) is <code>frameRate * frameRateMultipler</code> where
+and <code>effectiveFrameRate</code> (in frames per second) is <code>frameRate * frameRateMultiplier</code> where
 <code>frameRate</code> is the computed value of the <code>ttp:frameRate</code> parameter and
-<code>frameRateMultipler</code> is the computed value of the <code>ttp:frameRateMultiplier</code> parameter.
+<code>frameRateMultiplier</code> is the computed value of the <code>ttp:frameRateMultiplier</code> parameter.
 <br><br>
 Otherwise, if a time expression uses an <em>offset-time</em> form that uses the ticks (<code>t</code>) metric, then:
 <br><br>
@@ -6782,7 +6782,7 @@ the <code>ticks</code> component is extracted from time expression;
 <br><br>
 and <code>tickRate</code> is the computed value of the <code>ttp:tickRate</code> parameter;
 <br></p></blockquote>
-</td></tr></tbody></table><div class="note"><p class="prefix"><b>Note:</b></p><p>If the computed <code>frameRateMultipler</code> ratio is not integral, then <code>effectiveFrameRate</code> will be a non-integral rational.</p></div><div class="note"><p class="prefix"><b>Note:</b></p><p>The above formalisms assumes that the <em>Root Temporal Extent</em> corresponds with the beginning of a related media object. If
+</td></tr></tbody></table><div class="note"><p class="prefix"><b>Note:</b></p><p>If the computed <code>frameRateMultiplier</code> ratio is not integral, then <code>effectiveFrameRate</code> will be a non-integral rational.</p></div><div class="note"><p class="prefix"><b>Note:</b></p><p>The above formalisms assumes that the <em>Root Temporal Extent</em> corresponds with the beginning of a related media object. If
 this assumption doesn't hold, then an additional offset that accounts for the difference may be introduced when computing media time <code>M</code>.</p></div></div><div class="div2">
 <h3><a id="time-expression-semantics-smpte"></a>N.3 SMPTE Time Base</h3><p>When operating with the <code>smpte</code> time base, the following semantics should be applied for interpreting time expressions,
 as defined by <a href="#timing-value-timeExpression">&lt;timeExpression&gt;</a>, and their relationship to media time and local real time.</p><p>If the computed value of the <code>ttp:markerMode</code> parameter is <code>discontinuous</code>, then there is no direct relationship between
@@ -6816,9 +6816,9 @@ are extracted from time expression if present, or zero if not present;
 <br><br>
 <code>subFrameRate</code> is the computed value of the <code>ttp:subFrameRate</code> parameter;
 <br><br>
-and <code>effectiveFrameRate</code> (in frames per second) is <code>frameRate * frameRateMultipler</code> where
+and <code>effectiveFrameRate</code> (in frames per second) is <code>frameRate * frameRateMultiplier</code> where
 <code>frameRate</code> is the computed value of the <code>ttp:frameRate</code> parameter and
-<code>frameRateMultipler</code> is the computed value of the <code>ttp:frameRateMultiplier</code> parameter.
+<code>frameRateMultiplier</code> is the computed value of the <code>ttp:frameRateMultiplier</code> parameter.
 <br><br>
 Notwithstanding the above, if a time expression contains a frame code that is designated as
 dropped according to <a href="#parameter-attribute-dropMode"><b>6.2.3 ttp:dropMode</b></a>, then that time expression
