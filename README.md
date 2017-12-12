@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/w3c/ttml1.svg?branch=master)](https://travis-ci.org/w3c/ttml1)
 
 # Specification 'ttml1'
 
