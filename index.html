@@ -80,7 +80,7 @@ table.example-images-bordered td { border: 1px solid red; text-align: left }
 .strong { font-weight: bold }
 .reqattr { font-weight: bold }
 .optattr { font-style: italic }
-</style><link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/W3C-ED.css"></head><body>Commit: 9edb87d Fixed EOLs to LF under /spec (#273)<div id="revisions"></div><div class="head">
+</style><link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/W3C-ED.css"></head><body>Commit: 620d090 Tweak examples of Section O (#225 and #254)<div id="revisions"></div><div class="head">
 <h1><a id="title"></a>Timed Text Markup Language 1 (TTML1) (Third Edition)</h1>
 <h2><a id="w3c-doctype"></a>W3C Editors' Draft 12 December 2017</h2><dl><dt>This version:</dt><dd>
 <a href="ttml1.html">ttml1.html</a>
@@ -6872,7 +6872,7 @@ old paragraph (line) out and a new paragraph (line) in, will be either smooth or
   xmlns:ttp="http://www.w3.org/ns/ttml#parameter" xmlns:tts="http://www.w3.org/ns/ttml#styling"&gt;
   &lt;head&gt;
     &lt;layout&gt;
-      &lt;region xml:id="r1" tts:color="white" tts:origin="10c 4c" tts:extent="40c 2c"/&gt;
+      &lt;region xml:id="r1" tts:color="white" tts:origin="10c 4c" tts:extent="40c 2c" tts:displayAlign="after"/&gt;
     &lt;/layout&gt;
   &lt;/head&gt;
   &lt;body&gt;
@@ -6894,11 +6894,11 @@ each inline element coincides with the end of the <code>div</code> element's par
   xmlns:ttp="http://www.w3.org/ns/ttml#parameter" xmlns:tts="http://www.w3.org/ns/ttml#styling"&gt;
   &lt;head&gt;
     &lt;layout&gt;
-      &lt;region xml:id="r1" tts:color="white" tts:origin="10c 4c" tts:extent="40c 5c"/&gt;
+      &lt;region xml:id="r1" tts:color="white" tts:origin="10c 4c" tts:extent="40c 5c" tts:displayAlign="after"/&gt;
     &lt;/layout&gt;
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;div begin="0s" end="25s"&gt;
+    &lt;div region="r1" begin="0s" end="25s"&gt;
       &lt;p&gt;
         &lt;span begin="0s"&gt;Lorem&lt;/span&gt;
         &lt;span begin="1s"&gt;ipsum&lt;/span&gt;
