@@ -7454,27 +7454,25 @@ associated (owning) element node.</p>
 <gitem>
 <label>[associate region]</label>
 <def>
-<p>A <loc href="#element-vocab-type-content">Content</loc> element is associated with a region according
-to the following ordered rules, where the first rule satisfied
-is used and remaining rules are skipped:</p>
+<p>A <loc href="#element-vocab-type-content">Content</loc> element <emph>E</emph> is associated 
+with a region <emph>R</emph> if
+any of the following assertions is true:</p>
 <olist>
-<item><p>if the element specifies a <loc
-href="#layout-attribute-region"><att>region</att></loc> attribute,
-then the element is associated with the region referenced by that
-attribute;</p></item>
-<item><p>if some ancestor of that element specifies a <loc
-href="#layout-attribute-region"><att>region</att></loc> attribute,
-then the element is associated with the region referenced by the most
-immediate ancestor that specifies this attribute;</p></item>
-<item><p> if the element contains a descendant element that
-specifies a <loc
-href="#layout-attribute-region"><att>region</att></loc> attribute,
-then the element is associated with the region referenced by that
-attribute;</p></item>
+
+<item><p>if <emph>E</emph> specifies a <loc href="#layout-attribute-region">
+<att>region</att></loc> attribute that references <emph>R</emph>;</p></item>
+
+<item><p>if the <loc href="#layout-attribute-region">
+<att>region</att></loc> attribute of the first ancestor element of <emph>E</emph> that specifies that attribute references <emph>R</emph>;</p></item>
+
+
+<item><p> if a descendant element of <emph>E</emph> specifies a 
+<loc href="#layout-attribute-region"><att>region</att></loc> attribute that 
+references <emph>R</emph>;</p></item>
+
 <item><p>if a default region was implied (due to the absence of any
 <loc href="#layout-vocabulary-region"><el>region</el></loc> element),
-then the element is associated with the default region;</p></item>
-<item><p>the element is not associated with any region.</p></item>
+and <emph>R</emph> is the default region;</p></item>
 </olist>
 </def>
 </gitem>
