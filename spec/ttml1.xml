@@ -4277,7 +4277,7 @@ as a style property only to those element types indicated in the following table
 </tr>
 <tr>
 <td><emph>Percentages:</emph></td>
-<td>if not <loc href="#content-vocabulary-span"><el>region</el></loc> element,
+<td>if not <loc href="#layout-vocabulary-region"><el>region</el></loc> element,
 then relative to parent element's font size; otherwise, relative to the
 <emph>Computed Cell Size</emph></td>
 </tr>
@@ -4303,7 +4303,7 @@ glyphs do not have an EM square that is distinct from their font's EM square.</p
 <p>If horizontal and vertical sizes are expressed independently, then the
 units of the <loc href="#style-value-length">&lt;length&gt;</loc> values must be the same.</p>
 <p>The <loc href="#style-value-length">&lt;length&gt;</loc> value(s) used to express font size must be non-negative.</p>
-<p><loc href="#style-value-length">&lt;length&gt;</loc> values specified on a <loc href="#content-vocabulary-span">
+<p><loc href="#style-value-length">&lt;length&gt;</loc> values specified on a <loc href="#layout-vocabulary-region">
 <el>region</el></loc> element using <code>em</code> 
 units are considered relative to the <emph>Computed Cell Size</emph>. When a single value is specified, then it is 
 relative to the height of the <emph>Computed Cell Size</emph>. 
