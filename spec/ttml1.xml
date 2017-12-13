@@ -7976,7 +7976,11 @@ metric
 <emph>clock-time</emph>, then leading zeroes are used when expressing hours,
 minutes, seconds, and frames less than 10. Minutes are constrained to
 [0&hellip;59], while seconds (including any fractional part) are constrained to the closed
-interval [0,60], where the value 60 applies only to leap seconds.</p>
+interval [0,60], where the value 60 applies only to leap seconds. Except when <loc
+href="#parameter-attribute-timeBase"><att>ttp:timeBase</att></loc> is <code>clock</code> 
+and <loc
+href="#parameter-attribute-clockMode"><att>ttp:clockMode</att></loc> is <code>local</code> or <code>utc</code>, use of the special value of 60 seconds 
+to denote a leap second is deprecated and should not be specified.</p>
 <p>If a &lt;timeExpression&gt; is expressed in terms of a
 <emph>clock-time</emph> and a <emph>frames</emph> term is specified,
 then the value of this term must be constrained to the interval
