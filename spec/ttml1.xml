@@ -4303,7 +4303,7 @@ glyphs do not have an EM square that is distinct from their font's EM square.</p
 <p>If horizontal and vertical sizes are expressed independently, then the
 units of the <loc href="#style-value-length">&lt;length&gt;</loc> values must be the same.</p>
 <p>The <loc href="#style-value-length">&lt;length&gt;</loc> value(s) used to express font size must be non-negative.</p>
-<p>When <loc href="#style-value-length">&lt;length&gt;</loc> values is specified on a <loc href="#layout-vocabulary-region">
+<p>When <loc href="#style-value-length">&lt;length&gt;</loc> values are specified on a <loc href="#layout-vocabulary-region">
 <el>region</el></loc> element using <code>em</code> 
 units, they are considered relative to the <emph>Computed Cell Size</emph>. 
 In that case, when a single value is specified, 
