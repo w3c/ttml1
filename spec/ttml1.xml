@@ -4182,6 +4182,11 @@ as a style property only to those element types indicated in the following table
 </tbody>
 </table>
 <note role="clarification">
+<p>While permitted, the use of linear whitespace (LWSP) around the comma delimiters in the value of this 
+attribute is not recommended for maximal compatibilty with processor implementations.
+</p>
+</note>
+<note role="clarification">
 <p>The initial value, <code>default</code>, is a generic font family name, and is
 further described in <specref ref="style-value-genericFamilyName"/> below.</p>
 </note>
