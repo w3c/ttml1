@@ -2357,7 +2357,7 @@ shorter or longer than a second of elapsed play in real
 time.</p></note>
 
 <note role="elaboration">
-<p>See <specref ref="timing-time-value-expressions"/> regarding the deprecation of both the
+<p>See <specref ref="timing-time-value-expressions"/> regarding the absence of defined semantics for both the
 <emph>offset-time</emph> form and the <emph>fraction</emph> component of time expressions when the <code>smpte</code> time base applies.</p>
 </note>
  
@@ -8001,8 +8001,8 @@ ref="parameter-attribute-subFrameRate"/>.
 It is considered an error if a <emph>sub-frames</emph> term is specified
 when the <code>clock</code> time base applies.</p>
 <p>If the governing time base is <code>smpte</code>, then (1) the <emph>offset-time</emph> 
-form is deprecated and should not be used, and (2) the <emph>fraction</emph> 
-seconds component in a <emph>clock-time</emph> form is deprecated and should 
+form is not defined and should not be used, and (2) the <emph>fraction</emph> 
+seconds component in a <emph>clock-time</emph> form is not defined and should 
 not be used.</p>
 </div3>
 </div2>
