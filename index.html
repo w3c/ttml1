@@ -80,9 +80,9 @@ table.example-images-bordered td { border: 1px solid red; text-align: left }
 .strong { font-weight: bold }
 .reqattr { font-weight: bold }
 .optattr { font-style: italic }
-</style><link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/W3C-ED.css"></head><body>Commit: 61590c2 Clarify that the inherited value of tts:lineHeight='normal' is 'normal' (#220)<div id="revisions"></div><div class="head">
+</style><link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/W3C-ED.css"></head><body>Commit: 3232c7e Fix rgba typo in 8.3.2 (#222)<div id="revisions"></div><div class="head">
 <h1><a id="title"></a>Timed Text Markup Language 1 (TTML1) (Third Edition)</h1>
-<h2><a id="w3c-doctype"></a>W3C Editors' Draft 14 December 2017</h2><dl><dt>This version:</dt><dd>
+<h2><a id="w3c-doctype"></a>W3C Editors' Draft 15 December 2017</h2><dl><dt>This version:</dt><dd>
 <a href="ttml1.html">ttml1.html</a>
 </dd><dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/ttml1/spec/ttml1.html">https://w3c.github.io/ttml1/spec/ttml1.html</a></dd><dt>Latest version:</dt><dd><a href="https://www.w3.org/TR/ttml1/">https://www.w3.org/TR/ttml1/</a></dd><dt>Previous version:</dt><dd>
 <a href="https://www.w3.org/TR/2013/REC-ttml1-20130924/">https://www.w3.org/TR/2013/REC-ttml1-20130924/</a>
@@ -3354,7 +3354,7 @@ used here to the YUV color space for rendition on a television device.</p></div>
 valid color or alpha value, then it must interpret it as being equal
 to the closest supported value.</p><div class="note"><p class="prefix"><b>Note:</b></p><p>In this context, the phrase <em>closest supported value</em> means the value for which the Euclidean distance between
 the computed color or alpha and the supported color or alpha in the RGB color space is minimized. If there are multiple closest supported values equally distant from
-the computed value, then the value least distant from opaque black <code>rgb(0,0,0,255)</code>, i.e., the closest to opaque black, is used.</p></div></div><div class="div3">
+the computed value, then the value least distant from opaque black <code>rgba(0,0,0,255)</code>, i.e., the closest to opaque black, is used.</p></div></div><div class="div3">
 <h4><a id="style-value-digit"></a>8.3.3 &lt;digit&gt;</h4><p>A &lt;digit&gt; is used to express integers and other types of numbers or tokens.</p><a id="digit-style-expression-syntax"></a><table class="syntax"><caption>Syntax Representation – &lt;digit&gt;</caption><tbody><tr><td>
 <div class="exampleInner"><pre>
 &lt;digit&gt;
