@@ -4587,7 +4587,7 @@ as a style property only to those element types indicated in the following table
 </tr>
 <tr>
 <td><emph>Inherited:</emph></td>
-<td>yes</td>
+<td>yes. See also <loc href="#style-attribute-lineHeight-special-semantics">special inheritance semantics</loc>.</td>
 </tr>
 <tr>
 <td><emph>Percentages:</emph></td>
@@ -4669,6 +4669,10 @@ allocation rectangle of a line be consistent with the <phrase role="strong">per-
 as defined by <bibref ref="xsl11"/>, &sect; 4.5, i.e., that a CSS-style line box stacking strategy be used.
 </p>
 </note>
+<div4 id="style-attribute-lineHeight-special-semantics">
+<head>Special Inheritance Semantics</head>
+<p>When the value of the attribute is <code>normal</code> and when applying inheritance semantics, the value <code>normal</code>, not the computed value, is inherited.</p>
+</div4>
 </div3>
 <div3 id="style-attribute-opacity">
 <head>tts:opacity</head>
@@ -5694,6 +5698,10 @@ each character child of a <el>p</el> element is considered to be enclosed in an 
 span.</p>
 <p>The <att>tts:visibility</att> style has no affect on content layout or
 composition, but merely determines whether composed content is visible or not.</p>
+<p>If the computed value of the property associated with this attribute is <code>visible</code>, then areas generated
+by this element are rendered visible when presented on a visual medium. If the computed value is <code>hidden</code>, then they are not
+rendered visible, i.e., they are hidden; notwithstanding the foregoing, a descendant element of a hidden element is rendered
+visible if the computed value of this property is <code>visible</code> on the descendant.</p>
 <p>If a computed value of the property associated with this attribute is not supported,
 then a presentation processor must use the value <code>visible</code>.</p>
 <p>The <att>tts:visibility</att> style is illustrated by the following example.</p>
@@ -6210,7 +6218,7 @@ to the closest supported value.</p>
 <note role="elaboration">
 <p>In this context, the phrase <emph>closest supported value</emph> means the value for which the Euclidean distance between
 the computed color or alpha and the supported color or alpha in the RGB color space is minimized. If there are multiple closest supported values equally distant from
-the computed value, then the value least distant from opaque black <code>rgb(0,0,0,255)</code>, i.e., the closest to opaque black, is used.</p>
+the computed value, then the value least distant from opaque black <code>rgba(0,0,0,255)</code>, i.e., the closest to opaque black, is used.</p>
 </note>
 </div3>
 <div3 id="style-value-digit">
@@ -7128,6 +7136,9 @@ context of a layout or <loc href="#element-vocab-type-content">Content</loc> ele
 context, and not in the non-presentation, declaration context
 of a referentiable <el>style</el> element.</p>
 </note>
+<note role="clarification">
+<p>See individual style properties for additional inheritance semantics, if any.</p>
+</note>
 </div4>
 <div4 id="semantics-style-resolution-process-overall">
 <head>Style Resolution Process</head>
@@ -7214,8 +7225,8 @@ to be flowed for the purpose of presentation.</p>
 <note role="elaboration">
 <p>The rectangular area of a region is explicitly not constrained to be contained within the <emph>Root Container
 Region</emph>. In particular, the origin components of a region may be negative, and the extent (width and
-height) components of a region may be greater than the width and height of the <emph>Root Contatiner Region</emph>.
-Whether a presentation processor clips such a region to the <emph>Root Contatiner Region</emph> is implementation
+height) components of a region may be greater than the width and height of the <emph>Root Container Region</emph>.
+Whether a presentation processor clips such a region to the <emph>Root Container Region</emph> is implementation
 dependent, and not prescribed by this specification.</p>
 </note>
 <p>In addition, and in accordance with
