@@ -7079,7 +7079,7 @@ following ordered sub-steps:</p>
 style set of <emph>E</emph>, <emph>SSS(E)</emph>, then continue to the
 next style property;</p></item>
 <item><p>if <emph>P</emph> is inheritable and <emph>E</emph> is a <el>region</el> element, or if <emph>P</emph> is not inheritable and applies to <emph>E</emph>, then set <emph>P&prime;</emph> to the initial value of
-property <emph>P</emph>, where the initial value of a property is
+property <emph>P</emph> if such an initial value is defined, where the initial value of a property is
 determined according to the specific property definition found above
 in <specref ref="styling-attribute-vocabulary"/>;</p></item>
 <item><p>if <emph>P</emph> is inheritable and the element type of <emph>E</emph> is a <loc href="#element-vocab-type-content">Content</loc> element
