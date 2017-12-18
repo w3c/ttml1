@@ -1630,7 +1630,7 @@ Parameter Attributes
 <loc href="#parameter-attribute-clockMode">ttp:clockMode</loc>,
 <loc href="#parameter-attribute-dropMode">ttp:dropMode</loc>,
 <loc href="#parameter-attribute-frameRate">ttp:frameRate</loc>,
-<loc href="#parameter-attribute-frameRateMultiplier">ttp:frameRateMultipler</loc>,
+<loc href="#parameter-attribute-frameRateMultiplier">ttp:frameRateMultiplier</loc>,
 <loc href="#parameter-attribute-markerMode">ttp:markerMode</loc>,
 <loc href="#parameter-attribute-pixelAspectRatio">ttp:pixelAspectRatio</loc>,
 <loc href="#parameter-attribute-profile">ttp:profile</loc>,
@@ -3320,6 +3320,11 @@ above if possible.</p>
 <p>The semantics of the above four cited XSL-FO properties are defined by
 by <bibref ref="xsl11"/>, &sect; 7.17.3, 7.16.7, 7.16.12, and 7.16.8, respectively.</p>
 </note>
+<note role="clarification">
+<p>No presentation semantics are specified for the TAB (U+0009) character. Furthermore, the TAB (U+0009) character 
+can generate a glyph area. As a result, the use of the TAB (U+0009) character 
+in <code>#PCDATA</code> content within <code>p</code> and <code>span</code> elements is not recommended.</p>
+</note>
 </div3>
 </div2>
 </div1>
@@ -4582,7 +4587,7 @@ as a style property only to those element types indicated in the following table
 </tr>
 <tr>
 <td><emph>Inherited:</emph></td>
-<td>yes</td>
+<td>yes. See also <loc href="#style-attribute-lineHeight-special-semantics">special inheritance semantics</loc>.</td>
 </tr>
 <tr>
 <td><emph>Percentages:</emph></td>
@@ -4664,6 +4669,10 @@ allocation rectangle of a line be consistent with the <phrase role="strong">per-
 as defined by <bibref ref="xsl11"/>, &sect; 4.5, i.e., that a CSS-style line box stacking strategy be used.
 </p>
 </note>
+<div4 id="style-attribute-lineHeight-special-semantics">
+<head>Special Inheritance Semantics</head>
+<p>When the value of the attribute is <code>normal</code> and when applying inheritance semantics, the value <code>normal</code>, not the computed value, is inherited.</p>
+</div4>
 </div3>
 <div3 id="style-attribute-opacity">
 <head>tts:opacity</head>
@@ -5343,7 +5352,7 @@ href="#content-vocabulary-span"><el>span</el></loc></td>
 </tr>
 <tr>
 <td><emph>Inherited:</emph></td>
-<td>yes</td>
+<td>see <loc href="#style-attribute-textDecoration-special-semantics">special semantics</loc></td>
 </tr>
 <tr>
 <td><emph>Percentages:</emph></td>
@@ -5412,6 +5421,21 @@ value in any order, such as <code>"noUnderline overline lineThrough"</code>.</p>
 represented by this attribute are based upon that defined by <bibref ref="xsl11"/>,
 &sect; 7.17.4.</p>
 </note>
+<div4 id="style-attribute-textDecoration-special-semantics">
+<head>Special Semantics</head>
+<p>The computed value of the property associated with this attribute consists of a 3-tuple,
+each of which denotes, respectively, whether an underline, line through, or overline
+decoration is to be applied to the affected text.
+Furthermore, when applying inheritance semantics, each of these sub-values is considered to
+be inherited separately from the others.</p>
+<note role="example">
+<p>For example, if the computed value of <code>tts:textDecoration</code> that applies to a <code>div</code> (division) element
+is the tuple <code>(noUnderline, lineThrough, overline)</code> and a
+<code>p</code> (paragraph) element child of that <code>div</code> specifies <code>tts:textDecoration="noLineThrough"</code>, then
+the aggregate computed value that applies to the <code>p</code> element is <code>(noUnderline, noLineThrough, overline)</code>, which value
+is then inherited by children of the <code>p</code> element.</p>
+</note>
+</div4>
 </div3>
 <div3 id="style-attribute-textOutline">
 <head>tts:textOutline</head>
@@ -5468,11 +5492,13 @@ present, then it denotes the outline color; if no <emph>color</emph> term is
 present, the computed value of the <att>tts:color</att> applies.  The first
 <emph>length</emph> term denotes the outline thickness and the second length
 term, if present, indicates the blur radius.</p>
+<p>When a relative <loc href="#style-value-length">&lt;length&gt;</loc> value is specified for outline thickness or blur radius, then it is resolved in terms of the height component
+of the referenced font size or <emph>Computed Cell Size</emph>.</p>
 <p>The <loc href="#style-value-length">&lt;length&gt;</loc> value(s) used to express thickness and blur radius must be non-negative.</p>
 <note role="elaboration">
 <p>When a <loc href="#style-value-length">&lt;length&gt;</loc> expressed in
 cells is used in a <att>tts:textOutline</att> value,
-the cell's dimension in the block progression dimension applies.
+the cell's height applies.
 For example, if text outline thickness is specified as 0.1c, the cell resolution
 is 20 by 10, and the extent of the <emph>Root Container Region</emph> is 640 by 480, then the
 outline thickness will be a nominal 480 / 10 * 0.1 pixels, i.e., 4.8px,
@@ -5672,6 +5698,10 @@ each character child of a <el>p</el> element is considered to be enclosed in an 
 span.</p>
 <p>The <att>tts:visibility</att> style has no affect on content layout or
 composition, but merely determines whether composed content is visible or not.</p>
+<p>If the computed value of the property associated with this attribute is <code>visible</code>, then areas generated
+by this element are rendered visible when presented on a visual medium. If the computed value is <code>hidden</code>, then they are not
+rendered visible, i.e., they are hidden; notwithstanding the foregoing, a descendant element of a hidden element is rendered
+visible if the computed value of this property is <code>visible</code> on the descendant.</p>
 <p>If a computed value of the property associated with this attribute is not supported,
 then a presentation processor must use the value <code>visible</code>.</p>
 <p>The <att>tts:visibility</att> style is illustrated by the following example.</p>
@@ -5987,9 +6017,8 @@ as a style property only to those element types indicated in the following table
 overlap in space, the area(s) generated by lexically subsequent elements must be
 rendered over area(s) generated by lexically prior elements, where lexical
 order is defined as the postorder traversal of a <emph>Document Instance</emph>.</p>
-<p>The semantics of the value <code>auto</code> are those defined by
-<bibref ref="xsl11"/>, &sect; 7.30.18, where the <el>tt</el> element
-is considered to establish the root stacking context.</p>
+<p>The <el>tt</el> element is considered to establish the root of the stacking context, as defined by 
+<bibref ref="xsl11"/>, &sect; 7.30.18.</p>
 <p>If a computed value of the property associated with this attribute is not supported,
 then a presentation processor must use the closest supported value.</p>
 <note role="elaboration">
@@ -6189,7 +6218,7 @@ to the closest supported value.</p>
 <note role="elaboration">
 <p>In this context, the phrase <emph>closest supported value</emph> means the value for which the Euclidean distance between
 the computed color or alpha and the supported color or alpha in the RGB color space is minimized. If there are multiple closest supported values equally distant from
-the computed value, then the value least distant from opaque black <code>rgb(0,0,0,255)</code>, i.e., the closest to opaque black, is used.</p>
+the computed value, then the value least distant from opaque black <code>rgba(0,0,0,255)</code>, i.e., the closest to opaque black, is used.</p>
 </note>
 </div3>
 <div3 id="style-value-digit">
@@ -7107,6 +7136,9 @@ context of a layout or <loc href="#element-vocab-type-content">Content</loc> ele
 context, and not in the non-presentation, declaration context
 of a referentiable <el>style</el> element.</p>
 </note>
+<note role="clarification">
+<p>See individual style properties for additional inheritance semantics, if any.</p>
+</note>
 </div4>
 <div4 id="semantics-style-resolution-process-overall">
 <head>Style Resolution Process</head>
@@ -7193,8 +7225,8 @@ to be flowed for the purpose of presentation.</p>
 <note role="elaboration">
 <p>The rectangular area of a region is explicitly not constrained to be contained within the <emph>Root Container
 Region</emph>. In particular, the origin components of a region may be negative, and the extent (width and
-height) components of a region may be greater than the width and height of the <emph>Root Contatiner Region</emph>.
-Whether a presentation processor clips such a region to the <emph>Root Contatiner Region</emph> is implementation
+height) components of a region may be greater than the width and height of the <emph>Root Container Region</emph>.
+Whether a presentation processor clips such a region to the <emph>Root Container Region</emph> is implementation
 dependent, and not prescribed by this specification.</p>
 </note>
 <p>In addition, and in accordance with
@@ -7785,6 +7817,9 @@ interval; i.e., the interval is left-wise closed.</p>
 <p>The semantics of the <att>begin</att> attribute are those defined
 by <bibref ref="smil21"/>, &sect; 10.4.1,
 while taking into account any overriding semantics defined by this specification.</p>
+<note role="clarification">
+<p>See <bibref ref="smil21"/>, § 10.4.1, <emph>Begin value semantics</emph> when no <code>begin</code> attribute is specified.</p>
+</note>
 </div3>
 <div3 id="timing-attribute-end">
 <head>end</head>
@@ -8974,6 +9009,10 @@ attribute
 and (2) is capable of displaying or generating an output display
 signal that distinguishes between at least sixteen (16) values of color,
 including all primary and secondary colors of the SRGB color space.</p>
+<note role="explanation">
+<p>Support for this feature is intended to imply support for the following features: <code>#backgroundColor-block</code>,
+<code>#backgroundColor-region</code>, and <code>#backgroundColor-inline</code>.</p>
+</note>
 </div3>
 <div3 id="feature-backgroundColor-block">
 <head>#backgroundColor-block</head>
@@ -13399,7 +13438,7 @@ an epoch <code>E</code>, and where the value of <code>epochOffset</code> is the 
 </table>
 <p>Time value expressions, as denoted by a <loc href="#timing-value-timeExpression">&lt;timeExpression&gt;</loc>, are related to
 media time <phrase role="strong"><code>M</code></phrase> in accordance to the
-<code>ttp:frameRate</code>, <code>ttp:subFrameRate</code>, and <code>ttp:frameRateMultipler</code> parameters as follows:</p>
+<code>ttp:frameRate</code>, <code>ttp:subFrameRate</code>, and <code>ttp:frameRateMultiplier</code> parameters as follows:</p>
 <table id="time-expressions-and-media-time" role="semantics">
 <caption>TTML Semantics &ndash; Time Expressions and Media Time Relationship</caption>
 <tbody>
@@ -13437,9 +13476,9 @@ are extracted from time expression if present, or zero if not present;
 </sitem>
 <sitem/>
 <sitem>
-and <code>effectiveFrameRate</code> (in frames per second) is <code>frameRate * frameRateMultipler</code> where
+and <code>effectiveFrameRate</code> (in frames per second) is <code>frameRate * frameRateMultiplier</code> where
 <code>frameRate</code> is the computed value of the <att>ttp:frameRate</att> parameter and
-<code>frameRateMultipler</code> is the computed value of the <att>ttp:frameRateMultiplier</att> parameter.
+<code>frameRateMultiplier</code> is the computed value of the <att>ttp:frameRateMultiplier</att> parameter.
 </sitem>
 <sitem/>
 <sitem>
@@ -13470,7 +13509,7 @@ and <code>tickRate</code> is the computed value of the <att>ttp:tickRate</att> p
 </tbody>
 </table>
 <note role="elaboration">
-<p>If the computed <code>frameRateMultipler</code> ratio is not integral, then <code>effectiveFrameRate</code> will be a non-integral rational.</p>
+<p>If the computed <code>frameRateMultiplier</code> ratio is not integral, then <code>effectiveFrameRate</code> will be a non-integral rational.</p>
 </note>
 <note role="clarification">
 <p>The above formalisms assumes that the <emph>Root Temporal Extent</emph> corresponds with the beginning of a related media object. If
@@ -13542,9 +13581,9 @@ are extracted from time expression if present, or zero if not present;
 </sitem>
 <sitem/>
 <sitem>
-and <code>effectiveFrameRate</code> (in frames per second) is <code>frameRate * frameRateMultipler</code> where
+and <code>effectiveFrameRate</code> (in frames per second) is <code>frameRate * frameRateMultiplier</code> where
 <code>frameRate</code> is the computed value of the <att>ttp:frameRate</att> parameter and
-<code>frameRateMultipler</code> is the computed value of the <att>ttp:frameRateMultiplier</att> parameter.
+<code>frameRateMultiplier</code> is the computed value of the <att>ttp:frameRateMultiplier</att> parameter.
 </sitem>
 <sitem/>
 <sitem>
