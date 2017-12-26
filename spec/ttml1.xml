@@ -13213,7 +13213,7 @@ presentation order;</p>
 </item>
 </ulist>
 <div2 id="root-fragmentation">
-<head>Root and branch fragmentation</head>
+<head>Root and Branch Fragmentation</head>
 <p>One possible means by which TTML Content may be streamed is to
 partition a <emph>Document Instance</emph>'s information set into
 non-overlapping fragments, where one particular fragment, call it the
@@ -13245,8 +13245,8 @@ capabilities model.</p>
 </note>
 </div2>
 <div2 id="temporal-fragmentation">
-<head>Temporal fragmentation</head>
-<p>Another possible means by which TTML Content may be streamed is to
+<head>Temporal Fragmentation</head>
+<p>Another means by which TTML Content may be streamed is to
 partition a <emph>Document Instance</emph>'s information set into
 temporally bound fragments, each of which is itself a document instance that contains all the
 front matter (head) and content required to present it, where the temporal interval for each
