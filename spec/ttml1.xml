@@ -6386,7 +6386,7 @@ and <code>proportionalSerif</code>, respectively.</p>
 <p>If the generic family name <code>default</code> is specified (or implied by
 an initial value), then its typographic characteristics are considered to be implementation
 dependent; however, it is recommended that this default font family be mapped to
-an monospaced, sans-serif font.</p>
+a monospaced, sans-serif font.</p>
 </div3>
 <div3 id="style-value-hexDigit">
 <head>&lt;hexDigit&gt;</head>
@@ -7998,7 +7998,11 @@ metric
 <emph>clock-time</emph>, then leading zeroes are used when expressing hours,
 minutes, seconds, and frames less than 10. Minutes are constrained to
 [0&hellip;59], while seconds (including any fractional part) are constrained to the closed
-interval [0,60], where the value 60 applies only to leap seconds.</p>
+interval [0,60], where the value 60 applies only to leap seconds. Except when <loc
+href="#parameter-attribute-timeBase"><att>ttp:timeBase</att></loc> is <code>clock</code> 
+and <loc
+href="#parameter-attribute-clockMode"><att>ttp:clockMode</att></loc> is <code>local</code> or <code>utc</code>, use of the special value of 60 seconds 
+to denote a leap second is undefined and should not be used.</p>
 <p>If a &lt;timeExpression&gt; is expressed in terms of a
 <emph>clock-time</emph> and a <emph>frames</emph> term is specified,
 then the value of this term must be constrained to the interval
@@ -8607,6 +8611,21 @@ agent with another agent that portrays the character.</p>
 <p>The <att>agent</att> attribute of a <el>ttm:actor</el> element must
 reference a <emph>significant</emph> <el>ttm:agent</el> element that denotes the agent
 acting the part of a character.</p>
+<p>An <el>ttm:actor</el> element referencing its parent <el>ttm:agent</el> element should be considered an error.</p>
+<note role="clarification">
+<p>The semantics of an <el>ttm:actor</el> element referencing its parent 
+<el>ttm:agent</el> element are not defined. While discouraged, the relationship is syntactically permitted. It is therefore recommended that implementations be prepared to process this 
+syntax, e.g. by avoiding infinite loops 
+etc.</p></note>
+<note role="example">
+<p>In the case of an actor playing themselves, 
+like Steve Coogan in The Trip playing Steve Coogan, the expected practice is to use two 
+<el>ttm:agent</el> elements. The first element (corresponding to 
+Steve Coogan the person) has <att>type</att> attribute equal to <code>person</code>, 
+while the second element (corresponding to Steve Coogan the character) has (i) a <att>type</att> 
+attribute equal to <code>character</code> and (ii) a child <el>ttm:actor</el> element that 
+references the first <el>ttm:agent</el> element.</p>
+</note>
 <p>An example of the <el>ttm:actor</el> element is shown above in
 <specref ref="metadata-vocabulary-agent-example-1"/>.</p>
 </div3>
@@ -13366,7 +13385,8 @@ If a time expression uses the <emph>clock-time</emph> form or an <emph>offset-ti
 where
 <code>hours</code>,
 <code>minutes</code>,
-<code>seconds</code> components are extracted from time expression if present, or zero if not present.
+<code>seconds</code> components are extracted from time expression if present, or zero if not present. 
+Furthermore, a <emph>fraction</emph> component, if present, is added to the <emph>seconds</emph> component to form a real-valued <emph>seconds</emph> component. 
 </sitem>
 <sitem/>
 <sitem>
@@ -13480,6 +13500,12 @@ immediate prior sibling timed element;
 <sitem>
 the <code>hours</code>, <code>minutes</code>, <code>seconds</code>, <code>frames</code>, <code>subFrames</code> components
 are extracted from time expression if present, or zero if not present;
+furthermore, if the time expression takes the form 
+of a  <emph>clock-time</emph> expression, then the <emph>fraction</emph> component, if present, is added to the 
+<emph>seconds</emph> component to form a real-valued <emph>seconds</emph> component, or, if the time expression 
+takes the form of an <emph>offset-time</emph> expression, then the <emph>fraction</emph> component, if present, 
+is added to the <emph>time-count</emph> component to form a real-valued <emph>time-count</emph> component according 
+to the specified offset metric; 
 </sitem>
 <sitem/>
 <sitem>
