@@ -13374,7 +13374,8 @@ If a time expression uses the <emph>clock-time</emph> form or an <emph>offset-ti
 where
 <code>hours</code>,
 <code>minutes</code>,
-<code>seconds</code> components are extracted from time expression if present, or zero if not present.
+<code>seconds</code> components are extracted from time expression if present, or zero if not present. 
+Furthermore, a <emph>fraction</emph> component, if present, is added to the <emph>seconds</emph> component to form a real-valued <emph>seconds</emph> component. 
 </sitem>
 <sitem/>
 <sitem>
@@ -13488,6 +13489,12 @@ immediate prior sibling timed element;
 <sitem>
 the <code>hours</code>, <code>minutes</code>, <code>seconds</code>, <code>frames</code>, <code>subFrames</code> components
 are extracted from time expression if present, or zero if not present;
+furthermore, if the time expression takes the form 
+of a  <emph>clock-time</emph> expression, then the <emph>fraction</emph> component, if present, is added to the 
+<emph>seconds</emph> component to form a real-valued <emph>seconds</emph> component, or, if the time expression 
+takes the form of an <emph>offset-time</emph> expression, then the <emph>fraction</emph> component, if present, 
+is added to the <emph>time-count</emph> component to form a real-valued <emph>time-count</emph> component according 
+to the specified offset metric; 
 </sitem>
 <sitem/>
 <sitem>
