@@ -2347,6 +2347,7 @@ second of a time expression, frames count from 0 to
 <emph>N&minus;1</emph>, where <emph>N</emph> is the value specified by
 the <att>ttp:frameRate</att> parameter, but while ignoring any value
 specified by the <att>ttp:frameRateMultiplier</att> parameter.</p>
+
 <note role="clarification"> <p>When operating in <code>nonDrop</code>
 mode, a second of a time expression may or may not be equal to a
 second of real time during normal (1x speed) forward playback. If the
@@ -2354,6 +2355,12 @@ second of real time during normal (1x speed) forward playback. If the
 equal to 1:1, then a second of a time expression will either be
 shorter or longer than a second of elapsed play in real
 time.</p></note>
+
+<note role="elaboration">
+<p>See <specref ref="timing-time-value-expressions"/> regarding the absence of defined semantics for both the
+<emph>offset-time</emph> form and the <emph>fraction</emph> component of time expressions when the <code>smpte</code> time base applies.</p>
+</note>
+ 
 <p>If this parameter's value is <code>dropNTSC</code>, then, within any
 given second of a time expression except the second <code>00</code>,
 frames count from 0 to <emph>N&minus;1</emph>, where <emph>N</emph> is
@@ -8012,6 +8019,10 @@ sub-frame rate determined by the <att>ttp:subFrameRate</att> parameter as define
 ref="parameter-attribute-subFrameRate"/>.
 It is considered an error if a <emph>sub-frames</emph> term is specified
 when the <code>clock</code> time base applies.</p>
+<p>If the governing time base is <code>smpte</code>, then (1) the <emph>offset-time</emph> 
+form is not defined and should not be used, and (2) the <emph>fraction</emph> 
+seconds component in a <emph>clock-time</emph> form is not defined and should 
+not be used.</p>
 </div3>
 </div2>
 <div2 id="timing-time-intervals">
