@@ -2347,6 +2347,7 @@ second of a time expression, frames count from 0 to
 <emph>N&minus;1</emph>, where <emph>N</emph> is the value specified by
 the <att>ttp:frameRate</att> parameter, but while ignoring any value
 specified by the <att>ttp:frameRateMultiplier</att> parameter.</p>
+
 <note role="clarification"> <p>When operating in <code>nonDrop</code>
 mode, a second of a time expression may or may not be equal to a
 second of real time during normal (1x speed) forward playback. If the
@@ -2354,6 +2355,12 @@ second of real time during normal (1x speed) forward playback. If the
 equal to 1:1, then a second of a time expression will either be
 shorter or longer than a second of elapsed play in real
 time.</p></note>
+
+<note role="elaboration">
+<p>See <specref ref="timing-time-value-expressions"/> regarding the absence of defined semantics for both the
+<emph>offset-time</emph> form and the <emph>fraction</emph> component of time expressions when the <code>smpte</code> time base applies.</p>
+</note>
+ 
 <p>If this parameter's value is <code>dropNTSC</code>, then, within any
 given second of a time expression except the second <code>00</code>,
 frames count from 0 to <emph>N&minus;1</emph>, where <emph>N</emph> is
@@ -6379,7 +6386,7 @@ and <code>proportionalSerif</code>, respectively.</p>
 <p>If the generic family name <code>default</code> is specified (or implied by
 an initial value), then its typographic characteristics are considered to be implementation
 dependent; however, it is recommended that this default font family be mapped to
-an monospaced, sans-serif font.</p>
+a monospaced, sans-serif font.</p>
 </div3>
 <div3 id="style-value-hexDigit">
 <head>&lt;hexDigit&gt;</head>
@@ -7436,10 +7443,14 @@ sub-tree
 headed by the <el>body</el> element;</p>
 </item>
 <item>
-<p>evaluating this sub-tree in a postorder traversal, prune elements if they
-are not a <loc href="#element-vocab-type-content">Content</loc> element, if they are temporally inactive, if they are empty,
-or if they aren't associated with region <emph>R</emph> according to the
-<phrase role="strong">[associate region]</phrase> procedure;</p>
+<p>evaluating this sub-tree in a postorder traversal, prune elements if any of the following conditions is true:
+<olist>
+<item><p>they are neither <loc href="#element-vocab-type-content">Content</loc> nor <loc href="#element-vocab-type-animation">Animation</loc> elements; or</p></item>
+<item><p>they are temporally inactive; or</p></item>
+<item><p>they are <loc href="#element-vocab-type-content">Content</loc> elements and empty; or</p></item>
+<item><p>they are <loc href="#element-vocab-type-content">Content</loc> elements and aren't associated with region <emph>R</emph> according to the <phrase role="strong">[associate region]</phrase> procedure.</p></item>
+</olist>
+</p>
 </item>
 <item>
 <p>if the pruned sub-tree is non-empty, then reparent it to the <emph>R</emph>
@@ -7987,7 +7998,11 @@ metric
 <emph>clock-time</emph>, then leading zeroes are used when expressing hours,
 minutes, seconds, and frames less than 10. Minutes are constrained to
 [0&hellip;59], while seconds (including any fractional part) are constrained to the closed
-interval [0,60], where the value 60 applies only to leap seconds.</p>
+interval [0,60], where the value 60 applies only to leap seconds. Except when <loc
+href="#parameter-attribute-timeBase"><att>ttp:timeBase</att></loc> is <code>clock</code> 
+and <loc
+href="#parameter-attribute-clockMode"><att>ttp:clockMode</att></loc> is <code>local</code> or <code>utc</code>, use of the special value of 60 seconds 
+to denote a leap second is undefined and should not be used.</p>
 <p>If a &lt;timeExpression&gt; is expressed in terms of a
 <emph>clock-time</emph> and a <emph>frames</emph> term is specified,
 then the value of this term must be constrained to the interval
@@ -8004,6 +8019,10 @@ sub-frame rate determined by the <att>ttp:subFrameRate</att> parameter as define
 ref="parameter-attribute-subFrameRate"/>.
 It is considered an error if a <emph>sub-frames</emph> term is specified
 when the <code>clock</code> time base applies.</p>
+<p>If the governing time base is <code>smpte</code>, then (1) the <emph>offset-time</emph> 
+form is not defined and should not be used, and (2) the <emph>fraction</emph> 
+seconds component in a <emph>clock-time</emph> form is not defined and should 
+not be used.</p>
 </div3>
 </div2>
 <div2 id="timing-time-intervals">
@@ -8592,6 +8611,21 @@ agent with another agent that portrays the character.</p>
 <p>The <att>agent</att> attribute of a <el>ttm:actor</el> element must
 reference a <emph>significant</emph> <el>ttm:agent</el> element that denotes the agent
 acting the part of a character.</p>
+<p>An <el>ttm:actor</el> element referencing its parent <el>ttm:agent</el> element should be considered an error.</p>
+<note role="clarification">
+<p>The semantics of an <el>ttm:actor</el> element referencing its parent 
+<el>ttm:agent</el> element are not defined. While discouraged, the relationship is syntactically permitted. It is therefore recommended that implementations be prepared to process this 
+syntax, e.g. by avoiding infinite loops 
+etc.</p></note>
+<note role="example">
+<p>In the case of an actor playing themselves, 
+like Steve Coogan in The Trip playing Steve Coogan, the expected practice is to use two 
+<el>ttm:agent</el> elements. The first element (corresponding to 
+Steve Coogan the person) has <att>type</att> attribute equal to <code>person</code>, 
+while the second element (corresponding to Steve Coogan the character) has (i) a <att>type</att> 
+attribute equal to <code>character</code> and (ii) a child <el>ttm:actor</el> element that 
+references the first <el>ttm:agent</el> element.</p>
+</note>
 <p>An example of the <el>ttm:actor</el> element is shown above in
 <specref ref="metadata-vocabulary-agent-example-1"/>.</p>
 </div3>
@@ -13397,7 +13431,8 @@ If a time expression uses the <emph>clock-time</emph> form or an <emph>offset-ti
 where
 <code>hours</code>,
 <code>minutes</code>,
-<code>seconds</code> components are extracted from time expression if present, or zero if not present.
+<code>seconds</code> components are extracted from time expression if present, or zero if not present. 
+Furthermore, a <emph>fraction</emph> component, if present, is added to the <emph>seconds</emph> component to form a real-valued <emph>seconds</emph> component. 
 </sitem>
 <sitem/>
 <sitem>
@@ -13511,6 +13546,12 @@ immediate prior sibling timed element;
 <sitem>
 the <code>hours</code>, <code>minutes</code>, <code>seconds</code>, <code>frames</code>, <code>subFrames</code> components
 are extracted from time expression if present, or zero if not present;
+furthermore, if the time expression takes the form 
+of a  <emph>clock-time</emph> expression, then the <emph>fraction</emph> component, if present, is added to the 
+<emph>seconds</emph> component to form a real-valued <emph>seconds</emph> component, or, if the time expression 
+takes the form of an <emph>offset-time</emph> expression, then the <emph>fraction</emph> component, if present, 
+is added to the <emph>time-count</emph> component to form a real-valued <emph>time-count</emph> component according 
+to the specified offset metric; 
 </sitem>
 <sitem/>
 <sitem>
