@@ -80,7 +80,7 @@ table.example-images-bordered td { border: 1px solid red; text-align: left }
 .strong { font-weight: bold }
 .reqattr { font-weight: bold }
 .optattr { font-style: italic }
-</style><link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/W3C-ED.css"></head><body>Commit: 4d7cd57 Fixed typo at genericFamilyName (#204)<div id="revisions"></div><div class="head">
+</style><link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/W3C-ED.css"></head><body>Commit: 7bb8b46 Added fractional time semantics to Annex N.2 (#188)<div id="revisions"></div><div class="head">
 <h1><a id="title"></a>Timed Text Markup Language 1 (TTML1) (Third Edition)</h1>
 <h2><a id="w3c-doctype"></a>W3C Editors' Draft 26 December 2017</h2><dl><dt>This version:</dt><dd>
 <a href="ttml1.html">ttml1.html</a>
@@ -6737,7 +6737,8 @@ If a time expression uses the <em>clock-time</em> form or an <em>offset-time</em
 where
 <code>hours</code>,
 <code>minutes</code>,
-<code>seconds</code> components are extracted from time expression if present, or zero if not present.
+<code>seconds</code> components are extracted from time expression if present, or zero if not present. 
+Furthermore, a <em>fraction</em> component, if present, is added to the <em>seconds</em> component to form a real-valued <em>seconds</em> component. 
 <br><br>
 Otherwise, if a time expression uses an <em>offset-time</em> form that uses the ticks (<code>t</code>) metric, then:
 <br><br>
@@ -6788,6 +6789,12 @@ immediate prior sibling timed element;
 <br><br>
 the <code>hours</code>, <code>minutes</code>, <code>seconds</code>, <code>frames</code>, <code>subFrames</code> components
 are extracted from time expression if present, or zero if not present;
+furthermore, if the time expression takes the form 
+of a  <em>clock-time</em> expression, then the <em>fraction</em> component, if present, is added to the 
+<em>seconds</em> component to form a real-valued <em>seconds</em> component, or, if the time expression 
+takes the form of an <em>offset-time</em> expression, then the <em>fraction</em> component, if present, 
+is added to the <em>time-count</em> component to form a real-valued <em>time-count</em> component according 
+to the specified offset metric; 
 <br><br>
 <code>subFrameRate</code> is the computed value of the <code>ttp:subFrameRate</code> parameter;
 <br><br>
