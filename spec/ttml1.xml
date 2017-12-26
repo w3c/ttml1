@@ -13281,8 +13281,7 @@ variable play rates, appropriate adjustments may need to be made to the resultin
 <p>When operating with the <code>clock</code> time base, the following semantics should be applied for interpreting time expressions,
 as defined by <loc href="#timing-value-timeExpression">&lt;timeExpression&gt;</loc>, and their relationship to media time and local real time.</p>
 <p>The clock time base <phrase role="strong"><code>C</code></phrase> is related to local real time <phrase role="strong"><code>R</code></phrase>
-expressed in the applicable epoch <phrase role="strong"><code>E</code></phrase>
-as follows:</p>
+expressed in the epoch <phrase role="strong"><code>E</code></phrase> (defined by the <emph>Document Processing Context</emph>) as follows:</p>
 <table id="clock-time-and-real-time" role="semantics">
 <caption>TTML Semantics &ndash; Clock Time and Real Time Relationship</caption>
 <tbody>
@@ -13406,7 +13405,7 @@ during playback, presentation timing is not affected.
 <p>When operating with the <code>media</code> time base, the following semantics should be applied for interpreting time expressions,
 as defined by <loc href="#timing-value-timeExpression">&lt;timeExpression&gt;</loc>, and their relationship to media time and local real time.</p>
 <p>The media time base <phrase role="strong"><code>M</code></phrase> is related to local real time <phrase role="strong"><code>R</code></phrase>
-expressed in the applicable epoch <phrase role="strong"><code>E</code></phrase> as follows:</p>
+expressed in the epoch <phrase role="strong"><code>E</code></phrase> (defined by the <emph>Document Processing Context</emph>) as follows:</p>
 <table id="media-time-and-real-time" role="semantics">
 <caption>TTML Semantics &ndash; Media Time and Real Time Relationship</caption>
 <tbody>
