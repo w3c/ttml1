@@ -3511,6 +3511,7 @@ to reference one or more <el>style</el> elements each of which define a style (p
 element types:</p>
 <ulist>
 <item><p><loc href="#document-structure-vocabulary-body"><el>body</el></loc></p></item>
+<item><p><loc href="#content-vocabulary-br"><el>br</el></loc></p></item>
 <item><p><loc href="#content-vocabulary-div"><el>div</el></loc></p></item>
 <item><p><loc href="#content-vocabulary-p"><el>p</el></loc></p></item>
 <item><p><loc href="#layout-vocabulary-region"><el>region</el></loc></p></item>
