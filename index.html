@@ -80,7 +80,7 @@ table.example-images-bordered td { border: 1px solid red; text-align: left }
 .strong { font-weight: bold }
 .reqattr { font-weight: bold }
 .optattr { font-style: italic }
-</style><link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/W3C-ED.css"></head><body>Commit: c22b93f Do not prune <br> elements (#197)<div id="revisions"></div><div class="head">
+</style><link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/W3C-ED.css"></head><body>Commit: b64de14 Specify application defaults for frame rate multiplier and sub-frame rate (#192)<div id="revisions"></div><div class="head">
 <h1><a id="title"></a>Timed Text Markup Language 1 (TTML1) (Third Edition)</h1>
 <h2><a id="w3c-doctype"></a>W3C Editors' Draft 29 December 2017</h2><dl><dt>This version:</dt><dd>
 <a href="ttml1.html">ttml1.html</a>
@@ -1595,8 +1595,8 @@ numerator | denominator
   : <a href="#style-value-digit">&lt;digit&gt;</a>+
 </pre></div>
 </td></tr></tbody></table><p>A frame rate multiplier is used when the desired frame rate cannot
-be expressed as an integral number of frames per second.</p><p>If not specified, the frame rate multiplier must be considered to be equal to one (1:1).
-Both numerator and denominator must be non-zero.</p><p>A <code>ttp:frameRateMultiplier</code> attribute is considered to be significant only
+be expressed as an integral number of frames per second.</p><p>If not specified, the frame rate multiplier must be considered to be equal to some
+application defined frame rate multiplier, or if no application defined frame rate multiplier applies, then one (1:1). Both numerator and denominator must be non-zero.</p><p>A <code>ttp:frameRateMultiplier</code> attribute is considered to be significant only
 when specified on the <code>tt</code> element.</p><div class="note"><p class="prefix"><b>Note:</b></p><p>The frame rate multiplier used for synchronizing with NTSC <a href="#smpte170m">[SMPTE 170M]</a>
 formatted video objects at 30 frames per second is nominally
 1000:1001. The nominal frame rate of NTSC video is defined as the chrominance
@@ -1718,7 +1718,8 @@ a frame of media time is divided into <em>S</em> intervals of
 equal duration, where each interval is labeled as sub-frame <em>s</em>,
 with <em>s</em> ∈ [0…<em>S−1</em>].</p><div class="note"><p class="prefix"><b>Note:</b></p><p>See <a href="#time-expression-semantics-media"><b>N.2 Media Time Base</b></a> for further details
 on the interpretation of time expressions for the <code>media</code> time base.</p></div><p>If not specified, the sub-frame rate must be considered to be
-equal to one (1). If specified, then the sub-frame rate must be greater than zero (0).</p><p>A <code>ttp:subFrameRate</code> attribute is considered to be significant only
+equal to some application defined sub-frame rate, or if no application defined sub-frame rate applies, then one (1). If specified, then the sub-frame rate must be greater than 
+zero (0).</p><p>A <code>ttp:subFrameRate</code> attribute is considered to be significant only
 when specified on the <code>tt</code> element.</p><div class="note"><p class="prefix"><b>Note:</b></p><p>The sub-frame is sometimes referred to as a <em>field</em> in
 the context of synchronization with an interlaced video media object.</p></div></div><div class="div3">
 <h4><a id="parameter-attribute-tickRate"></a>6.2.10 ttp:tickRate</h4><p>The <code>ttp:tickRate</code> attribute is used to specify the tick rate of a related
