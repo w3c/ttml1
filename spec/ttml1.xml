@@ -7453,7 +7453,7 @@ headed by the <el>body</el> element;</p>
 <olist>
 <item><p>they are neither <loc href="#element-vocab-type-content">Content</loc> nor <loc href="#element-vocab-type-animation">Animation</loc> elements; or</p></item>
 <item><p>they are temporally inactive; or</p></item>
-<item><p>they are <loc href="#element-vocab-type-content">Content</loc> elements and empty; or</p></item>
+<item><p>they are empty and neither <loc href="#element-vocab-type-animation">Animation</loc> elements nor <loc href="#content-vocabulary-br">br</loc> elements; or</p></item>
 <item><p>they are <loc href="#element-vocab-type-content">Content</loc> elements and aren't associated with region <emph>R</emph> according to the <phrase role="strong">[associate region]</phrase> procedure.</p></item>
 </olist>
 </p>
