@@ -7471,7 +7471,7 @@ associated (owning) element node.</p>
 <def>
 <p>A <loc href="#element-vocab-type-content">Content</loc> element <emph>E</emph> is associated 
 with a region <emph>R</emph> if
-any of the following assertions is true:</p>
+any of the following ordered assertions is true, where the first assertion satisfied is used and remaining assertions are skipped:</p>
 <olist>
 
 <item><p>if <emph>E</emph> specifies a <loc href="#layout-attribute-region">
