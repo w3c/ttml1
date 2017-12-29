@@ -2474,8 +2474,8 @@ numerator | denominator
 </table>
 <p>A frame rate multiplier is used when the desired frame rate cannot
 be expressed as an integral number of frames per second.</p>
-<p>If not specified, the frame rate multiplier must be considered to be equal to one (1:1).
-Both numerator and denominator must be non-zero.</p>
+<p>If not specified, the frame rate multiplier must be considered to be equal to some
+application defined frame rate multiplier, or if no application defined frame rate multiplier applies, then one (1:1). Both numerator and denominator must be non-zero.</p>
 <p>A <att>ttp:frameRateMultiplier</att> attribute is considered to be significant only
 when specified on the <el>tt</el> element.</p>
 <note role="example">
@@ -2680,7 +2680,8 @@ with <emph>s</emph> &isin; [0&hellip;<emph>S&minus;1</emph>].</p>
 on the interpretation of time expressions for the <code>media</code> time base.</p>
 </note>
 <p>If not specified, the sub-frame rate must be considered to be
-equal to one (1). If specified, then the sub-frame rate must be greater than zero (0).</p>
+equal to some application defined sub-frame rate, or if no application defined sub-frame rate applies, then one (1). If specified, then the sub-frame rate must be greater than 
+zero (0).</p>
 <p>A <att>ttp:subFrameRate</att> attribute is considered to be significant only
 when specified on the <el>tt</el> element.</p>
 <note role="clarification">
