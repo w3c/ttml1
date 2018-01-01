@@ -77,6 +77,10 @@
 <name>Glenn Adams</name>
 <affiliation>Skynav</affiliation>
 </author>
+<author>
+<name>Pierre-Anthony Lemieux</name>
+<affiliation>MovieLabs</affiliation>
+</author>
 </authlist>
 <authlist id="contributors" role="contributor">
 <author>
@@ -1075,7 +1079,9 @@ is defined as empty in the associated <emph>Abstract Document Type</emph>, and t
 <p>pruning all attribute
 information items having expanded names such that the namespace URI of the
 expanded names are not listed in <specref
-ref="namespace-vocab-table"/>,</p>
+ref="namespace-vocab-table"/>, or, if listed in <specref ref="namespace-vocab-table"/>, are not 
+members of the collection of attributes defined by the associated <emph>Abstract Document Type</emph> for use 
+with the owning element information item,</p>
 </item>
 </olist>
 <p>then the document element is one of the document
@@ -2468,8 +2474,8 @@ numerator | denominator
 </table>
 <p>A frame rate multiplier is used when the desired frame rate cannot
 be expressed as an integral number of frames per second.</p>
-<p>If not specified, the frame rate multiplier must be considered to be equal to one (1:1).
-Both numerator and denominator must be non-zero.</p>
+<p>If not specified, the frame rate multiplier must be considered to be equal to some
+application defined frame rate multiplier, or if no application defined frame rate multiplier applies, then one (1:1). Both numerator and denominator must be non-zero.</p>
 <p>A <att>ttp:frameRateMultiplier</att> attribute is considered to be significant only
 when specified on the <el>tt</el> element.</p>
 <note role="example">
@@ -2674,7 +2680,8 @@ with <emph>s</emph> &isin; [0&hellip;<emph>S&minus;1</emph>].</p>
 on the interpretation of time expressions for the <code>media</code> time base.</p>
 </note>
 <p>If not specified, the sub-frame rate must be considered to be
-equal to one (1). If specified, then the sub-frame rate must be greater than zero (0).</p>
+equal to some application defined sub-frame rate, or if no application defined sub-frame rate applies, then one (1). If specified, then the sub-frame rate must be greater than 
+zero (0).</p>
 <p>A <att>ttp:subFrameRate</att> attribute is considered to be significant only
 when specified on the <el>tt</el> element.</p>
 <note role="clarification">
@@ -3504,6 +3511,7 @@ to reference one or more <el>style</el> elements each of which define a style (p
 element types:</p>
 <ulist>
 <item><p><loc href="#document-structure-vocabulary-body"><el>body</el></loc></p></item>
+<item><p><loc href="#content-vocabulary-br"><el>br</el></loc></p></item>
 <item><p><loc href="#content-vocabulary-div"><el>div</el></loc></p></item>
 <item><p><loc href="#content-vocabulary-p"><el>p</el></loc></p></item>
 <item><p><loc href="#layout-vocabulary-region"><el>region</el></loc></p></item>
@@ -7077,20 +7085,19 @@ set of <emph>E</emph>, <emph>SSS(E)</emph>;</p></item>
 <item>
 <p><phrase role="strong">[implicit inheritance]</phrase> if the
 element type of <emph>E</emph> is not the styling element type
-<el>style</el>, then for each inheritable style property
-<emph>P<sub>INH</sub></emph> in the set of style properties defined
+<el>style</el>, then for each style property
+<emph>P</emph> in the set of style properties defined
 above in <specref ref="styling-attribute-vocabulary"/>, perform the
 following ordered sub-steps:</p>
 <olist>
-<item><p>if <emph>P<sub>INH</sub></emph> is present in the specified
+<item><p>if <emph>P</emph> is present in the specified
 style set of <emph>E</emph>, <emph>SSS(E)</emph>, then continue to the
-next inheritable style property;</p></item>
-<item><p>if the element type of <emph>E</emph> is the layout element
-type <el>region</el>, then set <emph>P&prime;</emph> to the initial value of
-property <emph>P</emph>, where the initial value of a property is
+next style property;</p></item>
+<item><p>if <emph>P</emph> is inheritable and <emph>E</emph> is a <el>region</el> element, or if <emph>P</emph> is not inheritable and applies to <emph>E</emph>, then set <emph>P&prime;</emph> to the initial value of
+property <emph>P</emph> if such an initial value is defined, where the initial value of a property is
 determined according to the specific property definition found above
 in <specref ref="styling-attribute-vocabulary"/>;</p></item>
-<item><p>if the element type of <emph>E</emph> is a <loc href="#element-vocab-type-content">Content</loc> element
+<item><p>if <emph>P</emph> is inheritable and the element type of <emph>E</emph> is a <loc href="#element-vocab-type-content">Content</loc> element
 type or anonymous span, then set <emph>P&prime;</emph> to the result of
 looking up the value of <emph>P</emph> in the computed style set of
 the immediate ancestor element of <emph>E</emph>, i.e.,
@@ -7447,7 +7454,7 @@ headed by the <el>body</el> element;</p>
 <olist>
 <item><p>they are neither <loc href="#element-vocab-type-content">Content</loc> nor <loc href="#element-vocab-type-animation">Animation</loc> elements; or</p></item>
 <item><p>they are temporally inactive; or</p></item>
-<item><p>they are <loc href="#element-vocab-type-content">Content</loc> elements and empty; or</p></item>
+<item><p>they are empty and neither <loc href="#element-vocab-type-animation">Animation</loc> elements nor <loc href="#content-vocabulary-br">br</loc> elements; or</p></item>
 <item><p>they are <loc href="#element-vocab-type-content">Content</loc> elements and aren't associated with region <emph>R</emph> according to the <phrase role="strong">[associate region]</phrase> procedure.</p></item>
 </olist>
 </p>
