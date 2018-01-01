@@ -7085,20 +7085,19 @@ set of <emph>E</emph>, <emph>SSS(E)</emph>;</p></item>
 <item>
 <p><phrase role="strong">[implicit inheritance]</phrase> if the
 element type of <emph>E</emph> is not the styling element type
-<el>style</el>, then for each inheritable style property
-<emph>P<sub>INH</sub></emph> in the set of style properties defined
+<el>style</el>, then for each style property
+<emph>P</emph> in the set of style properties defined
 above in <specref ref="styling-attribute-vocabulary"/>, perform the
 following ordered sub-steps:</p>
 <olist>
-<item><p>if <emph>P<sub>INH</sub></emph> is present in the specified
+<item><p>if <emph>P</emph> is present in the specified
 style set of <emph>E</emph>, <emph>SSS(E)</emph>, then continue to the
-next inheritable style property;</p></item>
-<item><p>if the element type of <emph>E</emph> is the layout element
-type <el>region</el>, then set <emph>P&prime;</emph> to the initial value of
-property <emph>P</emph>, where the initial value of a property is
+next style property;</p></item>
+<item><p>if <emph>P</emph> is inheritable and <emph>E</emph> is a <el>region</el> element, or if <emph>P</emph> is not inheritable and applies to <emph>E</emph>, then set <emph>P&prime;</emph> to the initial value of
+property <emph>P</emph> if such an initial value is defined, where the initial value of a property is
 determined according to the specific property definition found above
 in <specref ref="styling-attribute-vocabulary"/>;</p></item>
-<item><p>if the element type of <emph>E</emph> is a <loc href="#element-vocab-type-content">Content</loc> element
+<item><p>if <emph>P</emph> is inheritable and the element type of <emph>E</emph> is a <loc href="#element-vocab-type-content">Content</loc> element
 type or anonymous span, then set <emph>P&prime;</emph> to the result of
 looking up the value of <emph>P</emph> in the computed style set of
 the immediate ancestor element of <emph>E</emph>, i.e.,
