@@ -4184,7 +4184,7 @@ as a style property only to those element types indicated in the following table
 <note role="clarification">
 <p>While permitted, the use of linear whitespace (LWSP) around the comma delimiters in the value of this 
 attribute is not recommended. The rationale for this recommendation is that some existing processors may not
-be tolerant of them.
+be tolerant of this usage.
 </p>
 </note>
 <note role="clarification">
