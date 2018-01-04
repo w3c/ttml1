@@ -5079,7 +5079,7 @@ to the after edge.
 If four <loc href="#style-value-length">&lt;length&gt;</loc> specifications are provided, then they apply to before, end,
 after, and start edges, respectively.</p>
 <note role="clarification">
-<p>Pecentage values are relative to the dimension of the region to which they apply. For example, if the before and after edges correspond 
+<p>Percentage values are relative to the dimension of the region to which they apply. For example, if the before and after edges correspond 
 to the top and bottom edges of the region, as is the case for Latin text where <att>tts:writingMode</att> is equal to <code>"lrtb"</code>, 
 then percentage values that apply to either of the two edges are relative to the height of the region. Conversely, if the before and after 
 edges correspond to the right and left edges of the region, as is the case for Japanese text where <att>tts:writingMode</att> is equal to 
