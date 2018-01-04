@@ -6684,6 +6684,11 @@ given priority as described above by <specref ref="semantics-style-association-i
 </tr>
 </tbody>
 </table>
+<note role="explanation">
+<p>In the above example, the text of the second paragraph is yellow, since <code>tts:color='yellow'</code> 
+effectively overwrites (is merged over) the <code>tts:color='white'</code> that style <code>s2</code> obtains by a 
+reference to style <code>s1</code>.</p>
+</note>
 </div4>
 <div4 id="semantics-style-association-nested">
 <head>Nested Styling</head>
