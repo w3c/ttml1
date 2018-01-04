@@ -80,9 +80,9 @@ table.example-images-bordered td { border: 1px solid red; text-align: left }
 .strong { font-weight: bold }
 .reqattr { font-weight: bold }
 .optattr { font-style: italic }
-</style><link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/W3C-ED.css"></head><body>Commit: 1a49af3 Add Temporal Fragmentation to streaming appendix (#208)<div id="revisions"></div><div class="head">
+</style><link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/W3C-ED.css"></head><body>Commit: 697dc5a Clarify definition of epoch and epoch-related offsets (#266)<div id="revisions"></div><div class="head">
 <h1><a id="title"></a>Timed Text Markup Language 1 (TTML1) (Third Edition)</h1>
-<h2><a id="w3c-doctype"></a>W3C Editors' Draft 01 January 2018</h2><dl><dt>This version:</dt><dd>
+<h2><a id="w3c-doctype"></a>W3C Editors' Draft 04 January 2018</h2><dl><dt>This version:</dt><dd>
 <a href="ttml1.html">ttml1.html</a>
 </dd><dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/ttml1/spec/ttml1.html">https://w3c.github.io/ttml1/spec/ttml1.html</a></dd><dt>Latest version:</dt><dd><a href="https://www.w3.org/TR/ttml1/">https://www.w3.org/TR/ttml1/</a></dd><dt>Previous version:</dt><dd>
 <a href="https://www.w3.org/TR/2013/REC-ttml1-20130924/">https://www.w3.org/TR/2013/REC-ttml1-20130924/</a>
@@ -6731,11 +6731,10 @@ well-formed XML 1.0 <a href="#xml10">[XML 1.0]</a> document using the UTF-8 char
 of defining relationships with this virtual clock is to establish a locally valid physical realization of time for didactic purposes.</p></div><div class="note"><p class="prefix"><b>Note:</b></p><p>The phrase <em>play rate</em> as used below is intended to model a (possibly variable) parameter in the document processing context wherein
 the rate of playback (or interpretation) of time may artificially dilated or narrowed, for example, when slowing down or speeding up the rate of
 playback of a <em>Related Media Object</em>. Without loss of generality, the following discussion assumes a fixed play(back) rate. In the case of
-variable play rates, appropriate adjustments may need to be made to the resulting computations.</p></div><div class="div2">
+variable play rates, appropriate adjustments may need to be made to the resulting computations.</p></div><p>The <em>Document Processing Context</em> defines the applicable epoch and any epoch-related offsets to be used when establishing the <em>Synthetic Document Syncbase</em>.</p><div class="div2">
 <h3><a id="time-expression-semantics-clock"></a>N.1 Clock Time Base</h3><p>When operating with the <code>clock</code> time base, the following semantics should be applied for interpreting time expressions,
 as defined by <a href="#timing-value-timeExpression">&lt;timeExpression&gt;</a>, and their relationship to media time and local real time.</p><p>The clock time base <span class="strong"><code>C</code></span> is related to local real time <span class="strong"><code>R</code></span>
-expressed in an arbitrary (implementation defined) epoch <span class="strong"><code>E</code></span>
-as follows:</p><a id="clock-time-and-real-time"></a><table class="semantics"><caption>TTML Semantics – Clock Time and Real Time Relationship</caption><tbody><tr><td>
+expressed in the epoch <span class="strong"><code>E</code></span> (defined by the <em>Document Processing Context</em>) as follows:</p><a id="clock-time-and-real-time"></a><table class="semantics"><caption>TTML Semantics – Clock Time and Real Time Relationship</caption><tbody><tr><td>
 <blockquote><p><br>
 <code>R = C + epochOffset + discontinuityOffset</code>
 <br><br>
@@ -6790,7 +6789,7 @@ during playback, presentation timing is not affected.
 </p></div></div><div class="div2">
 <h3><a id="time-expression-semantics-media"></a>N.2 Media Time Base</h3><p>When operating with the <code>media</code> time base, the following semantics should be applied for interpreting time expressions,
 as defined by <a href="#timing-value-timeExpression">&lt;timeExpression&gt;</a>, and their relationship to media time and local real time.</p><p>The media time base <span class="strong"><code>M</code></span> is related to local real time <span class="strong"><code>R</code></span>
-expressed in an arbitrary (implementation defined) epoch <span class="strong"><code>E</code></span> as follows:</p><a id="media-time-and-real-time"></a><table class="semantics"><caption>TTML Semantics – Media Time and Real Time Relationship</caption><tbody><tr><td>
+expressed in the epoch <span class="strong"><code>E</code></span> (defined by the <em>Document Processing Context</em>) as follows:</p><a id="media-time-and-real-time"></a><table class="semantics"><caption>TTML Semantics – Media Time and Real Time Relationship</caption><tbody><tr><td>
 <blockquote><p><br>
 <code>R = playRate * M + epochOffset</code>
 <br><br>
