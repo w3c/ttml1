@@ -77,6 +77,10 @@
 <name>Glenn Adams</name>
 <affiliation>Skynav</affiliation>
 </author>
+<author>
+<name>Pierre-Anthony Lemieux</name>
+<affiliation>MovieLabs</affiliation>
+</author>
 </authlist>
 <authlist id="contributors" role="contributor">
 <author>
@@ -1075,7 +1079,9 @@ is defined as empty in the associated <emph>Abstract Document Type</emph>, and t
 <p>pruning all attribute
 information items having expanded names such that the namespace URI of the
 expanded names are not listed in <specref
-ref="namespace-vocab-table"/>,</p>
+ref="namespace-vocab-table"/>, or, if listed in <specref ref="namespace-vocab-table"/>, are not 
+members of the collection of attributes defined by the associated <emph>Abstract Document Type</emph> for use 
+with the owning element information item,</p>
 </item>
 </olist>
 <p>then the document element is one of the document
@@ -2347,6 +2353,7 @@ second of a time expression, frames count from 0 to
 <emph>N&minus;1</emph>, where <emph>N</emph> is the value specified by
 the <att>ttp:frameRate</att> parameter, but while ignoring any value
 specified by the <att>ttp:frameRateMultiplier</att> parameter.</p>
+
 <note role="clarification"> <p>When operating in <code>nonDrop</code>
 mode, a second of a time expression may or may not be equal to a
 second of real time during normal (1x speed) forward playback. If the
@@ -2354,6 +2361,12 @@ second of real time during normal (1x speed) forward playback. If the
 equal to 1:1, then a second of a time expression will either be
 shorter or longer than a second of elapsed play in real
 time.</p></note>
+
+<note role="elaboration">
+<p>See <specref ref="timing-time-value-expressions"/> regarding the absence of defined semantics for both the
+<emph>offset-time</emph> form and the <emph>fraction</emph> component of time expressions when the <code>smpte</code> time base applies.</p>
+</note>
+ 
 <p>If this parameter's value is <code>dropNTSC</code>, then, within any
 given second of a time expression except the second <code>00</code>,
 frames count from 0 to <emph>N&minus;1</emph>, where <emph>N</emph> is
@@ -2461,8 +2474,8 @@ numerator | denominator
 </table>
 <p>A frame rate multiplier is used when the desired frame rate cannot
 be expressed as an integral number of frames per second.</p>
-<p>If not specified, the frame rate multiplier must be considered to be equal to one (1:1).
-Both numerator and denominator must be non-zero.</p>
+<p>If not specified, the frame rate multiplier must be considered to be equal to some
+application defined frame rate multiplier, or if no application defined frame rate multiplier applies, then one (1:1). Both numerator and denominator must be non-zero.</p>
 <p>A <att>ttp:frameRateMultiplier</att> attribute is considered to be significant only
 when specified on the <el>tt</el> element.</p>
 <note role="example">
@@ -2667,7 +2680,8 @@ with <emph>s</emph> &isin; [0&hellip;<emph>S&minus;1</emph>].</p>
 on the interpretation of time expressions for the <code>media</code> time base.</p>
 </note>
 <p>If not specified, the sub-frame rate must be considered to be
-equal to one (1). If specified, then the sub-frame rate must be greater than zero (0).</p>
+equal to some application defined sub-frame rate, or if no application defined sub-frame rate applies, then one (1). If specified, then the sub-frame rate must be greater than 
+zero (0).</p>
 <p>A <att>ttp:subFrameRate</att> attribute is considered to be significant only
 when specified on the <el>tt</el> element.</p>
 <note role="clarification">
@@ -3497,6 +3511,7 @@ to reference one or more <el>style</el> elements each of which define a style (p
 element types:</p>
 <ulist>
 <item><p><loc href="#document-structure-vocabulary-body"><el>body</el></loc></p></item>
+<item><p><loc href="#content-vocabulary-br"><el>br</el></loc></p></item>
 <item><p><loc href="#content-vocabulary-div"><el>div</el></loc></p></item>
 <item><p><loc href="#content-vocabulary-p"><el>p</el></loc></p></item>
 <item><p><loc href="#layout-vocabulary-region"><el>region</el></loc></p></item>
@@ -4181,6 +4196,12 @@ as a style property only to those element types indicated in the following table
 </tr>
 </tbody>
 </table>
+<note role="clarification">
+<p>While permitted, the use of linear whitespace (LWSP) around the comma delimiters in the value of this 
+attribute is not recommended. The rationale for this recommendation is that some existing processors may not
+be tolerant of this usage.
+</p>
+</note>
 <note role="clarification">
 <p>The initial value, <code>default</code>, is a generic font family name, and is
 further described in <specref ref="style-value-genericFamilyName"/> below.</p>
@@ -5097,6 +5118,13 @@ before edge, the second applies to the start and end edges, and the third applie
 to the after edge.
 If four <loc href="#style-value-length">&lt;length&gt;</loc> specifications are provided, then they apply to before, end,
 after, and start edges, respectively.</p>
+<note role="clarification">
+<p>Percentage values are relative to the dimension of the region to which they apply. For example, if the before and after edges correspond 
+to the top and bottom edges of the region, as is the case for Latin text where <att>tts:writingMode</att> is equal to <code>"lrtb"</code>, 
+then percentage values that apply to either of the two edges are relative to the height of the region. Conversely, if the before and after 
+edges correspond to the right and left edges of the region, as is the case for Japanese text where <att>tts:writingMode</att> is equal to 
+<code>"tbrl"</code>, then percentage values that apply to either of the two edges are relative to the width of the region.</p>
+</note>
 <p>The <loc href="#style-value-length">&lt;length&gt;</loc> value(s) used to express padding must be non-negative.</p>
 <p>If a computed value of the property associated with this attribute is not supported,
 then a presentation processor must use the closest supported value.</p>
@@ -6413,7 +6441,7 @@ and <code>proportionalSerif</code>, respectively.</p>
 <p>If the generic family name <code>default</code> is specified (or implied by
 an initial value), then its typographic characteristics are considered to be implementation
 dependent; however, it is recommended that this default font family be mapped to
-an monospaced, sans-serif font.</p>
+a monospaced, sans-serif font.</p>
 </div3>
 <div3 id="style-value-hexDigit">
 <head>&lt;hexDigit&gt;</head>
@@ -6688,9 +6716,6 @@ ref="semantics-style-inheritance-content"/> below.</p>
 other out-of-line style properties, thus creating a chain of references starting at the
 affected element. When expressed in this manner, the association of style information
 is referred to as <emph>chained referential styling</emph>.</p>
-<p>If the same style property is specified in more than one referenced
-style set, then the last referenced style set applies, where the order of application starts from
-the affected element and proceeds to referenced style sets, and, in turn, to subsequent referenced style sets.</p>
 <p>A loop in a sequence of chained style references must be considered an error.</p>
 <p>The use of referential styling is restricted to making
 reference to <el>style</el> element descendants of a <el>styling</el>
@@ -6721,6 +6746,11 @@ given priority as described above by <specref ref="semantics-style-association-i
 </tr>
 </tbody>
 </table>
+<note role="explanation">
+<p>In the above example, the text of the second paragraph is yellow, since <code>tts:color='yellow'</code> 
+effectively overwrites (is merged over) the <code>tts:color='white'</code> that style <code>s2</code> obtains by a 
+reference to style <code>s1</code>.</p>
+</note>
 </div4>
 <div4 id="semantics-style-association-nested">
 <head>Nested Styling</head>
@@ -7104,20 +7134,19 @@ set of <emph>E</emph>, <emph>SSS(E)</emph>;</p></item>
 <item>
 <p><phrase role="strong">[implicit inheritance]</phrase> if the
 element type of <emph>E</emph> is not the styling element type
-<el>style</el>, then for each inheritable style property
-<emph>P<sub>INH</sub></emph> in the set of style properties defined
+<el>style</el>, then for each style property
+<emph>P</emph> in the set of style properties defined
 above in <specref ref="styling-attribute-vocabulary"/>, perform the
 following ordered sub-steps:</p>
 <olist>
-<item><p>if <emph>P<sub>INH</sub></emph> is present in the specified
+<item><p>if <emph>P</emph> is present in the specified
 style set of <emph>E</emph>, <emph>SSS(E)</emph>, then continue to the
-next inheritable style property;</p></item>
-<item><p>if the element type of <emph>E</emph> is the layout element
-type <el>region</el>, then set <emph>P&prime;</emph> to the initial value of
-property <emph>P</emph>, where the initial value of a property is
+next style property;</p></item>
+<item><p>if <emph>P</emph> is inheritable and <emph>E</emph> is a <el>region</el> element, or if <emph>P</emph> is not inheritable and applies to <emph>E</emph>, then set <emph>P&prime;</emph> to the initial value of
+property <emph>P</emph> if such an initial value is defined, where the initial value of a property is
 determined according to the specific property definition found above
 in <specref ref="styling-attribute-vocabulary"/>;</p></item>
-<item><p>if the element type of <emph>E</emph> is a <loc href="#element-vocab-type-content">Content</loc> element
+<item><p>if <emph>P</emph> is inheritable and the element type of <emph>E</emph> is a <loc href="#element-vocab-type-content">Content</loc> element
 type or anonymous span, then set <emph>P&prime;</emph> to the result of
 looking up the value of <emph>P</emph> in the computed style set of
 the immediate ancestor element of <emph>E</emph>, i.e.,
@@ -7474,7 +7503,7 @@ headed by the <el>body</el> element;</p>
 <olist>
 <item><p>they are neither <loc href="#element-vocab-type-content">Content</loc> nor <loc href="#element-vocab-type-animation">Animation</loc> elements; or</p></item>
 <item><p>they are temporally inactive; or</p></item>
-<item><p>they are <loc href="#element-vocab-type-content">Content</loc> elements and empty; or</p></item>
+<item><p>they are empty and neither <loc href="#element-vocab-type-animation">Animation</loc> elements nor <loc href="#content-vocabulary-br">br</loc> elements; or</p></item>
 <item><p>they are <loc href="#element-vocab-type-content">Content</loc> elements and aren't associated with region <emph>R</emph> according to the <phrase role="strong">[associate region]</phrase> procedure.</p></item>
 </olist>
 </p>
@@ -7538,7 +7567,7 @@ then the element is associated with the default region;</p></item>
 adjacent synchronic <emph>Document Instances</emph>,
 <emph>DOC<sub><phrase>inter<sub>N</sub></phrase></sub></emph>
 <emph>DOC<sub><phrase>inter<sub>N&minus;1</sub></phrase></sub></emph>,
-then it is preferred that the implementation make the transition between
+then the implementation can apply processing to make the transition between
 presenting the two instances as smooth as possible, e.g., as described
 by <bibref ref="cea608e"/>, &sect; C.3, and <bibref ref="ccreq"/>.</p>
 </note>
@@ -8025,7 +8054,11 @@ metric
 <emph>clock-time</emph>, then leading zeroes are used when expressing hours,
 minutes, seconds, and frames less than 10. Minutes are constrained to
 [0&hellip;59], while seconds (including any fractional part) are constrained to the closed
-interval [0,60], where the value 60 applies only to leap seconds.</p>
+interval [0,60], where the value 60 applies only to leap seconds. Except when <loc
+href="#parameter-attribute-timeBase"><att>ttp:timeBase</att></loc> is <code>clock</code> 
+and <loc
+href="#parameter-attribute-clockMode"><att>ttp:clockMode</att></loc> is <code>local</code> or <code>utc</code>, use of the special value of 60 seconds 
+to denote a leap second is undefined and should not be used.</p>
 <p>If a &lt;timeExpression&gt; is expressed in terms of a
 <emph>clock-time</emph> and a <emph>frames</emph> term is specified,
 then the value of this term must be constrained to the interval
@@ -8042,6 +8075,10 @@ sub-frame rate determined by the <att>ttp:subFrameRate</att> parameter as define
 ref="parameter-attribute-subFrameRate"/>.
 It is considered an error if a <emph>sub-frames</emph> term is specified
 when the <code>clock</code> time base applies.</p>
+<p>If the governing time base is <code>smpte</code>, then (1) the <emph>offset-time</emph> 
+form is not defined and should not be used, and (2) the <emph>fraction</emph> 
+seconds component in a <emph>clock-time</emph> form is not defined and should 
+not be used.</p>
 </div3>
 </div2>
 <div2 id="timing-time-intervals">
@@ -8630,6 +8667,21 @@ agent with another agent that portrays the character.</p>
 <p>The <att>agent</att> attribute of a <el>ttm:actor</el> element must
 reference a <emph>significant</emph> <el>ttm:agent</el> element that denotes the agent
 acting the part of a character.</p>
+<p>An <el>ttm:actor</el> element referencing its parent <el>ttm:agent</el> element should be considered an error.</p>
+<note role="clarification">
+<p>The semantics of an <el>ttm:actor</el> element referencing its parent 
+<el>ttm:agent</el> element are not defined. While discouraged, the relationship is syntactically permitted. It is therefore recommended that implementations be prepared to process this 
+syntax, e.g. by avoiding infinite loops 
+etc.</p></note>
+<note role="example">
+<p>In the case of an actor playing themselves, 
+like Steve Coogan in The Trip playing Steve Coogan, the expected practice is to use two 
+<el>ttm:agent</el> elements. The first element (corresponding to 
+Steve Coogan the person) has <att>type</att> attribute equal to <code>person</code>, 
+while the second element (corresponding to Steve Coogan the character) has (i) a <att>type</att> 
+attribute equal to <code>character</code> and (ii) a child <el>ttm:actor</el> element that 
+references the first <el>ttm:agent</el> element.</p>
+</note>
 <p>An example of the <el>ttm:actor</el> element is shown above in
 <specref ref="metadata-vocabulary-agent-example-1"/>.</p>
 </div3>
@@ -11650,6 +11702,11 @@ Style Sheets, Level 2 Revision 1</titleref>, W3C Recommendation, 07 June 2011.
 <titleref href="http://dublincore.org/documents/dces/">Dublin Core Metadata Element Set, Version 1.1: Reference Description</titleref>. (See
 <xspecref href="http://dublincore.org/documents/dces/">http://dublincore.org/documents/dces/</xspecref>.)
 </bibl>
+<bibl id="ebuttlive" key="EBU-TT Live">EBU Tech3370,
+<titleref href="https://tech.ebu.ch/publications/tech3370">EBU-TT Part 3 Live Subtitling</titleref>, European Broadcasting Union (EBU)</bibl>
+<bibl id="isobmff" key="ISOBMFF">ISO/IEC 14496-30,
+<titleref href="http://www.iso.org/">Information technology &ndash; Coding of audio-visual objects &ndash; Part 30: Timed text and other visual overlays in ISO base media file format</titleref>, 
+International Organization for Standardization (ISO).</bibl>
 <bibl id="mpeg7-5" key="MPEG7-5">
 ISO/IEC 15938-5,
 <titleref
@@ -13224,35 +13281,29 @@ TTML <loc href="#doctypes">Abstract Document Instance</loc>.</p>
 </inform-div1>
 <inform-div1 id="streaming">
 <head>Streaming TTML Content</head>
-<p>TTML Content is designed to support streamability by implementing the
-following properties:</p>
+<p>TTML Content can be authored to meet the following characteristics that may be useful in
+streaming scenarios:</p>
 <ulist>
 <item>
 <p>can be progressively encoded (i.e., does not require computing
 subsequent data prior to sending current data);</p>
 </item>
 <item>
-<p>can be progressively decoded (i.e., does not require forward
+<p>can be progressively decoded (if it does not require forward
 references, but uses only reverse references when necessary);</p>
 </item>
 <item>
 <p>does not require dereferencing (and subsequent loading) of any
-resources other than TTML Content (i.e., no embedded URIs);</p>
-</item>
-<item>
-<p>does not support alternative content forms (e.g., different
-language, graphics formats, time bases) in a single document;</p>
+resources other than TTML Content;</p>
 </item>
 <item>
 <p>has timing structure compiled into inline format that makes
 possible a temporal ordering of content that follows temporal
 presentation order;</p>
 </item>
-<item>
-<p>constrains content models to prevent arbitrary nested content
-structures;</p>
-</item>
 </ulist>
+<div2 id="root-fragmentation">
+<head>Root and Branch Fragmentation</head>
 <p>One possible means by which TTML Content may be streamed is to
 partition a <emph>Document Instance</emph>'s information set into
 non-overlapping fragments, where one particular fragment, call it the
@@ -13282,6 +13333,53 @@ shown in <specref ref="fragment-streaming-graphic"/>.</p>
 <p>This specification does not define a transport buffer model or a decoder
 capabilities model.</p>
 </note>
+</div2>
+<div2 id="temporal-fragmentation">
+<head>Temporal Fragmentation</head>
+<p>Another means by which TTML Content may be streamed is to
+partition a <emph>Document Instance</emph>'s information set into
+temporally bound fragments, each of which is itself a document instance that contains all the
+front matter (head) and content required to present it, where the temporal interval for each
+fragment is constrained, either by the <emph>Document Interchange Context</emph> or by the 
+<emph>Document Processing Context</emph> or by both, such that temporal overlaps with other 
+fragments are resolved.</p>
+<p>For example, some document processing contexts resolve temporal overlap by specifying that a
+maximum of one document instance can be active at any moment in the timeline, and additionally
+specify precedence rules to establish which document instance that is, in case there are multiple
+candidates.</p>
+<p>In order to ensure that all the content is correctly displayed, any content that falls into an
+Intermediate Synchronic Document (ISD) whose interval overlaps with more
+than one fragmentation interval might need to be duplicated within each fragment that is required to
+generate that ISD. It is possible for implementations to identify adjacent ISDs that are identical
+except in their intervals and replace them with a single ISD covering the combined interval.</p>
+<p>The intent of this approach is that presentation processors are able to generate an equivalent
+sequence of ISDs to that which would be generated by a non-streamed version of the document
+instance, while taking advantage of the ability to avoid duplicating some controllable amount of
+front matter, by varying the segment duration. Reconstruction of the original source is not
+guaranteed to result in an identical document instance.</p>
+<note role="example">
+<p>This technique is used for example in <bibref ref="isobmff"/> and in <bibref ref="ebuttlive"/>.</p>
+</note>
+<p>An example of such a fragmentation of a <emph>Document Instance</emph> is
+shown in <specref ref="fragment-streaming-graphic-2"/>.</p>
+<table id="fragment-streaming-graphic-2" role="example-images">
+<caption>Figure 4 &ndash; Temporal fragmentation</caption>
+<col/>
+<tbody>
+<tr>
+<td><graphic id="graphic-temporal-fragmentation" source="images/temporal-fragmentation.png" alt="Temporal Fragment Streaming"/></td>
+</tr>
+</tbody>
+</table>
+<note role="explanation">
+<p>In the above example, a single document instance has content visible during intervals
+T<sub>1</sub> through T<sub>6</sub> and is fragmented into two document instances (segments),
+the first including all content and referenced styles and regions required during T<sub>1</sub>
+through T<sub>3</sub>, the second including all content and referenced styles and regions required
+during T<sub>4</sub> through T<sub>6</sub>. 
+</p>
+</note>
+</div2>
 </inform-div1>
 <inform-div1 id="concrete-encoding">
 <head>Concrete Encoding</head>
@@ -13309,13 +13407,13 @@ the rate of playback (or interpretation) of time may artificially dilated or nar
 playback of a <emph>Related Media Object</emph>. Without loss of generality, the following discussion assumes a fixed play(back) rate. In the case of
 variable play rates, appropriate adjustments may need to be made to the resulting computations.</p>
 </note>
+<p>The <emph>Document Processing Context</emph> defines the applicable epoch and any epoch-related offsets to be used when establishing the <emph>Synthetic Document Syncbase</emph>.</p>
 <div2 id="time-expression-semantics-clock">
 <head>Clock Time Base</head>
 <p>When operating with the <code>clock</code> time base, the following semantics should be applied for interpreting time expressions,
 as defined by <loc href="#timing-value-timeExpression">&lt;timeExpression&gt;</loc>, and their relationship to media time and local real time.</p>
 <p>The clock time base <phrase role="strong"><code>C</code></phrase> is related to local real time <phrase role="strong"><code>R</code></phrase>
-expressed in an arbitrary (implementation defined) epoch <phrase role="strong"><code>E</code></phrase>
-as follows:</p>
+expressed in the epoch <phrase role="strong"><code>E</code></phrase> (defined by the <emph>Document Processing Context</emph>) as follows:</p>
 <table id="clock-time-and-real-time" role="semantics">
 <caption>TTML Semantics &ndash; Clock Time and Real Time Relationship</caption>
 <tbody>
@@ -13389,7 +13487,8 @@ If a time expression uses the <emph>clock-time</emph> form or an <emph>offset-ti
 where
 <code>hours</code>,
 <code>minutes</code>,
-<code>seconds</code> components are extracted from time expression if present, or zero if not present.
+<code>seconds</code> components are extracted from time expression if present, or zero if not present. 
+Furthermore, a <emph>fraction</emph> component, if present, is added to the <emph>seconds</emph> component to form a real-valued <emph>seconds</emph> component. 
 </sitem>
 <sitem/>
 <sitem>
@@ -13439,7 +13538,7 @@ during playback, presentation timing is not affected.
 <p>When operating with the <code>media</code> time base, the following semantics should be applied for interpreting time expressions,
 as defined by <loc href="#timing-value-timeExpression">&lt;timeExpression&gt;</loc>, and their relationship to media time and local real time.</p>
 <p>The media time base <phrase role="strong"><code>M</code></phrase> is related to local real time <phrase role="strong"><code>R</code></phrase>
-expressed in an arbitrary (implementation defined) epoch <phrase role="strong"><code>E</code></phrase> as follows:</p>
+expressed in the epoch <phrase role="strong"><code>E</code></phrase> (defined by the <emph>Document Processing Context</emph>) as follows:</p>
 <table id="media-time-and-real-time" role="semantics">
 <caption>TTML Semantics &ndash; Media Time and Real Time Relationship</caption>
 <tbody>
@@ -13503,6 +13602,12 @@ immediate prior sibling timed element;
 <sitem>
 the <code>hours</code>, <code>minutes</code>, <code>seconds</code>, <code>frames</code>, <code>subFrames</code> components
 are extracted from time expression if present, or zero if not present;
+furthermore, if the time expression takes the form 
+of a  <emph>clock-time</emph> expression, then the <emph>fraction</emph> component, if present, is added to the 
+<emph>seconds</emph> component to form a real-valued <emph>seconds</emph> component, or, if the time expression 
+takes the form of an <emph>offset-time</emph> expression, then the <emph>fraction</emph> component, if present, 
+is added to the <emph>time-count</emph> component to form a real-valued <emph>time-count</emph> component according 
+to the specified offset metric; 
 </sitem>
 <sitem/>
 <sitem>
