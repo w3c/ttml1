@@ -4277,7 +4277,7 @@ as a style property only to those element types indicated in the following table
 </tr>
 <tr>
 <td><emph>Percentages:</emph></td>
-<td>see discussion below</td>
+<td>if specified on the <loc href="#layout-vocabulary-region"><el>region</el></loc> element, then relative to the <emph>Computed Cell Size</emph>; otherwise, relative to the parent element's computed font size.</td>
 </tr>
 <tr>
 <td><emph>Animatable:</emph></td>
@@ -4300,7 +4300,9 @@ one column in width.</p>
 <p>A glyph's EM square is conventionally defined as the EM square of the font that contains the glyph. That is,
 glyphs do not have an EM square that is distinct from their font's EM square.</p>
 </note>
-
+<note role="elaboration">
+<p>Anamorphic font scaling, i.e., fonts scaled to independent (and distinct) horizontal and vertical sizes, is expected to be used in a number of contexts, such as when an author desires to synthesize a narrow or wide font face, when an author desires to employ font sizes based on non-square cell units, etc.</p>
+</note>
 <p>If horizontal and vertical sizes are expressed independently, then the
 units of the <loc href="#style-value-length">&lt;length&gt;</loc> values must be the same.</p>
 <p>The <loc href="#style-value-length">&lt;length&gt;</loc> value(s) used to express font size must be non-negative.</p>
@@ -4317,8 +4319,6 @@ when two relative
 <loc href="#style-value-length">&lt;length&gt;</loc> values are specified,
 the first <loc href="#style-value-length">&lt;length&gt;</loc> is resolved in terms of the width component of the referenced value and
 the second <loc href="#style-value-length">&lt;length&gt;</loc> is resolved in terms of the height component of the referenced value.</p>
-
-<p>If the relative unit is a percentage (<code>%</code>), then the referenced value is the <emph>Computed Cell Size</emph> if specified on the <loc href="#layout-vocabulary-region"><el>region</el></loc> element; or the parent element's computed font size otherwise.</p>
 
 <p>If the relative unit is cell (<code>c</code>), then the referenced value is the
 <emph>Computed Cell Size</emph>.</p>
@@ -4346,6 +4346,14 @@ then this is equivalent to specifying <code>100% 100%</code>  which resolves to 
 <p>For the purpose of determining applicability of this style property,
 each character child of a <el>p</el> element is considered to be enclosed in an anonymous
 span.</p>
+
+<note role="elaboration">
+<p>In this context, the phrase <emph>closest supported value</emph> means the value for which the Euclidean distance between
+the computed font size and the supported font size is minimized. If there are multiple closest supported values equally distant from		
+the computed value, then the value most distant from 0 (single length specification) or [0,0] (two length specifications) is 
+used, i.e., the largest font size, is used.</p>		
+</note>
+
 <p>If a computed value of the property associated with this attribute is not supported,
 then a presentation processor must use the closest supported value.</p>
 
