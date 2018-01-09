@@ -7715,6 +7715,10 @@ to satisfy alignment in the block progression dimension. For example, this assur
 the background color associated with the <el>body</el> element, if not <code>transparent</code>,
  will fill the containing region wholly.</p>
 </note>
+<note role="clarification">
+<p>For the purpose of performing presentation processing, the <code>auto</code> value of
+the XSL FO <code>overflow</code> property is interpreted as <code>visible</code>.</p>
+</note>
 </div3>
 <div3 id="semantics-region-layout-example">
 <head>Elaborated Example (Informative)</head>
