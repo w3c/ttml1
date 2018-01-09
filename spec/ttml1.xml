@@ -4291,17 +4291,12 @@ the entries of which denote the computed values of the width and height componen
 equally to horizontal and vertical size of a glyph's EM square; if two
 <loc href="#style-value-length">&lt;length&gt;</loc> values are specified, then the first expresses the horizontal
 size and the second expresses vertical size.</p>
-<note role="example">
-<p>Use of independent horizontal and vertical font sizes is expected to be used
-with cell based units in order to denote fonts that are two rows in height and
-one column in width.</p>
+<note role="elaboration">
+<p>Anamorphic font scaling, i.e., fonts scaled to independent (and distinct) horizontal and vertical sizes, is expected to be used in a number of contexts, such as when an author desires to synthesize a narrow or wide font face, when an author desires to employ font sizes based on non-square cell units, etc.</p>
 </note>
 <note role="clarification">
 <p>A glyph's EM square is conventionally defined as the EM square of the font that contains the glyph. That is,
 glyphs do not have an EM square that is distinct from their font's EM square.</p>
-</note>
-<note role="elaboration">
-<p>Anamorphic font scaling, i.e., fonts scaled to independent (and distinct) horizontal and vertical sizes, is expected to be used in a number of contexts, such as when an author desires to synthesize a narrow or wide font face, when an author desires to employ font sizes based on non-square cell units, etc.</p>
 </note>
 <p>If horizontal and vertical sizes are expressed independently, then the
 units of the <loc href="#style-value-length">&lt;length&gt;</loc> values must be the same.</p>
