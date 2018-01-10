@@ -7508,7 +7508,7 @@ references the region,
 then the element is associated with the region;</p></item>
 <item><p>if the element specifies a <loc
 href="#layout-attribute-region"><att>region</att></loc> attribute that does not
-references the region,
+reference the region,
 then the element is not associated with the region;</p></item>
 <item><p>if some ancestor of that element specifies a <loc
 href="#layout-attribute-region"><att>region</att></loc> attribute,
