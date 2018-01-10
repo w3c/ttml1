@@ -7503,9 +7503,13 @@ to the following ordered rules, where the first rule satisfied
 is used and remaining rules are skipped:</p>
 <olist>
 <item><p>if the element specifies a <loc
-href="#layout-attribute-region"><att>region</att></loc> attribute,
-then the element is associated with the region referenced by that
-attribute;</p></item>
+href="#layout-attribute-region"><att>region</att></loc> attribute that
+references the region,
+then the element is associated with the region;</p></item>
+<item><p>if the element specifies a <loc
+href="#layout-attribute-region"><att>region</att></loc> attribute that does not
+reference the region,
+then the element is not associated with the region;</p></item>
 <item><p>if some ancestor of that element specifies a <loc
 href="#layout-attribute-region"><att>region</att></loc> attribute,
 then the element is associated with the region referenced by the most
