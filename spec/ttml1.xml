@@ -3222,7 +3222,7 @@ element group applies semantically to the <el>br</el> element and its descendant
 <p>Any animation elements specified by children in the <code>Animation.class</code>
 element group apply semantically to the <el>br</el> element.</p>
 <note role="clarification">
-<p>While syntactically permitted, the use of <code>Animation.class</code> children is not recommended since timing 
+<p>While permitted, the use of <code>Animation.class</code> children is not recommended since timing 
 vocabulary does not apply to the <el>br</el> element. Instead, animating a <el>br</el> element can be achieved by wrapping it in an animated <el>span</el> element.</p>
 </note>
 <table id="elt-syntax-br" role="syntax">
