@@ -290,7 +290,7 @@
   </target>
 
   <target name="generate" description="Generate the specification"
-	    depends="generate-schema-archives,validate-tt-specs,html,kwexpand">
+	    depends="generate-schema-archives,validate,html,kwexpand">
   </target>
 
   <target name="sg" description="Shortened generation of the specification, but without rebuilding escapes and expanding keywords."
@@ -298,7 +298,7 @@
   </target>
 
   <target name="rg" description="Regenerate using shortened generation and expands keywords."
-            depends="sg, kwexpand">
+      depends="sg, kwexpand">
   </target>
   
   <target name="build" description="Build the specification for publication" depends="generate">
