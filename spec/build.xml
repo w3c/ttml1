@@ -197,7 +197,7 @@
   </target>
 
   <target name="validate-examples"
-	    depends="validate-example-1, validate-example-2, validate-example-3"/>
+	    depends="validate-example-1, validate-example-2, validate-example-3, validate-example-4"/>
 
   <target name="validate-xsl" description="Validates all XML files.">
     <xmlvalidate lenient="true">
