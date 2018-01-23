@@ -6238,8 +6238,8 @@ defined by <bibref ref="srgb"/>.</p>
 &lt;color&gt;
   : "#" rrggbb
   | "#" rrggbbaa
-  | "rgb" "(" r-value "," g-value "," b-value ")"
-  | "rgba" "(" r-value "," g-value "," b-value "," a-value ")"
+  | "rgb(" r-value "," g-value "," b-value ")"
+  | "rgba(" r-value "," g-value "," b-value "," a-value ")"
   | <loc href="#style-value-namedColor">&lt;namedColor&gt;</loc>
 
 rrggbb
@@ -6261,6 +6261,12 @@ non-negative-integer
 </tr>
 </tbody>
 </table>
+<note role="clarification">
+<p>While permitted, the use of linear whitespace (LWSP) around the comma delimiters in 
+<code>&lt;color&gt;</code> expressions is not recommended. The rationale for this recommendation 
+is that some existing processors may not be tolerant of this usage.
+</p>
+</note>
 <p>When expressing RGB component values, these values are considered
 to <phrase role="strong">not</phrase> be premultiplied by alpha.</p>
 <p>For the purpose of performing presentation processing such that
