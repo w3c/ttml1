@@ -13554,7 +13554,7 @@ during playback, presentation timing is not affected.
 <head>Media Time Base</head>
 
 <p>When operating with the <code>media</code> time base, the following semantics should be applied for interpreting time expressions,
-as defined by <loc href="#timing-value-timeExpression">&lt;timeExpression&gt;</loc>, and their relationship to media time and local real time.</p>
+as defined by <loc href="#timing-value-timeExpression">&lt;timeExpression&gt;</loc>, and their relationship to media time, document time, and local real time.</p>
 
 <div3 id="semantics-media-timing-local-time">
 <head>Relationship to Local Real Time</head>
@@ -13591,6 +13591,10 @@ an epoch <code>E</code>, and where the value of <code>epochOffset</code> is the 
 </tr>
 </tbody>
 </table>
+</div3>
+
+<div3 id="semantics-media-timing">
+<head>Relationship to Media Time</head>
 <p>Time value expressions, as denoted by a <loc href="#timing-value-timeExpression">&lt;timeExpression&gt;</loc>, are related to
 media time <phrase role="strong"><code>M</code></phrase> in accordance to the
 <code>ttp:frameRate</code>, <code>ttp:subFrameRate</code>, and <code>ttp:frameRateMultiplier</code> parameters as follows:</p>
@@ -13678,9 +13682,9 @@ this assumption doesn't hold, then an additional offset that accounts for the di
 </note>
 </div3>
 
-<div3 id="semantics-media-timing">
-<head>Relationship to Media Times</head>
-<p>When <code>ttp:timeBase="media"</code> the computed document times are used as the equivalent media times with no offset.</p>
+<div3 id="semantics-media-document-timing">
+<head>Relationship to Document Time</head>
+<p>The computed document times are used as the equivalent media times with no offset.</p>
 <note role="clarification"><p>Any additional media time processing imposed by e.g. a wrapper format is out of scope of the TTML specification.</p>
 <p>For example <bibref ref="isobmff"/> and <bibref ref="dash"/> provide mechanisms for wrapping TTML documents as samples or segments and defining the offset of their media timelines relative to other media such as audio or video.</p></note>
 <p>The following document fragments are equivalent in timing:</p>
