@@ -4321,13 +4321,11 @@ glyphs do not have an EM square that is distinct from their font's EM square.</p
 </note>
 <p>If horizontal and vertical sizes are expressed independently, then the
 units of the <loc href="#style-value-length">&lt;length&gt;</loc> values must be the same.</p>
-<p>The <loc href="#style-value-length">&lt;length&gt;</loc> value(s) used to express font size must be non-negative.</p>
 
 <p>Relative <loc href="#style-value-length">&lt;length&gt;</loc> values
 that appear in this attribute, i.e., values expressed in percentage (<code>%</code>), cell (<code>c</code>), or EM (<code>em</code>) units,
 are resolved in relation to a referenced 2-dimensional size value consisting of two components, a width component and
 a height component.</p>
-
 
 <p>When a single relative <loc href="#style-value-length">&lt;length&gt;</loc> value is specified, then
 this <loc href="#style-value-length">&lt;length&gt;</loc> is resolved in terms of the height component of the referenced value;
@@ -4358,6 +4356,9 @@ If the computed value of <code>tts:fontSize</code> on <code>P</code> is (18px,24
 which resolves to (24px,24px). However, if <code>tts:fontSize="1em 1em"</code> is specified on <code>S</code>,
 then this is equivalent to specifying <code>100% 100%</code>  which resolves to (18px,24px).</p>
 </note>
+
+<p>The <loc href="#style-value-length">&lt;length&gt;</loc> value(s) used to express font size must be non-negative.</p>
+
 
 <p>For the purpose of determining applicability of this style property,
 each character child of a <el>p</el> element is considered to be enclosed in an anonymous
