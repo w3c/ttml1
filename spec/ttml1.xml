@@ -8083,9 +8083,9 @@ constraints:</p>
 <p>The implicit duration of an anonymous span, a <el>set</el> element, or a <el>span</el> 
 element whose children 
 are exclusively text nodes, is defined as follows: if
-the span's parent time container is a parallel time container, then
+the parent time container is a parallel time container, then
 the implicit duration is equivalent to the <code>indefinite</code>
-duration value as defined by <bibref ref="smil21"/>; if the span's
+duration value as defined by <bibref ref="smil21"/>; if the
 parent time container is a sequential time container, then the implicit duration
 is equivalent to zero.</p>
 </item>
