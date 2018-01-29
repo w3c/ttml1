@@ -1098,6 +1098,38 @@ conformant <emph>Document Instance</emph>, a given <emph>Document Instance</emph
 constrained by the author or authoring tool to satisfy a more
 restrictive definition of validity.</p>
 </note>
+<note>
+<p>As illustrated in the following example, an <emph>Abstract Document Instance</emph> can be a <emph>Valid Abstract Document Instance</emph> even if it includes elements and attributes whose namespace names are listed in <specref ref="namespace-vocab-table"/> but whose local names 
+are not part of the vocabulary defined by this version of the specification. Specifically, the element <code>foo</code> and the attribute <att>tts:foo</att> 
+are pruned by above steps (1) and (3), respectively, because they are not members of the associated <emph>Abstract Document Type</emph>, even though their 
+namespace names are listed in <specref ref="namespace-vocab-table"/>.
+</p>
+<table id="document-types-example" role="example">
+<caption>Example Fragment &ndash; Pruning of elements and attributes that are not members of the associated <emph>Abstract Document Type</emph></caption>
+<tbody>
+<tr>
+<td>
+<eg xml:space="preserve">
+&lt;tt
+  xmlns=&quot;http://www.w3.org/ns/ttml&quot;
+  xmlns:tts=&quot;http://www.w3.org/ns/ttml#styling&quot;
+  xml:lang=&quot;en&quot;&gt;
+  &lt;body&gt;
+    &lt;foo&gt;Foo&lt;/foo&gt;
+    &lt;div&gt;
+      &lt;p
+        tts:foo=&quot;bar&quot;&gt;
+          Bar
+      &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/tt&gt;
+</eg>
+</td>
+</tr>
+</tbody>
+</table>
+</note>
 <div2 id="ttml-content-doctype">
 <head>TTML Content</head>
 <p>TTML Content is an <emph>Abstract Document Type</emph> of a profile of the Timed Text Markup Language intended
@@ -1132,6 +1164,9 @@ formal validity of a <emph>Document Instance</emph> to be based on an <emph>Abst
 which all foreign namespace elements and attributes have been removed. Therefore, the
 exceptional reporting of this false negative does not impact the formal assessment
 of <emph>Document Instance</emph> validity.</p>
+</note>
+<note role="clarification">
+<p>The schemas referenced by this specification are intended for use after the pruning steps (1)-(3) specified by <specref ref="doctypes"/> have been applied.</p>
 </note>
 </div2>
 </div1>
@@ -6170,8 +6205,8 @@ defined by <bibref ref="srgb"/>.</p>
 &lt;color&gt;
   : "#" rrggbb
   | "#" rrggbbaa
-  | "rgb" "(" r-value "," g-value "," b-value ")"
-  | "rgba" "(" r-value "," g-value "," b-value "," a-value ")"
+  | "rgb(" r-value "," g-value "," b-value ")"
+  | "rgba(" r-value "," g-value "," b-value "," a-value ")"
   | <loc href="#style-value-namedColor">&lt;namedColor&gt;</loc>
 
 rrggbb
@@ -6193,6 +6228,12 @@ non-negative-integer
 </tr>
 </tbody>
 </table>
+<note role="clarification">
+<p>While permitted, the use of linear whitespace (LWSP) around the comma delimiters in 
+<code>&lt;color&gt;</code> expressions is not recommended. The rationale for this recommendation 
+is that some existing processors may not be tolerant of this usage.
+</p>
+</note>
 <p>When expressing RGB component values, these values are considered
 to <phrase role="strong">not</phrase> be premultiplied by alpha.</p>
 <p>For the purpose of performing presentation processing such that
@@ -10084,7 +10125,7 @@ semantics defined by <specref ref="semantics-region-layout"/> and
 <specref ref="semantics-line-layout"/>, respectively, and
 (3) implements presentation semantics for the following features:</p>
 <ulist>
-<item><p><loc href="#content"><code>#content</code></loc></p></item>
+<item><p><loc href="#feature-content"><code>#content</code></loc></p></item>
 <item><p><loc href="#feature-core"><code>#core</code></loc></p></item>
 <item><p><loc href="#feature-profile"><code>#profile</code></loc></p></item>
 <item><p><loc href="#feature-structure"><code>#structure</code></loc></p></item>
@@ -10343,16 +10384,12 @@ attribute.</p>
 </div3>
 <div3 id="feature-textOutline">
 <head>#textOutline</head>
-<p>A TTML transformation processor supports the
-<code>#textOutline</code> feature if it recognizes and is capable of
-transforming the <loc
-href="#style-attribute-textOutline"><att>tts:textOutline</att></loc>
-attribute.</p>
-<p>A TTML presentation processor supports the
-<code>#textOutline</code> feature if it implements presentation semantic support
-for the <loc
-href="#style-attribute-textOutline"><att>tts:textOutline</att></loc>
-attribute.</p>
+<p>A TTML processor supports the <code>#textOutline</code> feature if it
+supports the following features:</p>
+<ulist>
+<item><p><loc href="#feature-textOutline-blurred"><code>#textOutline-blurred</code></loc></p></item>
+<item><p><loc href="#feature-textOutline-unblurred"><code>#textOutline-unblurred</code></loc></p></item>
+</ulist>
 </div3>
 <div3 id="feature-textOutline-blurred">
 <head>#textOutline-blurred</head>
@@ -10558,7 +10595,7 @@ same vocabulary enumerated above.</p>
 <specref ref="conformance-generic-processor"/> and
 (2) implements the transformation semantics of the following features:</p>
 <ulist>
-<item><p><loc href="#content"><code>#content</code></loc></p></item>
+<item><p><loc href="#feature-content"><code>#content</code></loc></p></item>
 <item><p><loc href="#feature-core"><code>#core</code></loc></p></item>
 <item><p><loc href="#feature-profile"><code>#profile</code></loc></p></item>
 <item><p><loc href="#feature-structure"><code>#structure</code></loc></p></item>
@@ -10652,16 +10689,12 @@ attribute.</p>
 </div3>
 <div3 id="feature-writingMode">
 <head>#writingMode</head>
-<p>A TTML transformation processor supports the
-<code>#writingMode</code> feature if it recognizes and is capable
-of transforming all defined values of the <loc
-href="#style-attribute-writingMode"><att>tts:writingMode</att></loc>
-attribute.</p>
-<p>A TTML presentation processor supports the
-<code>#writingMode</code> feature if it implements presentation semantic support
-for all defined values of the <loc
-href="#style-attribute-writingMode"><att>tts:writingMode</att></loc>
-attribute.</p>
+<p>A TTML processor supports the <code>#writingMode</code> feature if it
+supports the following features:</p>
+<ulist>
+<item><p><loc href="#feature-writingMode-horizontal"><code>#writingMode-horizontal</code></loc></p></item>
+<item><p><loc href="#feature-writingMode-vertical"><code>#writingMode-vertical</code></loc></p></item>
+</ulist>
 </div3>
 <div3 id="feature-writingMode-vertical">
 <head>#writingMode-vertical</head>
@@ -10680,18 +10713,12 @@ attribute.</p>
 </div3>
 <div3 id="feature-writingMode-horizontal">
 <head>#writingMode-horizontal</head>
-<p>A TTML transformation processor supports the
-<code>#writingMode-horizontal</code> feature if it recognizes and is
-capable of transforming the <code>lrtb</code>, <code>rltb</code>,
-<code>lr</code> and <code>rl</code> values of the <loc
-href="#style-attribute-writingMode"><att>tts:writingMode</att></loc>
-attribute.</p>
-<p>A TTML presentation processor supports the
-<code>#writingMode-horizontal</code> feature if it implements presentation semantic
-support for the <code>lrtb</code>, <code>rltb</code>, <code>lr</code>
-and <code>rl</code> values of the <loc
-href="#style-attribute-writingMode"><att>tts:writingMode</att></loc>
-attribute.</p>
+<p>A TTML processor supports the <code>#writingMode-horizontal</code> feature if it
+supports the following features:</p>
+<ulist>
+<item><p><loc href="#feature-writingMode-horizontal-lr"><code>#writingMode-horizontal-lr</code></loc></p></item>
+<item><p><loc href="#feature-writingMode-horizontal-rl"><code>#writingMode-horizontal-rl</code></loc></p></item>
+</ulist>
 </div3>
 <div3 id="feature-writingMode-horizontal-lr">
 <head>#writingMode-horizontal-lr</head>
