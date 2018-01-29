@@ -179,9 +179,25 @@
       </fileset>
     </schemavalidate>
   </target>
+  
+  <target name="validate-example-4" description="Validates Example 4.">
+    <!-- validate using RNC schema -->
+    <java fork="true" jar="${jing.jar}">
+      <arg value="-c"/>
+      <arg value="${rnc.schema}"/>
+      <arg value="${examples.dir}/ex4-overflow.xml"/>
+    </java>
+    <!-- validate using XSD schema -->
+    <schemavalidate fullchecking="true" warn="true">
+      <schema namespace="http://www.w3.org/ns/ttml" file="${xsd.schema}"/>
+      <fileset dir="${examples.dir}">
+        <include name="ex4-overflow.xml"/>
+      </fileset>
+    </schemavalidate>
+  </target>
 
   <target name="validate-examples"
-	    depends="validate-example-1, validate-example-2, validate-example-3"/>
+	    depends="validate-example-1, validate-example-2, validate-example-3, validate-example-4"/>
 
   <target name="validate-xsl" description="Validates all XML files.">
     <xmlvalidate lenient="true">
@@ -274,7 +290,7 @@
   </target>
 
   <target name="generate" description="Generate the specification"
-	    depends="generate-schema-archives,validate-tt-specs,html,kwexpand">
+	    depends="generate-schema-archives,validate,html,kwexpand">
   </target>
 
   <target name="sg" description="Shortened generation of the specification, but without rebuilding escapes and expanding keywords."
@@ -282,7 +298,7 @@
   </target>
 
   <target name="rg" description="Regenerate using shortened generation and expands keywords."
-            depends="sg, kwexpand">
+      depends="sg, kwexpand">
   </target>
   
   <target name="build" description="Build the specification for publication" depends="generate">

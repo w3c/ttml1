@@ -42,6 +42,7 @@
 <!ENTITY ttml-ex2-pop-on SYSTEM "./examples/ex2-pop-on.xml.esc">
 <!ENTITY ttml-ex2-roll-up SYSTEM "./examples/ex2-roll-up.xml.esc">
 <!ENTITY ttml-ex2-paint-on SYSTEM "./examples/ex2-paint-on.xml.esc">
+<!ENTITY ttml-ex4-overflow SYSTEM "./examples/ex4-overflow.xml.esc">
 <!ENTITY profile-dfxp-presentation SYSTEM "./profiles/dfxp-presentation.xml.esc">
 <!ENTITY profile-dfxp-transformation SYSTEM "./profiles/dfxp-transformation.xml.esc">
 <!ENTITY profile-dfxp-full SYSTEM "./profiles/dfxp-full.xml.esc">
@@ -1097,6 +1098,38 @@ conformant <emph>Document Instance</emph>, a given <emph>Document Instance</emph
 constrained by the author or authoring tool to satisfy a more
 restrictive definition of validity.</p>
 </note>
+<note>
+<p>As illustrated in the following example, an <emph>Abstract Document Instance</emph> can be a <emph>Valid Abstract Document Instance</emph> even if it includes elements and attributes whose namespace names are listed in <specref ref="namespace-vocab-table"/> but whose local names 
+are not part of the vocabulary defined by this version of the specification. Specifically, the element <code>foo</code> and the attribute <att>tts:foo</att> 
+are pruned by above steps (1) and (3), respectively, because they are not members of the associated <emph>Abstract Document Type</emph>, even though their 
+namespace names are listed in <specref ref="namespace-vocab-table"/>.
+</p>
+<table id="document-types-example" role="example">
+<caption>Example Fragment &ndash; Pruning of elements and attributes that are not members of the associated <emph>Abstract Document Type</emph></caption>
+<tbody>
+<tr>
+<td>
+<eg xml:space="preserve">
+&lt;tt
+  xmlns=&quot;http://www.w3.org/ns/ttml&quot;
+  xmlns:tts=&quot;http://www.w3.org/ns/ttml#styling&quot;
+  xml:lang=&quot;en&quot;&gt;
+  &lt;body&gt;
+    &lt;foo&gt;Foo&lt;/foo&gt;
+    &lt;div&gt;
+      &lt;p
+        tts:foo=&quot;bar&quot;&gt;
+          Bar
+      &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/tt&gt;
+</eg>
+</td>
+</tr>
+</tbody>
+</table>
+</note>
 <div2 id="ttml-content-doctype">
 <head>TTML Content</head>
 <p>TTML Content is an <emph>Abstract Document Type</emph> of a profile of the Timed Text Markup Language intended
@@ -1131,6 +1164,9 @@ formal validity of a <emph>Document Instance</emph> to be based on an <emph>Abst
 which all foreign namespace elements and attributes have been removed. Therefore, the
 exceptional reporting of this false negative does not impact the formal assessment
 of <emph>Document Instance</emph> validity.</p>
+</note>
+<note role="clarification">
+<p>The schemas referenced by this specification are intended for use after the pruning steps (1)-(3) specified by <specref ref="doctypes"/> have been applied.</p>
 </note>
 </div2>
 </div1>
@@ -3095,7 +3131,7 @@ followed by
 zero or more intermixed
 <code>span</code> elements,
 <code>br</code> elements,
-or text nodes interpreted as an anonymous spans.</p>
+or text nodes.</p>
 <p>Any metadata specified by children in the <code>Metadata.class</code>
 element group applies semantically to the <el>p</el> element and its descendants as a whole.</p>
 <p>Any animation elements specified by children in the <code>Animation.class</code>
@@ -3167,7 +3203,7 @@ followed by
 zero or more intermixed
 <el>span</el> elements,
 <el>br</el> elements,
-or text nodes interpreted as anonymous spans.</p>
+or text nodes.</p>
 <p>Any metadata specified by children in the <code>Metadata.class</code>
 element group applies semantically to the <el>span</el> element and its descendants as a whole.</p>
 <p>Any animation elements specified by children in the <code>Animation.class</code>
@@ -4970,41 +5006,7 @@ then a presentation processor must use the value <code>hidden</code>.</p>
 <tbody>
 <tr>
 <td>
-<eg xml:space="preserve">
-&lt;region xml:id="r1"&gt;
-  &lt;style tts:extent="232px 40px"/&gt;
-  &lt;style tts:origin="0px 0px"/&gt;
-  &lt;style tts:backgroundColor="black"/&gt;
-  &lt;style tts:color="red"/&gt;
-  &lt;style tts:displayAlign="before"/&gt;
-  &lt;style tts:textAlign="start"/&gt;
-  &lt;style tts:fontFamily="proportionalSansSerif"/&gt;
-  &lt;style tts:fontSize="18px"/&gt;
-  &lt;style tts:wrapOption="noWrap"/&gt;
-  &lt;style <phrase role="strong">tts:overflow="visible"</phrase>/&gt;
-&lt;/region&gt;
-&lt;region xml:id="r2"&gt;
-  &lt;style tts:extent="232px 40px"/&gt;
-  &lt;style tts:origin="0px 43px"/&gt;
-  &lt;style tts:backgroundColor="black"/&gt;
-  &lt;style tts:color="red"/&gt;
-  &lt;style tts:displayAlign="before"/&gt;
-  &lt;style tts:textAlign="start"/&gt;
-  &lt;style tts:fontFamily="proportionalSansSerif"/&gt;
-  &lt;style tts:fontSize="18px"/&gt;
-  &lt;style tts:wrapOption="noWrap"/&gt;
-  &lt;style <phrase role="strong">tts:overflow="hidden"</phrase>/&gt;
-&lt;/region&gt;
-...
-&lt;p region="r1"&gt;
-  "But wait a bit," the Oysters cried,&lt;br/&gt;
-  "Before we have our chat;
-&lt;/p&gt;
-&lt;p region="r2"&gt;
-  For some of us are out of breath,&lt;br/&gt;
-  And all of us are fat!"
-&lt;/p&gt;
-</eg>
+<eg xml:space="preserve">&ttml-ex4-overflow;</eg>
 </td>
 </tr>
 </tbody>
@@ -6207,8 +6209,8 @@ defined by <bibref ref="srgb"/>.</p>
 &lt;color&gt;
   : "#" rrggbb
   | "#" rrggbbaa
-  | "rgb" "(" r-value "," g-value "," b-value ")"
-  | "rgba" "(" r-value "," g-value "," b-value "," a-value ")"
+  | "rgb(" r-value "," g-value "," b-value ")"
+  | "rgba(" r-value "," g-value "," b-value "," a-value ")"
   | <loc href="#style-value-namedColor">&lt;namedColor&gt;</loc>
 
 rrggbb
@@ -6230,6 +6232,12 @@ non-negative-integer
 </tr>
 </tbody>
 </table>
+<note role="clarification">
+<p>While permitted, the use of linear whitespace (LWSP) around the comma delimiters in 
+<code>&lt;color&gt;</code> expressions is not recommended. The rationale for this recommendation 
+is that some existing processors may not be tolerant of this usage.
+</p>
+</note>
 <p>When expressing RGB component values, these values are considered
 to <phrase role="strong">not</phrase> be premultiplied by alpha.</p>
 <p>For the purpose of performing presentation processing such that
@@ -7446,6 +7454,32 @@ attribute are implied. In addition, a <el>layout</el> container element is impli
 the implied <el>region</el> element.</p>
 </note>
 </div3>
+<div3 id="anonymous-span-construction">
+<head>Anonymous Span Construction</head>
+<p>For the purposes of performing presentation processing, anonymous spans are created
+according to the following <phrase role="strong">[construct anonymous spans]</phrase> 
+procedure:</p>
+<glist>
+<gitem>
+<label>[construct anonymous spans]</label>
+<def>
+<olist>
+<item><p>for each significant text node in a <loc href="#element-vocab-type-content">Content</loc> element,
+synthesize an anonymous span to enclose the text node, substituting
+the new anonymous span for the original text node child in its sibling
+and parent hierarchy;</p></item>
+<item><p>for each contiguous sequence of anonymous spans, replace the
+sequence with a single anonymous span which contains a sequence of
+text nodes representing the individual text node children of the
+original sequence of anonymous spans;</p></item>
+<item><p>for each span element whose child is a single anonymous span,
+replace the anonymous span with its sequence of child text
+nodes;</p></item>
+</olist>
+</def>
+</gitem>
+</glist>
+</div3>
 <div3 id="semantics-region-layout-step-1">
 <head>Intermediate Synchronic Document Construction</head>
 <p>For the purposes of performing presentation processing, the active time
@@ -7472,7 +7506,7 @@ headed by the <el>body</el> element;</p>
 <p>evaluating this sub-tree in a postorder traversal, prune elements if any of the following conditions is true:
 <olist>
 <item><p>they are neither <loc href="#element-vocab-type-content">Content</loc> nor <loc href="#element-vocab-type-animation">Animation</loc> elements; or</p></item>
-<item><p>they are temporally inactive; or</p></item>
+<item><p>they are temporally inactive but not <loc href="#content-vocabulary-br">br</loc> elements; or</p></item>
 <item><p>they are empty and neither <loc href="#element-vocab-type-animation">Animation</loc> elements nor <loc href="#content-vocabulary-br">br</loc> elements; or</p></item>
 <item><p>they are <loc href="#element-vocab-type-content">Content</loc> elements and aren't associated with region <emph>R</emph> according to the <phrase role="strong">[associate region]</phrase> procedure.</p></item>
 </olist>
@@ -7562,20 +7596,7 @@ ref="semantics-region-layout-step-1"/> is mapped
 to an XSL FO document instance, <emph>F</emph>, as follows:</p>
 <olist>
 <item>
-<p>perform the following ordered sub-steps to create anonymous spans:</p>
-<olist>
-<item><p>for each significant text node in a <loc href="#element-vocab-type-content">Content</loc> element,
-synthesize an anonymous span to enclose the text node, substituting
-the new anonymous span for the original text node child in its sibling
-and parent hierarchy;</p></item>
-<item><p>for each contiguous sequence of anonymous spans, replace the
-sequence with a single anonymous span which contains a sequence of
-text nodes representing the individual text node children of the
-original sequence of anonymous spans;</p></item>
-<item><p>for each span element whose child is a single anonymous span,
-replace the anonymous span with its sequence of child text
-nodes;</p></item>
-</olist>
+<p>perform the <phrase role="strong">[construct anonymous spans]</phrase> procedure;</p>
 </item>
 <item>
 <p>resolve styles according to <specref
@@ -8059,17 +8080,19 @@ vocabulary defined by this specification, given the following
 constraints:</p>
 <ulist>
 <item>
-<p>The implicit duration of an anonymous span is defined as follows: if
-the anonymous span's parent time container is a parallel time container, then
+<p>The implicit duration of an anonymous span, a <el>set</el> element, or a <el>span</el> 
+element whose children 
+are exclusively text nodes, is defined as follows: if
+the span's parent time container is a parallel time container, then
 the implicit duration is equivalent to the <code>indefinite</code>
-duration value as defined by <bibref ref="smil21"/>; if the anonymous span's
+duration value as defined by <bibref ref="smil21"/>; if the span's
 parent time container is a sequential time container, then the implicit duration
 is equivalent to zero.</p>
 </item>
 <item>
-<p>The implicit duration of a <el>body</el>, <el>div</el>, <el>p</el>,
-or <el>span</el> element is determined in accordance to (1) whether
-the element is a parallel or sequential time container, (2) the default
+<p>The implicit duration of a <el>body</el> element, <el>div</el> element, <el>p</el> element,
+or <el>span</el> element whose children are not exclusively text nodes, is determined in 
+accordance to (1) whether the element is a parallel or sequential time container, (2) the default
 <code>endsync</code> semantics defined above by <specref ref="timing-attribute-timeContainer"/>,
 and (3) the semantics of <bibref ref="smil21"/> as applied to these time
 containers.</p>
@@ -8098,6 +8121,38 @@ based timing or event based timing in <bibref ref="smil21"/>, where the specific
 <specref ref="time-expression-semantics-smpte"/> apply.</p>
 </item>
 </ulist>
+<p>For the purposes of performing presentation processing, the <phrase role="strong">
+[construct anonymous spans]</phrase> procedure is applied before resolving begin and end times of content elements.</p>
+<p>The following example illustrates the timing semantics of anonymous spans that are children of sequential and parallel time containers. 
+The words <emph>Hello</emph> and <emph>Allo</emph> are both contained in anonymous spans that are children of a sequential 
+time container (the <code>p</code> element). As such, neither <emph>Hello</emph> nor <emph>Allo</emph> will be displayed 
+since the implicit duration of the anonymous spans is 0. In contrast, the anonymous span that contains the word <emph>Guten</emph> 
+and the innermost <code>span</code> that contains the word <emph>Tag</emph> are children of an element with parallel time container 
+semantics (the outermost <code>span</code> element).
+As a result, both <emph>Guten</emph> and <emph>Tag</emph> will be displayed since the implicit duration of their respective parent anonymous span 
+and <code>span</code> element are indefinite, resulting in the implicit duration of 
+its <code>span</code>, <code>p</code>, <code>div</code> and <code>body</code> ancestors to also be indefinite.</p>
+<table id="timing-intervals-example-1" role="example">
+<caption>Example Fragment &ndash; Timing of Anonymous Spans in a Sequential and Parallel Time Containers</caption>
+<tbody>
+<tr>
+<td>
+<eg xml:space="preserve">
+...
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;p timeContainer=&quot;seq&quot;&gt;
+      Hello
+      &lt;span&gt;Guten &lt;span&gt;Tag&lt;/span&gt;&lt;/span&gt;
+      Allo
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+</eg>
+</td>
+</tr>
+</tbody>
+</table>
 </div2>
 </div1>
 <div1 id="animation">
@@ -10074,7 +10129,7 @@ semantics defined by <specref ref="semantics-region-layout"/> and
 <specref ref="semantics-line-layout"/>, respectively, and
 (3) implements presentation semantics for the following features:</p>
 <ulist>
-<item><p><loc href="#content"><code>#content</code></loc></p></item>
+<item><p><loc href="#feature-content"><code>#content</code></loc></p></item>
 <item><p><loc href="#feature-core"><code>#core</code></loc></p></item>
 <item><p><loc href="#feature-profile"><code>#profile</code></loc></p></item>
 <item><p><loc href="#feature-structure"><code>#structure</code></loc></p></item>
@@ -10333,16 +10388,12 @@ attribute.</p>
 </div3>
 <div3 id="feature-textOutline">
 <head>#textOutline</head>
-<p>A TTML transformation processor supports the
-<code>#textOutline</code> feature if it recognizes and is capable of
-transforming the <loc
-href="#style-attribute-textOutline"><att>tts:textOutline</att></loc>
-attribute.</p>
-<p>A TTML presentation processor supports the
-<code>#textOutline</code> feature if it implements presentation semantic support
-for the <loc
-href="#style-attribute-textOutline"><att>tts:textOutline</att></loc>
-attribute.</p>
+<p>A TTML processor supports the <code>#textOutline</code> feature if it
+supports the following features:</p>
+<ulist>
+<item><p><loc href="#feature-textOutline-blurred"><code>#textOutline-blurred</code></loc></p></item>
+<item><p><loc href="#feature-textOutline-unblurred"><code>#textOutline-unblurred</code></loc></p></item>
+</ulist>
 </div3>
 <div3 id="feature-textOutline-blurred">
 <head>#textOutline-blurred</head>
@@ -10548,7 +10599,7 @@ same vocabulary enumerated above.</p>
 <specref ref="conformance-generic-processor"/> and
 (2) implements the transformation semantics of the following features:</p>
 <ulist>
-<item><p><loc href="#content"><code>#content</code></loc></p></item>
+<item><p><loc href="#feature-content"><code>#content</code></loc></p></item>
 <item><p><loc href="#feature-core"><code>#core</code></loc></p></item>
 <item><p><loc href="#feature-profile"><code>#profile</code></loc></p></item>
 <item><p><loc href="#feature-structure"><code>#structure</code></loc></p></item>
@@ -10642,16 +10693,12 @@ attribute.</p>
 </div3>
 <div3 id="feature-writingMode">
 <head>#writingMode</head>
-<p>A TTML transformation processor supports the
-<code>#writingMode</code> feature if it recognizes and is capable
-of transforming all defined values of the <loc
-href="#style-attribute-writingMode"><att>tts:writingMode</att></loc>
-attribute.</p>
-<p>A TTML presentation processor supports the
-<code>#writingMode</code> feature if it implements presentation semantic support
-for all defined values of the <loc
-href="#style-attribute-writingMode"><att>tts:writingMode</att></loc>
-attribute.</p>
+<p>A TTML processor supports the <code>#writingMode</code> feature if it
+supports the following features:</p>
+<ulist>
+<item><p><loc href="#feature-writingMode-horizontal"><code>#writingMode-horizontal</code></loc></p></item>
+<item><p><loc href="#feature-writingMode-vertical"><code>#writingMode-vertical</code></loc></p></item>
+</ulist>
 </div3>
 <div3 id="feature-writingMode-vertical">
 <head>#writingMode-vertical</head>
@@ -10670,18 +10717,12 @@ attribute.</p>
 </div3>
 <div3 id="feature-writingMode-horizontal">
 <head>#writingMode-horizontal</head>
-<p>A TTML transformation processor supports the
-<code>#writingMode-horizontal</code> feature if it recognizes and is
-capable of transforming the <code>lrtb</code>, <code>rltb</code>,
-<code>lr</code> and <code>rl</code> values of the <loc
-href="#style-attribute-writingMode"><att>tts:writingMode</att></loc>
-attribute.</p>
-<p>A TTML presentation processor supports the
-<code>#writingMode-horizontal</code> feature if it implements presentation semantic
-support for the <code>lrtb</code>, <code>rltb</code>, <code>lr</code>
-and <code>rl</code> values of the <loc
-href="#style-attribute-writingMode"><att>tts:writingMode</att></loc>
-attribute.</p>
+<p>A TTML processor supports the <code>#writingMode-horizontal</code> feature if it
+supports the following features:</p>
+<ulist>
+<item><p><loc href="#feature-writingMode-horizontal-lr"><code>#writingMode-horizontal-lr</code></loc></p></item>
+<item><p><loc href="#feature-writingMode-horizontal-rl"><code>#writingMode-horizontal-rl</code></loc></p></item>
+</ulist>
 </div3>
 <div3 id="feature-writingMode-horizontal-lr">
 <head>#writingMode-horizontal-lr</head>
