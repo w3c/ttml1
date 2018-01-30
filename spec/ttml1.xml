@@ -3715,9 +3715,8 @@ represented by this attribute are based upon that defined by <bibref ref="xsl11"
 </div3>
 <div3 id="style-attribute-direction">
 <head>tts:direction</head>
-<p>The <att>tts:direction</att> attribute is used to specify a style property that
-defines the directionality of an embedding or override according to
-the Unicode bidirectional algorithm.</p>
+<p>The <att>tts:direction</att> attribute is used to specify a style property that, depending on the context of use,
+determines (1) the bidirectional paragraph level, or (2) the directionality of a bidirectional embedding or override.</p>
 <p>This attribute may be specified by any
 element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
@@ -3764,7 +3763,10 @@ as a style property only to those element types indicated in the following table
 each character child of a <el>p</el> element is considered to be enclosed in an anonymous
 span.</p>
 <p>When applied to a <el>p</el> element, the computed value of this property explicitly establishes the
-<emph>paragraph embedding level</emph> as specified by  <bibref ref="uax9"/>, &sect; 4.3, Rule <phrase role="strong">HL1</phrase>.</p>
+<emph>paragraph level</emph> as specified by <bibref ref="uax9"/>, &sect; 4.3, Higher Level Protocol <phrase role="strong">HL1</phrase>.</p>
+<p>When applied to a <el>span</el> element (or anonymous span), the computed value of this property, in combination with the computed value
+of the <att>tts:unicodeBidi</att> style property, determines the directionality of a bidirectional embedding or override as specified by
+<bibref ref="uax9"/>, &sect; 4.3, Higher Level Protocol <phrase role="strong">HL3</phrase>.</p>
 <p>If a computed value of the property associated with this attribute is not supported,
 then a presentation processor must use the value <code>ltr</code>.</p>
 <p>The <att>tts:direction</att> style is illustrated by the following example.</p>
