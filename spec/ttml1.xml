@@ -42,6 +42,7 @@
 <!ENTITY ttml-ex2-pop-on SYSTEM "./examples/ex2-pop-on.xml.esc">
 <!ENTITY ttml-ex2-roll-up SYSTEM "./examples/ex2-roll-up.xml.esc">
 <!ENTITY ttml-ex2-paint-on SYSTEM "./examples/ex2-paint-on.xml.esc">
+<!ENTITY ttml-ex4-overflow SYSTEM "./examples/ex4-overflow.xml.esc">
 <!ENTITY profile-dfxp-presentation SYSTEM "./profiles/dfxp-presentation.xml.esc">
 <!ENTITY profile-dfxp-transformation SYSTEM "./profiles/dfxp-transformation.xml.esc">
 <!ENTITY profile-dfxp-full SYSTEM "./profiles/dfxp-full.xml.esc">
@@ -3256,6 +3257,10 @@ a <el>span</el> element, then it must be interpreted as having
 element group applies semantically to the <el>br</el> element and its descendants as a whole.</p>
 <p>Any animation elements specified by children in the <code>Animation.class</code>
 element group apply semantically to the <el>br</el> element.</p>
+<note role="clarification">
+<p>While permitted, the use of <code>Animation.class</code> children is not recommended since timing 
+vocabulary does not apply to the <el>br</el> element. Instead, animating a <el>br</el> element can be achieved by wrapping it in an animated <el>span</el> element.</p>
+</note>
 <table id="elt-syntax-br" role="syntax">
 <caption>XML Representation &ndash; Element Information Item: br</caption>
 <tbody>
@@ -3750,9 +3755,8 @@ represented by this attribute are based upon that defined by <bibref ref="xsl11"
 </div3>
 <div3 id="style-attribute-direction">
 <head>tts:direction</head>
-<p>The <att>tts:direction</att> attribute is used to specify a style property that
-defines the directionality of an embedding or override according to
-the Unicode bidirectional algorithm.</p>
+<p>The <att>tts:direction</att> attribute is used to specify a style property that, depending on the context of use,
+determines (1) the bidirectional paragraph level, or (2) the directionality of a bidirectional embedding or override.</p>
 <p>This attribute may be specified by any
 element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
@@ -3798,6 +3802,11 @@ as a style property only to those element types indicated in the following table
 <p>For the purpose of determining applicability of this style property,
 each character child of a <el>p</el> element is considered to be enclosed in an anonymous
 span.</p>
+<p>When applied to a <el>p</el> element, the computed value of this property explicitly establishes the
+<emph>paragraph level</emph> as specified by <bibref ref="uax9"/>, &sect; 4.3, Higher Level Protocol <phrase role="strong">HL1</phrase>.</p>
+<p>When applied to a <el>span</el> element (or anonymous span), the computed value of this property, in combination with the computed value
+of the <att>tts:unicodeBidi</att> style property, determines the directionality of a bidirectional embedding or override as specified by
+<bibref ref="uax9"/>, &sect; 4.3, Higher Level Protocol <phrase role="strong">HL3</phrase>.</p>
 <p>If a computed value of the property associated with this attribute is not supported,
 then a presentation processor must use the value <code>ltr</code>.</p>
 <p>The <att>tts:direction</att> style is illustrated by the following example.</p>
@@ -5001,41 +5010,7 @@ then a presentation processor must use the value <code>hidden</code>.</p>
 <tbody>
 <tr>
 <td>
-<eg xml:space="preserve">
-&lt;region xml:id="r1"&gt;
-  &lt;style tts:extent="232px 40px"/&gt;
-  &lt;style tts:origin="0px 0px"/&gt;
-  &lt;style tts:backgroundColor="black"/&gt;
-  &lt;style tts:color="red"/&gt;
-  &lt;style tts:displayAlign="before"/&gt;
-  &lt;style tts:textAlign="start"/&gt;
-  &lt;style tts:fontFamily="proportionalSansSerif"/&gt;
-  &lt;style tts:fontSize="18px"/&gt;
-  &lt;style tts:wrapOption="noWrap"/&gt;
-  &lt;style <phrase role="strong">tts:overflow="visible"</phrase>/&gt;
-&lt;/region&gt;
-&lt;region xml:id="r2"&gt;
-  &lt;style tts:extent="232px 40px"/&gt;
-  &lt;style tts:origin="0px 43px"/&gt;
-  &lt;style tts:backgroundColor="black"/&gt;
-  &lt;style tts:color="red"/&gt;
-  &lt;style tts:displayAlign="before"/&gt;
-  &lt;style tts:textAlign="start"/&gt;
-  &lt;style tts:fontFamily="proportionalSansSerif"/&gt;
-  &lt;style tts:fontSize="18px"/&gt;
-  &lt;style tts:wrapOption="noWrap"/&gt;
-  &lt;style <phrase role="strong">tts:overflow="hidden"</phrase>/&gt;
-&lt;/region&gt;
-...
-&lt;p region="r1"&gt;
-  "But wait a bit," the Oysters cried,&lt;br/&gt;
-  "Before we have our chat;
-&lt;/p&gt;
-&lt;p region="r2"&gt;
-  For some of us are out of breath,&lt;br/&gt;
-  And all of us are fat!"
-&lt;/p&gt;
-</eg>
+<eg xml:space="preserve">&ttml-ex4-overflow;</eg>
 </td>
 </tr>
 </tbody>
@@ -10417,16 +10392,12 @@ attribute.</p>
 </div3>
 <div3 id="feature-textOutline">
 <head>#textOutline</head>
-<p>A TTML transformation processor supports the
-<code>#textOutline</code> feature if it recognizes and is capable of
-transforming the <loc
-href="#style-attribute-textOutline"><att>tts:textOutline</att></loc>
-attribute.</p>
-<p>A TTML presentation processor supports the
-<code>#textOutline</code> feature if it implements presentation semantic support
-for the <loc
-href="#style-attribute-textOutline"><att>tts:textOutline</att></loc>
-attribute.</p>
+<p>A TTML processor supports the <code>#textOutline</code> feature if it
+supports the following features:</p>
+<ulist>
+<item><p><loc href="#feature-textOutline-blurred"><code>#textOutline-blurred</code></loc></p></item>
+<item><p><loc href="#feature-textOutline-unblurred"><code>#textOutline-unblurred</code></loc></p></item>
+</ulist>
 </div3>
 <div3 id="feature-textOutline-blurred">
 <head>#textOutline-blurred</head>
@@ -10726,16 +10697,12 @@ attribute.</p>
 </div3>
 <div3 id="feature-writingMode">
 <head>#writingMode</head>
-<p>A TTML transformation processor supports the
-<code>#writingMode</code> feature if it recognizes and is capable
-of transforming all defined values of the <loc
-href="#style-attribute-writingMode"><att>tts:writingMode</att></loc>
-attribute.</p>
-<p>A TTML presentation processor supports the
-<code>#writingMode</code> feature if it implements presentation semantic support
-for all defined values of the <loc
-href="#style-attribute-writingMode"><att>tts:writingMode</att></loc>
-attribute.</p>
+<p>A TTML processor supports the <code>#writingMode</code> feature if it
+supports the following features:</p>
+<ulist>
+<item><p><loc href="#feature-writingMode-horizontal"><code>#writingMode-horizontal</code></loc></p></item>
+<item><p><loc href="#feature-writingMode-vertical"><code>#writingMode-vertical</code></loc></p></item>
+</ulist>
 </div3>
 <div3 id="feature-writingMode-vertical">
 <head>#writingMode-vertical</head>
@@ -10754,18 +10721,12 @@ attribute.</p>
 </div3>
 <div3 id="feature-writingMode-horizontal">
 <head>#writingMode-horizontal</head>
-<p>A TTML transformation processor supports the
-<code>#writingMode-horizontal</code> feature if it recognizes and is
-capable of transforming the <code>lrtb</code>, <code>rltb</code>,
-<code>lr</code> and <code>rl</code> values of the <loc
-href="#style-attribute-writingMode"><att>tts:writingMode</att></loc>
-attribute.</p>
-<p>A TTML presentation processor supports the
-<code>#writingMode-horizontal</code> feature if it implements presentation semantic
-support for the <code>lrtb</code>, <code>rltb</code>, <code>lr</code>
-and <code>rl</code> values of the <loc
-href="#style-attribute-writingMode"><att>tts:writingMode</att></loc>
-attribute.</p>
+<p>A TTML processor supports the <code>#writingMode-horizontal</code> feature if it
+supports the following features:</p>
+<ulist>
+<item><p><loc href="#feature-writingMode-horizontal-lr"><code>#writingMode-horizontal-lr</code></loc></p></item>
+<item><p><loc href="#feature-writingMode-horizontal-rl"><code>#writingMode-horizontal-rl</code></loc></p></item>
+</ulist>
 </div3>
 <div3 id="feature-writingMode-horizontal-lr">
 <head>#writingMode-horizontal-lr</head>
@@ -11652,6 +11613,12 @@ Commission (IEC).
 Agent Accessibility Guidelines 1.0</titleref>, W3C Recommendation, 17
 December 2002. (See
 <xspecref href="http://www.w3.org/TR/2002/REC-UAAG10-20021217/">http://www.w3.org/TR/2002/REC-UAAG10-20021217/</xspecref>.)
+</bibl>
+<bibl id="uax9" key="UAX9">M. Davis, A. Lanin, and A. Glass, <titleref
+href="http://www.unicode.org/reports/tr9/tr9-37.html">Unicode Bidirectional
+Algorithm</titleref>, Unicode Consortium, 14 May 2017. (See
+<xspecref
+href="http://www.unicode.org/reports/tr9/tr9-37.html">http://www.unicode.org/reports/tr9/tr9-37.html</xspecref>.)
 </bibl>
 <bibl id="uax14" key="UAX14">Asmus Freytag, <titleref
 href="http://www.unicode.org/reports/tr14/tr14-17.html">Line Breaking
