@@ -3755,9 +3755,8 @@ represented by this attribute are based upon that defined by <bibref ref="xsl11"
 </div3>
 <div3 id="style-attribute-direction">
 <head>tts:direction</head>
-<p>The <att>tts:direction</att> attribute is used to specify a style property that
-defines the directionality of an embedding or override according to
-the Unicode bidirectional algorithm.</p>
+<p>The <att>tts:direction</att> attribute is used to specify a style property that, depending on the context of use,
+determines (1) the bidirectional paragraph level, or (2) the directionality of a bidirectional embedding or override.</p>
 <p>This attribute may be specified by any
 element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
@@ -3803,6 +3802,11 @@ as a style property only to those element types indicated in the following table
 <p>For the purpose of determining applicability of this style property,
 each character child of a <el>p</el> element is considered to be enclosed in an anonymous
 span.</p>
+<p>When applied to a <el>p</el> element, the computed value of this property explicitly establishes the
+<emph>paragraph level</emph> as specified by <bibref ref="uax9"/>, &sect; 4.3, Higher Level Protocol <phrase role="strong">HL1</phrase>.</p>
+<p>When applied to a <el>span</el> element (or anonymous span), the computed value of this property, in combination with the computed value
+of the <att>tts:unicodeBidi</att> style property, determines the directionality of a bidirectional embedding or override as specified by
+<bibref ref="uax9"/>, &sect; 4.3, Higher Level Protocol <phrase role="strong">HL3</phrase>.</p>
 <p>If a computed value of the property associated with this attribute is not supported,
 then a presentation processor must use the value <code>ltr</code>.</p>
 <p>The <att>tts:direction</att> style is illustrated by the following example.</p>
@@ -11610,6 +11614,12 @@ Agent Accessibility Guidelines 1.0</titleref>, W3C Recommendation, 17
 December 2002. (See
 <xspecref href="http://www.w3.org/TR/2002/REC-UAAG10-20021217/">http://www.w3.org/TR/2002/REC-UAAG10-20021217/</xspecref>.)
 </bibl>
+<bibl id="uax9" key="UAX9">M. Davis, A. Lanin, and A. Glass, <titleref
+href="http://www.unicode.org/reports/tr9/tr9-37.html">Unicode Bidirectional
+Algorithm</titleref>, Unicode Consortium, 14 May 2017. (See
+<xspecref
+href="http://www.unicode.org/reports/tr9/tr9-37.html">http://www.unicode.org/reports/tr9/tr9-37.html</xspecref>.)
+</bibl>
 <bibl id="uax14" key="UAX14">Asmus Freytag, <titleref
 href="http://www.unicode.org/reports/tr14/tr14-17.html">Line Breaking
 Properties</titleref>, Unicode Consortium, 29 August 2005. (See
@@ -11709,6 +11719,9 @@ href="http://www.w3.org/TR/2011/REC-CSS2-20110607/">Cascading
 Style Sheets, Level 2 Revision 1</titleref>, W3C Recommendation, 07 June 2011.
 (See <xspecref href="http://www.w3.org/TR/2011/REC-CSS2-20110607/">http://www.w3.org/TR/2011/REC-CSS2-20110607/</xspecref>.)
 </bibl>
+<bibl id="dash" key="MPEG DASH">ISO/IEC 23009-1,
+<titleref href="http://www.iso.org/">Information technology &ndash; Dynamic adaptive streaming over HTTP (DASH)</titleref>,
+International Organization for Standardization (ISO).</bibl>
 <bibl id="dcmes" key="DCMES 1.1">Dublin Core Metadata Initiative,
 <titleref href="http://dublincore.org/documents/dces/">Dublin Core Metadata Element Set, Version 1.1: Reference Description</titleref>. (See
 <xspecref href="http://dublincore.org/documents/dces/">http://dublincore.org/documents/dces/</xspecref>.)
@@ -13544,10 +13557,16 @@ during playback, presentation timing is not affected.
 </p>
 </note>
 </div2>
+
 <div2 id="time-expression-semantics-media">
 <head>Media Time Base</head>
+
 <p>When operating with the <code>media</code> time base, the following semantics should be applied for interpreting time expressions,
-as defined by <loc href="#timing-value-timeExpression">&lt;timeExpression&gt;</loc>, and their relationship to media time and local real time.</p>
+as defined by <loc href="#timing-value-timeExpression">&lt;timeExpression&gt;</loc>, and their relationship to media time, document time, and local real time.</p>
+
+<div3 id="semantics-media-timing-local-time">
+<head>Relationship to Local Real Time</head>
+
 <p>The media time base <phrase role="strong"><code>M</code></phrase> is related to local real time <phrase role="strong"><code>R</code></phrase>
 expressed in the epoch <phrase role="strong"><code>E</code></phrase> (defined by the <emph>Document Processing Context</emph>) as follows:</p>
 <table id="media-time-and-real-time" role="semantics">
@@ -13580,6 +13599,10 @@ an epoch <code>E</code>, and where the value of <code>epochOffset</code> is the 
 </tr>
 </tbody>
 </table>
+</div3>
+
+<div3 id="semantics-media-timing">
+<head>Relationship to Media Time</head>
 <p>Time value expressions, as denoted by a <loc href="#timing-value-timeExpression">&lt;timeExpression&gt;</loc>, are related to
 media time <phrase role="strong"><code>M</code></phrase> in accordance to the
 <code>ttp:frameRate</code>, <code>ttp:subFrameRate</code>, and <code>ttp:frameRateMultiplier</code> parameters as follows:</p>
@@ -13665,6 +13688,87 @@ and <code>tickRate</code> is the computed value of the <att>ttp:tickRate</att> p
 <p>The above formalisms assumes that the <emph>Root Temporal Extent</emph> corresponds with the beginning of a related media object. If
 this assumption doesn't hold, then an additional offset that accounts for the difference may be introduced when computing media time <code>M</code>.</p>
 </note>
+</div3>
+
+<div3 id="semantics-media-document-timing">
+<head>Relationship to Document Time</head>
+<p>The computed document times are used as the equivalent media times with no offset.</p>
+<note role="clarification"><p>Any additional media time processing imposed by e.g. a wrapper format is out of scope of the TTML specification.</p>
+<p>For example <bibref ref="isobmff"/> and <bibref ref="dash"/> provide mechanisms for wrapping TTML documents as samples or segments and defining the offset of their media timelines relative to other media such as audio or video.</p></note>
+<p>The following document fragments are equivalent in timing:</p>
+<table id="example-fragment-media-timing-1" role="example">
+<caption>Example Fragment &ndash; 1</caption>
+<tbody>
+<tr>
+<td>
+<eg xml:space="preserve">
+&lt;tt ttp:timeBase="media" ...&gt;
+...
+&lt;body&gt;
+   &lt;div xml:id="d1" begin="1s"&gt;
+      &lt;p xml:id="p1" begin="0s" end="1s"&gt;First paragraph&lt;/p&gt;
+      &lt;p xml:id="p2" begin="2s" end="3s"&gt;Second paragraph&lt;/p&gt;
+   &lt;/div&gt;
+&lt;/body&gt;
+&lt;/tt&gt;
+</eg>
+</td>
+</tr>
+</tbody>
+</table>
+<p/>
+<table id="example-fragment-media-timing-2" role="example">
+<caption>Example Fragment &ndash; 2</caption>
+<tbody>
+<tr>
+<td>
+<eg xml:space="preserve">
+&lt;tt ttp:timeBase="media" ...&gt;
+...
+&lt;body&gt;
+   &lt;div xml:id="d1"&gt;
+      &lt;p xml:id="p1" begin="1s" end="2s"&gt;First paragraph&lt;/p&gt;
+      &lt;p xml:id="p2" begin="3s" end="4s"&gt;Second paragraph&lt;/p&gt;
+   &lt;/div&gt;
+&lt;/body&gt;
+&lt;/tt&gt;
+</eg>
+</td>
+</tr>
+</tbody>
+</table>
+<p/>    
+<table id="media-timing-fragment-graphic-1" role="example-images">
+<caption>Timing diagram showing the mapping of document times to media times in the absence of other external information.</caption>
+<col/>
+<tbody>
+<tr>
+<td><graphic id="media-timing-fragment-1-img" source="images/timing_media_1.svg" alt="Media time"/></td>
+</tr>
+<tr>
+  <td>In this example, using the the terminology of <bibref ref="smil21"/>, the implicit duration of the <el>body</el> element is identical to its computed duration which is also the <emph>Root Temporal Extent</emph>.</td>
+</tr>
+</tbody>
+</table>
+  <p>However if the <emph>Document Processing Context</emph> specifies a range of applicable media times, those limit the resolved begin and end times and therefore the <emph>Root Temporal Extent</emph>.</p>
+<p>In the following example the processing context defines that the media time range over which the document is active is from 1.5s to 3.5s, and this defines the Root Temporal Extent since timed content is present at both of those times.</p>    
+<table id="media-timing-fragment-graphic-2" role="example-images">
+<caption>Timing diagram showing the mapping of document times to media times when the media time range is constrained by the processing context.</caption>
+<col/>
+<tbody>
+<tr>
+<td><graphic id="media-timing-fragment-2-img" source="images/timing_media_2.svg" alt="Media time"/></td>
+</tr>
+<tr>
+  <td>The grey background indicates the periods when the <emph>Document Processing Context</emph> defines the document to be inactive.</td>
+</tr>
+  <tr><td>If the document processing context were to define that the media time range is 0-3s then the <emph>Root Temporal Extent</emph> would be from 1s to 2s as defined by p1 and p2 would never be shown.</td>
+</tr>
+</tbody>
+</table>
+</div3>
+
+
 </div2>
 <div2 id="time-expression-semantics-smpte">
 <head>SMPTE Time Base</head>
