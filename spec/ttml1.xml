@@ -3258,8 +3258,8 @@ element group applies semantically to the <el>br</el> element and its descendant
 <p>Any animation elements specified by children in the <code>Animation.class</code>
 element group apply semantically to the <el>br</el> element.</p>
 <note role="clarification">
-<p>While permitted, the use of <code>Animation.class</code> children is not recommended since timing 
-vocabulary does not apply to the <el>br</el> element. Instead, animating a <el>br</el> element can be achieved by wrapping it in an animated <el>span</el> element.</p>
+<p>While permitted, the use of <code>Animation.class</code> children is not recommended since no style property  
+applies to the <el>br</el> element. Instead, animating a <el>br</el> element can be achieved by wrapping it in an animated <el>span</el> element.</p>
 </note>
 <table id="elt-syntax-br" role="syntax">
 <caption>XML Representation &ndash; Element Information Item: br</caption>
@@ -7510,7 +7510,7 @@ headed by the <el>body</el> element;</p>
 <p>evaluating this sub-tree in a postorder traversal, prune elements if any of the following conditions is true:
 <olist>
 <item><p>they are neither <loc href="#element-vocab-type-content">Content</loc> nor <loc href="#element-vocab-type-animation">Animation</loc> elements; or</p></item>
-<item><p>they are temporally inactive but not <loc href="#content-vocabulary-br">br</loc> elements; or</p></item>
+<item><p>they are temporally inactive; or</p></item>
 <item><p>they are empty and neither <loc href="#element-vocab-type-animation">Animation</loc> elements nor <loc href="#content-vocabulary-br">br</loc> elements; or</p></item>
 <item><p>they are <loc href="#element-vocab-type-content">Content</loc> elements and aren't associated with region <emph>R</emph> according to the <phrase role="strong">[associate region]</phrase> procedure.</p></item>
 </olist>
@@ -8084,7 +8084,7 @@ vocabulary defined by this specification, given the following
 constraints:</p>
 <ulist>
 <item>
-<p>The implicit duration of an anonymous span, a <el>set</el> element, or a <el>span</el> 
+<p>The implicit duration of an anonymous span, a <el>br</el> element, a <el>set</el> element, or a <el>span</el> 
 element whose children 
 are exclusively text nodes, is defined as follows: if
 the parent time container is a parallel time container, then
