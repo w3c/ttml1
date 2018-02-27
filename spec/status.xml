@@ -16,13 +16,13 @@ Please send them to <loc href="mailto:public-tt@w3.org">public-tt@w3.org</loc>
 at the start of your email's 
 subject. W3C publishes a Candidate Recommendation to indicate that the document is believed to be stable 
 and to encourage implementation by the developer community. This Candidate Recommendation is expected to 
-advance to Proposed Recommendation no earlier than XXXXX.</p>
+advance to Proposed Recommendation no earlier than &crEnd;.</p>
 
 <p>This new edition of the Timed Text Markup Language (TTML) 1.0
 <bibref ref="ttml10"/> supersedes the <loc href="http://www.w3.org/TR/2013/REC-ttml1-20130924/">previous
 edition</loc>. A list of the substantive changes applied since that previous edition is found at <loc href="ttml1-changes.html">ttml1-changes.html</loc>. No feature was added.</p>
 
-<p>For this specification to exit the CR stage, at least 2 independent implementations of every <loc>CR exit criteria test</loc> is required, as documented in the Working Group's <loc>implementation report</loc>. The Working Group does not require that implementations are publicly available but encourages them to be so.</p>
+<p>For this specification to exit the CR stage, at least 2 independent implementations of every <loc href="">CR exit criteria test</loc> is required, as documented in the Working Group's <loc href="">implementation report</loc>. The Working Group does not require that implementations are publicly available but encourages them to be so.</p>
 
 <p>The Working Group has not identified features "at risk" for this specification.</p>
 
