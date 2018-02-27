@@ -418,6 +418,11 @@ width: 100%;
 }
     </xsl:text>
   </style>
+  <link rel="canonical">
+    <xsl:attribute name="href">
+      <xsl:value-of select="/spec/header/w3c-designation"/>
+    </xsl:attribute>
+  </link> 
   <link rel="stylesheet" type="text/css">
     <xsl:attribute name="href">
       <xsl:text>https://www.w3.org/StyleSheets/TR/2016/</xsl:text>
