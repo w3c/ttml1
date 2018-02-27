@@ -7,7 +7,7 @@
 <!ENTITY document.status "W3C Editors' Draft">
 <!ENTITY title "&title;">
 <!ENTITY prevloc "http://www.w3.org/TR/2013/REC-ttml1-20130924/">
-<!ENTITY latestedloc "https://w3c.github.io/ttml1/spec/ttml1.html">
+<!ENTITY latestedloc "https://w3c.github.io/ttml1/index.html">
 <!ENTITY versionOfTT "1">
 <!ENTITY tbd "<phrase role='tbd'>To Be Defined</phrase>">
 <!ENTITY sp "&#x0020;">
@@ -117,7 +117,6 @@
 <affiliation>Invited Expert</affiliation>
 </author>
 </authlist>
-<errataloc href="ttml1-errata.html"/>
 <translationloc href="http://www.w3.org/2003/03/Translations/byTechnology?technology=ttml1"/>
 <abstract id="abstract">
 <p>This document specifies Timed Text Markup Language (TTML), Version 1, also known as TTML1, in
@@ -7537,14 +7536,13 @@ sub-tree
 headed by the <el>body</el> element;</p>
 </item>
 <item>
-<p>evaluating this sub-tree in a postorder traversal, prune elements if any of the following conditions is true:
+<p>evaluating this sub-tree in a postorder traversal, prune elements if any of the following conditions is true:</p>
 <olist>
 <item><p>they are neither <loc href="#element-vocab-type-content">Content</loc> nor <loc href="#element-vocab-type-animation">Animation</loc> elements; or</p></item>
 <item><p>they are temporally inactive; or</p></item>
 <item><p>they are empty and neither <loc href="#element-vocab-type-animation">Animation</loc> elements nor <loc href="#content-vocabulary-br">br</loc> elements; or</p></item>
 <item><p>they are <loc href="#element-vocab-type-content">Content</loc> elements and aren't associated with region <emph>R</emph> according to the <phrase role="strong">[associate region]</phrase> procedure.</p></item>
 </olist>
-</p>
 </item>
 <item>
 <p>if the pruned sub-tree is non-empty, then reparent it to the <emph>R</emph>

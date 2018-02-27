@@ -16,7 +16,7 @@
 
 <!-- spec: the specification itself -->
 <xsl:template match="spec">
-  <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+  <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
   <html>
     <xsl:if test="header/langusage/language">
       <xsl:attribute name="lang">
@@ -75,7 +75,7 @@
 
 <!-- css: styling of spec -->
 <xsl:template name="css">
-  <style type="text/css">
+  <style>
     <xsl:text>
 code
 {
