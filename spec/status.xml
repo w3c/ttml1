@@ -10,16 +10,20 @@ https://www.w3.org/TR/.</emph></p>
 
 <p>This document was published by the <loc href="http://www.w3.org/AudioVideo/TT/">Timed Text Working Group</loc> as a Candidate Recommendation. 
 This document is intended to become a W3C Recommendation. Comments regarding this document are welcome. 
-Please send them to <loc href="mailto:public-tt@w3.org?subject=%5Bimsc%5D">public-tt@w3.org</loc> 
+Please send them to <loc href="mailto:public-tt@w3.org?subject=%5Bttml1%5D">public-tt@w3.org</loc> 
 (<loc href="mailto:public-tt-request@w3.org?subject=subscribe">subscribe</loc>,
-<loc href="https://lists.w3.org/Archives/Public/public-tt/">archives</loc>) with <code>[ttml]</code> at the start of your email's subject.
+<loc href="https://lists.w3.org/Archives/Public/public-tt/">archives</loc>) with <code>[ttml1]</code> at the start of your email's subject.
 W3C publishes a Candidate Recommendation to indicate that the document is believed to be stable 
 and to encourage implementation by the developer community. This Candidate Recommendation is expected to 
 advance to Proposed Recommendation no earlier than &crEnd;.</p>
 
 <p>This new edition of the Timed Text Markup Language (TTML) 1.0
-<bibref ref="ttml10"/> supersedes the <loc href="https://www.w3.org/TR/2013/REC-ttml1-20130924/">previous
-edition</loc>. A list of the substantive changes applied since that previous edition is found at <loc href="ttml1-changes.html">ttml1-changes.html</loc>. No feature was added.</p>
+<bibref ref="ttml10"/> clarifies ambiguities and corrects errors identified in the 
+<loc href="https://www.w3.org/TR/2013/REC-ttml1-20130924/">previous
+edition</loc>, and is intended to superseded that previous edition.</p>
+
+<p>Substantive changes applied since the <loc href="https://www.w3.org/TR/2013/REC-ttml1-20130924/">previous edition of the Timed Text Markup Language (TTML) 1.0</loc>
+are listed <loc href="ttml1-changes.html">ttml1-changes.html</loc>. No features were added.</p>
 
 <p>For this specification to exit the CR stage, at least 2 independent implementations of every <loc href="">CR exit criteria test</loc> is required, as documented in the Working Group's <loc href="">implementation report</loc>. The Working Group does not require that implementations are publicly available but encourages them to be so.</p>
 
