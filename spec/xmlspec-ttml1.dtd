@@ -1,5 +1,5 @@
 <!-- ............................................................... -->
-<!-- Customized XML specification DTD for TTML1 .................... -->
+<!-- Customized XML specification DTD for TTAF1-DFXP ............... -->
 <!-- ............................................................... -->
 
 <!-- $Id$ -->
@@ -14,15 +14,36 @@ PURPOSE:
 <!-- parameter entity overrides -->
 <!ENTITY % header.mdl
         "title, subtitle?, version?, w3c-designation, w3c-doctype,
-        pubdate, notice*, publoc, altlocs?, latestedloc?, latestloc?, latestrec?, prevlocs, prevrecs,
+        pubdate, notice*, publoc, altlocs?, latestedloc?, latestloc?, latestrec?, prevlocs?,
         authlist+, errataloc?, preverrataloc?,
         translationloc?, copyright?,
         ((status, abstract) | (abstract, status)), pubstmt?,
         sourcedesc?, langusage, revisiondesc">
+<!ENTITY % local.div.mix
+        "|div">
+<!ENTITY % local.eg.pcd.mix
+        "|bibref">
 <!ENTITY % tech.pcd.mix
 	"#PCDATA|loc|ednote|phrase|rfc2119|sub|sup">
+<!ENTITY % local.graphic.att
+        "css CDATA #IMPLIED">
+<!ENTITY % local.table.att
+        "css CDATA #IMPLIED">
+<!ENTITY % local.col.att
+        "css CDATA #IMPLIED">
+<!ENTITY % local.tr.att
+        "css CDATA #IMPLIED">
+<!ENTITY % local.th.att
+        "css CDATA #IMPLIED">
+<!ENTITY % local.td.att
+        "css CDATA #IMPLIED">
+<!ENTITY % role.att
+        'role NMTOKENS #IMPLIED'>
+<!ENTITY % span.att
+        'span           NMTOKEN         #IMPLIED'>
 
 <!-- element definition ignores -->
+<!ENTITY % back.element "IGNORE">
 <!ENTITY % loc.element "IGNORE">
 
 <!-- xmlspec inclusion -->
@@ -30,11 +51,13 @@ PURPOSE:
 %xmlspec;
 
 <!-- element definition overrides -->
+<!ELEMENT back (div1|inform-div1)+>
 <!ELEMENT loc (#PCDATA|phrase|el|att|code|emph)*>
 
-<!-- prevrecs definition -->
-<!ELEMENT prevrecs (loc)*>
-<!ATTLIST prevrecs %common.att;>
+<!-- attlist definition overrides -->
+<!ATTLIST author
+          %common.att;
+          w3c-uid CDATA #IMPLIED>
 
 <!-- new elements -->
 <!ENTITY % latestedloc.element "INCLUDE">
@@ -54,3 +77,8 @@ PURPOSE:
 <![%latestrec.attlist;[
 <!ATTLIST latestrec %common.att;>
 ]]>
+
+<!-- new attlists -->
+<!ATTLIST div
+          %role.att;
+          css CDATA #IMPLIED>
