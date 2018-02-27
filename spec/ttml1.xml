@@ -12285,9 +12285,9 @@ element.</p>
 <caption>Table J-1 &ndash; Elements</caption>
 <col css="width: 20%;"/>
 <col css="width: 17%;"/>
-<col css="width: 13%;" align="center"/>
+<col css="width: 13%; text-align: center"/>
 <col css="width: 40%;"/>
-<col css="width: 10%;" align="center"/>
+<col css="width: 10%; text-align: center"/>
 <tbody>
 <tr>
 <td><phrase role="strong">Element</phrase></td>
@@ -12575,9 +12575,9 @@ above.</p>
 <caption>Table J-2 &ndash; Attributes</caption>
 <col css="width: 20%;"/>
 <col css="width: 17%;"/>
-<col css="width: 13%;" align="center"/>
+<col css="width: 13%; text-align: center"/>
 <col css="width: 40%;"/>
-<col css="width: 10%;" align="center"/>
+<col css="width: 10%; text-align: center"/>
 <tbody>
 <tr>
 <td><phrase role="strong">Attribute</phrase></td>
@@ -13014,10 +13014,10 @@ ref="qaf-sg"/>.</p>
 <table id="qa-framework-requirements-table" role="common">
 <caption>Table K-1 &ndash; QA Framework Requirements Checklist</caption>
 <col css="width: 76%;"/>
-<col css="width: 6%;" align="center"/>
-<col css="width: 6%;" align="center"/>
-<col css="width: 6%;" align="center"/>
-<col css="width: 6%;" align="center"/>
+<col css="width: 6%; text-align: center"/>
+<col css="width: 6%; text-align: center"/>
+<col css="width: 6%; text-align: center"/>
+<col css="width: 6%; text-align: center"/>
 <tbody>
 <tr>
 <td><phrase role="strong">Requirement</phrase></td>
@@ -13133,10 +13133,10 @@ clause</xspecref></td>
 <table id="qa-framework-guidelines-table" role="common">
 <caption>Table K-2 &ndash; QA Framework Guidelines Checklist</caption>
 <col css="width: 76%;"/>
-<col css="width: 6%;" align="center"/>
-<col css="width: 6%;" align="center"/>
-<col css="width: 6%;" align="center"/>
-<col css="width: 6%;" align="center"/>
+<col css="width: 6%; text-align: center"/>
+<col css="width: 6%; text-align: center"/>
+<col css="width: 6%; text-align: center"/>
+<col css="width: 6%; text-align: center"/>
 <tbody>
 <tr>
 <td><phrase role="strong">Guideline</phrase></td>
