@@ -25,7 +25,7 @@ edition</loc>, and is intended to superseded that previous edition.</p>
 <p>Substantive changes applied since the <loc href="https://www.w3.org/TR/2013/REC-ttml1-20130924/">previous edition of the Timed Text Markup Language (TTML) 1.0</loc>
 are listed <loc href="ttml1-changes.html">ttml1-changes.html</loc>. No features were added.</p>
 
-<p>For this specification to exit the CR stage, at least 2 independent implementations of every <loc href="">CR exit criteria test</loc> is required, as documented in the Working Group's <loc href="">implementation report</loc>. The Working Group does not require that implementations are publicly available but encourages them to be so.</p>
+<p>For this specification to exit the CR stage, at least 2 independent implementations of every <emph>CR exit criteria test</emph> is required, as documented in the Working Group's <loc href="">implementation report</loc>. The Working Group does not require that implementations are publicly available but encourages them to be so.</p>
 
 <p>The Working Group has not identified features "at risk" for this specification.</p>
 
