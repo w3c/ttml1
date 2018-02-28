@@ -9,6 +9,7 @@
   
   <property name="html.dir" value="${basedir}"/>
   <property name="html.name" value="ttml1.html"/>
+  <property name="changelist.name" value="substantive-changes-summary.txt"/>
   <property name="stylesheet" value="xmlspec-ttml1.xsl"/>
 
   <property name="jing.jar" value="${basedir}/jing/jing.jar"/>
@@ -18,6 +19,7 @@
   <property name="xsd.schema" value="${xsd.dir}/ttml1.xsd"/>
   <property name="profiles.dir" value="${basedir}/profiles"/>
   <property name="examples.dir" value="${basedir}/examples"/>
+  
 
   <property name="build.dir" value="${basedir}/build"/>
 
@@ -310,6 +312,7 @@
     <mkdir dir="${build.dir}/rnc"/>
     <mkdir dir="${build.dir}/xsd"/>
     <copy file="${html.dir}/${html.name}" tofile="${build.dir}/index.html"/>
+    <copy file="${html.dir}/${changelist.name}" todir="${build.dir}"/>
     <copy todir="${build.dir}/images">
       <fileset dir="${basedir}/images" includes="*.png"/>
       <fileset dir="${basedir}/images" includes="*.svg"/>
@@ -377,8 +380,6 @@
     <mkdir dir="${rec.target}/rnc"/>
     <mkdir dir="${rec.target}/xsd"/>
     <copy file="${rec.shortname}.html" tofile="${rec.target}/${rec.name}.html"/>
-    <copy file="${rec.shortname}-changes.html" tofile="${rec.target}/${rec.shortname}-changes.html"/>
-    <copy file="${rec.shortname}-errata.html" tofile="${rec.target}/${rec.shortname}-errata.html"/>
     <copy todir="${rec.target}/images">
       <fileset dir="${basedir}/images" includes="*.png"/>
     </copy>
