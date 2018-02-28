@@ -5056,7 +5056,7 @@ inline and 2) the block progression dimensions, where the nominal
 content area extent in both dimensions is determined by the computed 
 values of the <att>tts:extent</att> and <att>tts:padding</att> style properties of the 
 containing region. Overflow in the inline progression dimension can 
-occur only if <att>tts:wrapOptio</att> is <code>noWrap</code>. Furthermore, when an overflow 
+occur only if <att>tts:wrapOption</att> is <code>noWrap</code>. Furthermore, when an overflow 
 condition applies, it is not intended that the effective extent of the 
 region be modified for the purpose of presentation processing. For 
 example, the area painted with the region's background color is not 
