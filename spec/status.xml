@@ -22,7 +22,7 @@ advance to Proposed Recommendation no earlier than &crEnd;.</p>
 <loc href="&prevrec;">previous
 edition</loc>, which this edition supersedes. These clarifications and corrections are intended to 
 reflect current implementations, and, as such, no implementation report is provided. 
-In addition, no features were added or removed.</p>
+No feature is added or removed in this edition.</p>
 
 <p>Substantive changes applied since the <loc href="&prevloc;">previous version of this specification</loc> are listed at 
 <loc href="substantive-changes-summary.txt">substantive-changes-summary.txt</loc>.</p>
