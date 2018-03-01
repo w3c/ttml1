@@ -3258,8 +3258,8 @@ element group applies semantically to the <el>br</el> element and its descendant
 <p>Any animation elements specified by children in the <code>Animation.class</code>
 element group apply semantically to the <el>br</el> element.</p>
 <note role="clarification">
-<p>While permitted, the use of <code>Animation.class</code> children is not recommended since timing 
-vocabulary does not apply to the <el>br</el> element. Instead, animating a <el>br</el> element can be achieved by wrapping it in an animated <el>span</el> element.</p>
+<p>While permitted, the use of <code>Animation.class</code> children is not recommended since no style property  
+applies to the <el>br</el> element. Instead, animating a <el>br</el> element can be achieved by wrapping it in an animated <el>span</el> element.</p>
 </note>
 <table id="elt-syntax-br" role="syntax">
 <caption>XML Representation &ndash; Element Information Item: br</caption>
@@ -4342,9 +4342,7 @@ as a style property only to those element types indicated in the following table
 </tr>
 <tr>
 <td><emph>Percentages:</emph></td>
-<td>if not <loc href="#content-vocabulary-span"><el>region</el></loc> element,
-then relative to parent element's font size; otherwise, relative to the
-<emph>Computed Cell Size</emph></td>
+<td>if not <loc href="#layout-vocabulary-region"><el>region</el></loc> element, then relative to the parent element's computed font size; otherwise, relative to the <emph>Computed Cell Size</emph>.</td>
 </tr>
 <tr>
 <td><emph>Animatable:</emph></td>
@@ -4352,42 +4350,74 @@ then relative to parent element's font size; otherwise, relative to the
 </tr>
 </tbody>
 </table>
+<p>The computed value of the property associated with this attribute consists of a 2-tuple
+the entries of which denote the computed values of the width and height components of the font size respectively.</p>
 <p>If a single <loc href="#style-value-length">&lt;length&gt;</loc> value is specified, then this length applies
-equally to horizontal and vertical scaling of a glyph's EM square; if two
+equally to horizontal and vertical size of a glyph's EM square; if two
 <loc href="#style-value-length">&lt;length&gt;</loc> values are specified, then the first expresses the horizontal
-scaling and the second expresses vertical scaling.</p>
-<note role="example">
-<p>Use of independent horizontal and vertical font sizes is expected to be used
-with cell based units in order to denote fonts that are two rows in height and
-one column in width.</p>
-</note>
+size and the second expresses vertical size.</p>
 <note role="clarification">
 <p>A glyph's EM square is conventionally defined as the EM square of the font that contains the glyph. That is,
 glyphs do not have an EM square that is distinct from their font's EM square.</p>
 </note>
+<note role="elaboration">
+<p>Anamorphic font scaling, i.e., fonts scaled to independent (and distinct) horizontal and vertical sizes, is expected to be used in a number of contexts, such as when an author desires to synthesize a narrow or wide font face, when an author desires to employ font sizes based on non-square cell units, etc.</p>
+</note>
 <p>If horizontal and vertical sizes are expressed independently, then the
 units of the <loc href="#style-value-length">&lt;length&gt;</loc> values must be the same.</p>
+
+<p>Relative <loc href="#style-value-length">&lt;length&gt;</loc> values
+that appear in this attribute, i.e., values expressed in percentage (<code>%</code>), cell (<code>c</code>), or EM (<code>em</code>) units,
+are resolved in relation to a referenced 2-dimensional size value consisting of two components, a width component and
+a height component.</p>
+
+<p>When a single relative <loc href="#style-value-length">&lt;length&gt;</loc> value is specified, then
+this <loc href="#style-value-length">&lt;length&gt;</loc> is resolved in terms of the height component of the referenced value;
+when two relative
+<loc href="#style-value-length">&lt;length&gt;</loc> values are specified,
+the first <loc href="#style-value-length">&lt;length&gt;</loc> is resolved in terms of the width component of the referenced value and
+the second <loc href="#style-value-length">&lt;length&gt;</loc> is resolved in terms of the height component of the referenced value.</p>
+
+<p>If the relative unit is cell (<code>c</code>), then the referenced value is the
+<emph>Computed Cell Size</emph>.</p>
+
+<note role="example">
+<p>For example, consider a paragraph (<code>p</code>) element <code>P</code>.
+If the <emph>Computed Cell Size</emph> is (24px,36px), and if
+<code>tts:fontSize="1c"</code> is specified on <code>P</code>, then the computed value of <code>tts:fontSize</code>
+resolves to (36px,36px), while if <code>tts:fontSize="1c 1c"</code> is specified on <code>P</code>,
+then the computed value resolves to (24px,36px).</p>
+</note>
+
+
+<p>If the relative unit is EM (<code>em</code>), then the referenced value is determined as if percentage units
+were used, where <code>1em</code> equals <code>100%</code>.</p>
+
+<note role="example">
+<p>For example, consider a span element <code>S</code>, a child of a paragraph (<code>p</code>) element <code>P</code>.
+If the computed value of <code>tts:fontSize</code> on <code>P</code> is (18px,24px), and if
+<code>tts:fontSize="1em"</code> is specified on <code>S</code>, then this is equivalent to specifying <code>100%</code>,
+which resolves to (24px,24px). However, if <code>tts:fontSize="1em 1em"</code> is specified on <code>S</code>,
+then this is equivalent to specifying <code>100% 100%</code>  which resolves to (18px,24px).</p>
+</note>
+
 <p>The <loc href="#style-value-length">&lt;length&gt;</loc> value(s) used to express font size must be non-negative.</p>
+
+
 <p>For the purpose of determining applicability of this style property,
 each character child of a <el>p</el> element is considered to be enclosed in an anonymous
 span.</p>
+
 <p>If a computed value of the property associated with this attribute is not supported,
 then a presentation processor must use the closest supported value.</p>
+
 <note role="elaboration">
 <p>In this context, the phrase <emph>closest supported value</emph> means the value for which the Euclidean distance between
-the computed font size and the supported font size is minimized. If there are multiple closest supported values equally distant from
-the computed value, then the value most distant from 0 (single length specification) or [0,0] (two length specifications) is used,
-i.e., the largest font size, is used.</p>
+the computed font size and the supported font size is minimized. If there are multiple closest supported values equally distant from		
+the computed value, then the value most distant from 0 (single length specification) or [0,0] (two length specifications) is 
+used, i.e., the largest font size, is used.</p>		
 </note>
-<note role="elaboration">
-<p>The expression <code>1c</code> means one cell, where <code>'c'</code> expresses
-the <emph>cell</emph> length unit as defined by <specref ref="style-value-length"/>.
-When a single &lt;length&gt; is expressed using cell units, then it refers to the height of
-the <emph>Computed Cell Size</emph>.
-When two &lt;length&gt; values are expressed using cell units, then the first refers to the width of
-the <emph>Computed Cell Size</emph>, and the second refers to the height of the
-<emph>Computed Cell Size</emph>.</p>
-</note>
+
 <p>The <att>tts:fontSize</att> style is illustrated by the following example.</p>
 <table id="style-attribute-fontSize-example-1" role="example">
 <caption>Example Fragment &ndash; Font Size</caption>
@@ -7510,7 +7540,7 @@ headed by the <el>body</el> element;</p>
 <p>evaluating this sub-tree in a postorder traversal, prune elements if any of the following conditions is true:
 <olist>
 <item><p>they are neither <loc href="#element-vocab-type-content">Content</loc> nor <loc href="#element-vocab-type-animation">Animation</loc> elements; or</p></item>
-<item><p>they are temporally inactive but not <loc href="#content-vocabulary-br">br</loc> elements; or</p></item>
+<item><p>they are temporally inactive; or</p></item>
 <item><p>they are empty and neither <loc href="#element-vocab-type-animation">Animation</loc> elements nor <loc href="#content-vocabulary-br">br</loc> elements; or</p></item>
 <item><p>they are <loc href="#element-vocab-type-content">Content</loc> elements and aren't associated with region <emph>R</emph> according to the <phrase role="strong">[associate region]</phrase> procedure.</p></item>
 </olist>
@@ -8084,7 +8114,7 @@ vocabulary defined by this specification, given the following
 constraints:</p>
 <ulist>
 <item>
-<p>The implicit duration of an anonymous span, a <el>set</el> element, or a <el>span</el> 
+<p>The implicit duration of an anonymous span, a <el>br</el> element, a <el>set</el> element, or a <el>span</el> 
 element whose children 
 are exclusively text nodes, is defined as follows: if
 the parent time container is a parallel time container, then
