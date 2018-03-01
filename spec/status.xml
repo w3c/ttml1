@@ -17,18 +17,18 @@ W3C publishes a Candidate Recommendation to indicate that the document is believ
 and to encourage implementation by the developer community. This Candidate Recommendation is expected to 
 advance to Proposed Recommendation no earlier than &crEnd;.</p>
 
-<p>This new edition of the Timed Text Markup Language (TTML) 1.0
+<p>This edition of the Timed Text Markup Language (TTML) 1.0
 <bibref ref="ttml10"/> clarifies ambiguities and corrects errors identified in the 
 <loc href="&prevrec;">previous
-edition</loc>, which this new edition supersedes. No features were added or removed.</p>
+edition</loc>, which this edition supersedes. These clarifications and corrections are intended to 
+reflect current implementations, and, as such, no implementation report is provided. 
+In addition, no features were added or removed.</p>
 
 <p>Substantive changes applied since the <loc href="&prevloc;">previous version of this specification</loc> are listed at 
 <loc href="substantive-changes-summary.txt">substantive-changes-summary.txt</loc>.</p>
 
 <p>For convenience, a diff between this and the <loc href="&prevrec;">previous edition</loc> 
 is offered at the <loc href="https://services.w3.org/htmldiff?doc1=https%3A%2F%2Fwww.w3.org%2FTR%2F2013%2FREC-ttml1-20130924%2F%26doc2=https%3A%2F%2Fwww.w3.org%2FTR%2F2018%2FCR-ttml1-20180313%2F">W3C HTML Diff service</loc>.</p>
-
-<p>For this specification to exit the CR stage, at least 2 independent implementations of every <emph>CR exit criteria test</emph> is required, as documented in the Working Group's <loc href="">implementation report</loc>. The Working Group does not require that implementations are publicly available but encourages them to be so.</p>
 
 <p>The Working Group has not identified features "at risk" for this specification.</p>
 

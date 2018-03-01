@@ -6,12 +6,12 @@
 <!ENTITY draft.year "2018">
 <!ENTITY draft.month "March">
 <!ENTITY draft.mm "03">
-<!ENTITY draft.day "13">
-<!ENTITY draft.dd "13">
+<!ENTITY draft.day "15">
+<!ENTITY draft.dd "15">
 
 <!ENTITY draft.date "&draft.year;&draft.mm;&draft.dd;">
 
-<!ENTITY crEnd "1 May 2018">
+<!ENTITY crEnd "12 April 2018">
 
 <!ENTITY prefix "ttml1">
 
