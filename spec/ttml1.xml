@@ -749,6 +749,21 @@ Code</emph> values embedded in or associated with the <emph>Related Media Object
 otherwise determined by the <emph>Document Processing Context</emph>.</p>
 </def>
 </gitem>
+
+<gitem>
+<label>Temporally Active</label>
+<def>
+<p>A syntactic or semantic feature, e.g., an element or the presentation of an element, is <emph>Temporally Active</emph> when the current time of
+ selected time base intersects with the active time interval of the feature.</p>
+</def>
+</gitem>
+<gitem>
+<label>Temporally Active Region</label>
+<def>
+<p>A <emph>Region</emph> that is <emph>Temporally Active</emph>.</p>
+</def>
+</gitem>
+
 <gitem>
 <label>Timed Text</label>
 <def>
@@ -862,6 +877,8 @@ there is a default value, it is shown following a colon. Where an
 attribute information item has a built-in simple type definition
 defined in <bibref ref="xsd-2"/>, a hyperlink to its definition
 therein is given.</p>
+<p>In an XML representation, the expression <emph>{any attribute not in default or any TT namespace}</emph> applies only to
+namespace qualified attributes; unqualified attributes are not permitted unless explicitly defined in this specification.</p>
 <p>The allowed content of the information item is shown as a grammar
 fragment, using the Kleene operators <code>?</code>, <code>*</code>
 and <code>+</code>. Each element name therein is a hyperlink to its
@@ -1307,7 +1324,7 @@ would be
 <code>http://www.w3.org/ns/ttml/profile/dfxp-presentation</code>.</p>
 </note>
 <p>All profile designators which have the TT Profile Namespace as a prefix but are otherwise not listed in
-<specref ref="profile-vocab-table"/> are reserved for future standardization, and must not be appear in a conformant
+<specref ref="profile-vocab-table"/> are reserved for future standardization, and must not appear in a conformant
 <emph>Document Instance</emph>. Nothwithstanding this constraint, a profile designator is not restricted to the set of designators enumerated
 in <specref ref="profile-vocab-table"/>, but may be any URI that feasibly dereferences a TTML <emph>Profile Definition Document</emph>
 provided it does not use the TT Profile Namespace as a prefix.</p>
@@ -2151,7 +2168,7 @@ absolutized URI), the URI expressed by the <el>ttp:extension</el>
 element must further adhere to the syntax of an extension designation
 as defined by <specref ref="extension-designations"/>.</p>
 <p>If the URI expressed by the content of the
-<el>ttp:feature</el> element is a relative URI, then an
+<el>ttp:extension</el> element is a relative URI, then an
 <att>xml:base</att> attribute should be specified on the nearest
 ancestor <el>ttp:extensions</el> element.</p>
 <p>The <att>value</att> attribute specifies whether a conforming TTML
@@ -4157,6 +4174,11 @@ then a presentation processor must use the closest supported value.</p>
 <p>In this context, the phrase <emph>closest supported value</emph> means the value for which the Euclidean distance between
 the computed extent and the supported extent is minimized. If there are multiple closest supported values equally distant from
 the computed value, then the value most distant from [0,0], i.e., of greatest extent, is used.</p>
+<p>This rule for resolving <emph>closest supported value</emph> for the <att>tts:extent</att> attribute makes use of the 
+nearest larger rather than nearest smaller supported distance. The rationale for this difference 
+in treatment is that use of a larger extent ensures that the affected content will be contained in 
+the region area without causing region overflow, while use of a smaller extent makes region 
+overflow more likely.</p>
 </note>
 <p>The <att>tts:extent</att> style is illustrated by the following example.</p>
 <table id="style-attribute-extent-example-1" role="example">
@@ -5024,6 +5046,32 @@ unconstrained,
 but with
 a well-defined origin.  If the value is <code>hidden</code>, then content should
 be clipped outside of the affected region.</p>
+<note role="clarification">
+<p>This attribute has no impact on presentation processing when no 
+overflow condition applies. An overflow condition applies when the 
+bounding box of some descendant line area extends outside of the 
+containing region's nominal content area extent in either or both 1) the 
+inline and 2) the block progression dimensions, where the nominal 
+content area extent in both dimensions is determined by the computed 
+values of the <att>tts:extent</att> and <att>tts:padding</att> style properties of the 
+containing region. Overflow in the inline progression dimension can 
+occur only if <att>tts:wrapOption</att> is <code>noWrap</code>. Furthermore, when an overflow 
+condition applies, it is not intended that the effective extent of the 
+region be modified for the purpose of presentation processing. For 
+example, the area painted with the region's background color is not 
+extended in either dimension to enclose the overflowed content.</p>
+<p> Note that, in particular, the normative text in the previous paragraph 
+"region composition and layout must be performed as if the region's 
+width and height were unconstrained" refers to the process of 
+determining the effective extent and origin of descendant line areas 
+produced in either (or both) of the two overflow contexts described 
+here, and is not intended to imply that the region extent is altered for 
+the purpose of determining the region's padding area insets or the 
+extent of its background color. More specifically, the normative 
+language above is not intended to override or contradict the semantics 
+of <bibref ref="xsl11"/>, § 7.21.2, or of <bibref ref="css2"/>, § 11.1.1,
+on which the former is based.</p> 
+</note>
 <note role="explanation">
 <p>Unless a manual line break element <el>br</el> is used by the content author,
 a paragraph of a given region will generate no more than one line area in that
@@ -5134,9 +5182,9 @@ edges correspond to the right and left edges of the region, as is the case for J
 <p>If a computed value of the property associated with this attribute is not supported,
 then a presentation processor must use the closest supported value.</p>
 <note role="elaboration">
-<p>In this context, the phrase <emph>closest supported value</emph> means the value for which the Euclidean distance between
-the computed padding and the supported padding is minimized. If there are multiple closest supported values equally distant from
-the computed value, then the value most distant from 0, i.e., the greatest padding, is used.</p>
+<p>In this context, the phrase <emph>closest supported value</emph> means the value for which the one-dimensional Euclidean distance between
+the computed padding and the supported padding is minimized on a per-edge basis. If there are multiple closest supported values equally distant from
+the computed value for a given edge, then the value least distant from 0, i.e., the least padding, is used.</p>
 </note>
 <p>The <att>tts:padding</att> style is illustrated by the following example.</p>
 <table id="style-attribute-padding-example-1" role="example">
@@ -5242,6 +5290,7 @@ background color of a region is always rendered when performing presentation
 processing on a visual medium; if the value is <code>whenActive</code>,
 then the background color of a region is rendered only when some
 content is flowed into the region.</p>
+<p>A region satisfies the <code>whenActive</code> case if (1) it is a <emph>Temporally Active Region</emph> and (2) content is selected into the region, where that content is also <emph>Temporally Active</emph>.</p>
 <p>If a computed value of the property associated with this attribute is not supported,
 then a presentation processor must use the value <code>always</code>.</p>
 <p>The <att>tts:showBackground</att> style is illustrated by the following example.</p>
@@ -7949,7 +7998,7 @@ mode, a (well-formed) <att>dur</att> attribute must not be specified on any
 element.</p>
 <p>The semantics of the <att>dur</att> attribute are those defined
 by <bibref ref="smil21"/>, &sect; 10.4.1,
-while taking into account any overriding semantics defined by this specification.</p>
+while taking into account any overriding semantics defined by this specification. In a deliberate divergence from <bibref ref="smil21"/>, § 10.4.1, the value of the <att>dur</att> attribute is permitted to be zero (0).</p>
 <note role="elaboration">
 <p>In the context of the subset of <bibref ref="smil21"/> semantics supported by
 this specification, the active duration of an element that specifies both
@@ -8951,7 +9000,7 @@ registration with the Internet Assigned Numbers Authority (IANA).</p>
 <gitem>
 <label>charset</label>
 <def>
-<p>If specified, the <code>charset</code> parameter must match the XML encoding declaration, or if absent, the actual encoding. See also Encoding Considerations below.</p>
+<p>If specified, the <code>charset</code> parameter must match the XML encoding declaration, or if absent, the actual encoding.</p>
 </def>
 </gitem>
 <gitem>
@@ -8972,9 +9021,7 @@ of the published specification.</p>
 <gitem>
 <label>Encoding considerations:</label>
 <def>
-<p>Same for application/xml, except constrained to either UTF-8 or UTF-16. See <bibref ref="xml-media"/>
-(http://www.rfc-editor.org/rfc/rfc3023.txt), Section 3.2.
-For the purpose of filling out the IANA Application for Media Type (http://www.iana.org/cgi-bin/mediatypes.pl), the value <emph>binary</emph> applies.</p>
+<p>binary</p>
 </def>
 </gitem>
 <gitem>
@@ -13439,7 +13486,7 @@ during T<sub>4</sub> through T<sub>6</sub>.
 well-formed XML 1.0 <bibref ref="xml10"/> document using the UTF-8 character encoding.</p>
 <note role="elaboration">
 <p>When using XML 1.0 <bibref ref="xml10"/> as the concrete encoding of TTML, only the following named character entities are defined:
-<code>&amp;amp;</code>, <code>&amp;lt;</code>, and <code>&amp;gt;</code>.</p>
+<code>&amp;amp;</code>, <code>&amp;apos;</code>, <code>&amp;lt;</code>, <code>&amp;gt;</code>, and <code>&amp;quot;</code>.</p>
 </note>
 </inform-div1>
 <inform-div1 id="time-expression-semantics">
@@ -13841,12 +13888,12 @@ are extracted from time expression if present, or zero if not present;
 <sitem/>
 <sitem>
 2. if <emph>dropMode</emph> is <code>dropNTSC</code>, let
-<code>droppedFrames = (hours * 54 + floor(minutes - minutes/10)) * 2</code>;
+<code>droppedFrames = (hours * 54 + minutes - floor(minutes/10)) * 2</code>;
 </sitem>
 <sitem/>
 <sitem>
 3. otherwise, if <emph>dropMode</emph> is <code>dropPAL</code>, let
-<code>droppedFrames = (hours * 27 + floor(minutes/2 - minutes/20)) * 4</code>;
+<code>droppedFrames = (hours * 27 + floor(minutes/2) - floor(minutes/20)) * 4</code>;
 </sitem>
 <sitem/>
 <sitem>
