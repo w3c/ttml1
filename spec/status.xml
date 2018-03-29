@@ -20,9 +20,13 @@ advance to Proposed Recommendation no earlier than &crEnd;.</p>
 <p>This edition of the Timed Text Markup Language (TTML) 1.0
 <bibref ref="ttml10"/> clarifies ambiguities and corrects errors identified in the 
 <loc href="&prevrec;">previous
-edition</loc>, which this edition supersedes. These clarifications and corrections are intended to 
-reflect current implementations, and, as such, no implementation report is provided. 
-No feature is added or removed in this edition.</p>
+edition</loc>, which this edition supersedes. No feature is added or removed in this edition.</p>
+
+<p>For this specification to exit the CR stage, at least 2 independent implementations
+of every <emph>CR exit criteria test</emph> is required, as documented in the Working
+Group's <loc href="">implementation report</loc>. These <emph>CR exit criteria tests</emph> are intended to cover
+the ambiguities and errors corrected by this edition. The Working Group does not require 
+that implementations are publicly available but encourages them to be so.</p>
 
 <p>Substantive changes applied since the <loc href="&prevloc;">previous version of this specification</loc> are listed at 
 <loc href="substantive-changes-summary.txt">substantive-changes-summary.txt</loc>.</p>
