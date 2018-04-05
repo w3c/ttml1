@@ -4,14 +4,14 @@
   Date parameters
   -->
 <!ENTITY draft.year "2018">
-<!ENTITY draft.month "March">
-<!ENTITY draft.mm "03">
-<!ENTITY draft.day "15">
-<!ENTITY draft.dd "15">
+<!ENTITY draft.month "April">
+<!ENTITY draft.mm "04">
+<!ENTITY draft.day "10">
+<!ENTITY draft.dd "10">
 
 <!ENTITY draft.date "&draft.year;&draft.mm;&draft.dd;">
 
-<!ENTITY crEnd "12 April 2018">
+<!ENTITY crEnd "15 May 2018">
 
 <!ENTITY prefix "ttml1">
 

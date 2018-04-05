@@ -25,7 +25,7 @@ edition</loc>, which this edition supersedes. No feature is added or removed in 
 <p>For this specification to exit the CR stage, at least 2 independent implementations
 of every <emph>CR exit criteria test</emph> are required, as documented in the Working
 Group's <loc href="https://www.w3.org/wiki/TTML1-3ED_implementation_report">implementation report</loc>. These <emph>CR exit criteria tests</emph> are intended to cover
-the ambiguities and errors corrected by this edition. The Working Group does not require 
+the ambiguities and errors corrected by this edition, and the implementation report will be limited to these tests. The Working Group does not require 
 that implementations are publicly available but encourages them to be so.</p>
 
 <p>Substantive changes applied since the <loc href="&prevloc;">previous version of this specification</loc> are listed at 
