@@ -9378,8 +9378,8 @@ feature if it recognizes and is capable of transforming the following
 core attributes vocabulary defined by <specref ref="content"/>:</p>
 <ulist>
 <item><p><loc href="#content-attribute-id">@<att>xml:id</att></loc></p></item>
-<item><p><loc href="#content-attribute-id">@<att>xml:lang</att></loc></p></item>
-<item><p><loc href="#content-attribute-id">@<att>xml:space</att></loc></p></item>
+<item><p><loc href="#content-attribute-lang">@<att>xml:lang</att></loc></p></item>
+<item><p><loc href="#content-attribute-space">@<att>xml:space</att></loc></p></item>
 </ulist>
 <p>A TTML presentation processor supports the <code>#core</code>
 feature if it implements presentation semantic support for the
