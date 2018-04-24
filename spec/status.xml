@@ -32,7 +32,7 @@ that implementations are publicly available but encourages them to be so.</p>
 <loc href="substantive-changes-summary.txt">substantive-changes-summary.txt</loc>.</p>
 
 <p>For convenience, a diff between this and the <loc href="&prevrec;">previous edition</loc> 
-is offered at the <loc href="https://services.w3.org/htmldiff?doc1=&doc2=https%3A%2F%2Fwww.w3.org%2FTR%2F2018%2FCR-ttml1-20180424%2F">W3C HTML Diff service</loc>.</p>
+is offered at the <loc href="https://services.w3.org/htmldiff?doc1=&amp;doc2=https%3A%2F%2Fwww.w3.org%2FTR%2F2018%2FCR-ttml1-20180424%2F">W3C HTML Diff service</loc>.</p>
 
 <p>The Working Group has not identified features "at risk" for this specification.</p>
 
