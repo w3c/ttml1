@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
 <!DOCTYPE spec PUBLIC "-//W3C//DTD Specification V2.10//EN" "xmlspec-ttml1.dtd" [
-<!ENTITY % entities SYSTEM "entities.dtd" >
+<!ENTITY % entities SYSTEM "entities.dtd">
 %entities;
 <!ENTITY status SYSTEM "status.xml">
 <!ENTITY document.status "W3C Editors' Draft">
 <!ENTITY title "&title;">
 <!ENTITY prevloc "http://www.w3.org/TR/2013/REC-ttml1-20130924/">
-<!ENTITY latestedloc "https://w3c.github.io/ttml1/spec/ttml1.html">
+<!ENTITY latestedloc "https://w3c.github.io/ttml1/index.html">
 <!ENTITY versionOfTT "1">
 <!ENTITY tbd "<phrase role='tbd'>To Be Defined</phrase>">
 <!ENTITY sp "&#x0020;">
@@ -67,12 +67,12 @@
 <latestloc>
 <loc href="&latest;">&latest;</loc>
 </latestloc>
+<latestrec>
+<loc href="&prevrec;">&prevrec;</loc>
+</latestrec>
 <prevlocs>
 <loc href="&prevloc;">&prevloc;</loc>
 </prevlocs>
-<prevrecs>
-<loc href="&prevrec;">&prevrec;</loc>
-</prevrecs>
 <authlist id="editors" role="editor">
 <author>
 <name>Glenn Adams</name>
@@ -117,7 +117,6 @@
 <affiliation>Invited Expert</affiliation>
 </author>
 </authlist>
-<errataloc href="ttml1-errata.html"/>
 <translationloc href="http://www.w3.org/2003/03/Translations/byTechnology?technology=ttml1"/>
 <abstract id="abstract">
 <p>This document specifies Timed Text Markup Language (TTML), Version 1, also known as TTML1, in
@@ -1211,7 +1210,7 @@ of XML Namespaces <bibref ref="xmlns10"/>  may be used that is associated with t
 </note>
 <table id="namespace-vocab-table" role="common">
 <caption>Table 1 &ndash; Namespaces</caption>
-<col width="30%"/>
+<col css="width: 30%;"/>
 <col/>
 <col/>
 <tbody>
@@ -1287,7 +1286,7 @@ and where each of these profiles is formally elaborated in
 <specref ref="profiles"/> or in another TTWG specification.</p>
 <table id="profile-vocab-table" role="common">
 <caption>Table 2 &ndash; Profiles</caption>
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -1489,7 +1488,7 @@ in the following sections:</p>
 <specref ref="element-vocab-table"/>.</p>
 <table id="element-vocab-table" role="common">
 <caption>Table 3 &ndash; Element Vocabulary</caption>
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -1587,7 +1586,7 @@ Styling
 for TTML element types are enumerated in <specref ref="element-vocab-group-table"/>.</p>
 <table id="element-vocab-group-table" role="common">
 <caption>Table 4 &ndash; Element Vocabulary Groups</caption>
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -1646,7 +1645,7 @@ catalog is enumerated in
 <specref ref="attribute-vocab-table"/>.</p>
 <table id="attribute-vocab-table" role="common">
 <caption>Table 5 &ndash; Attribute Vocabulary</caption>
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -3604,7 +3603,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-backgroundColor" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -3691,7 +3690,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-color" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -3779,7 +3778,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-direction" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -3879,7 +3878,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-display" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -4010,7 +4009,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-displayAlign" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -4121,7 +4120,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-extent" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -4227,7 +4226,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-fontFamily" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -4339,7 +4338,7 @@ generated by content flowed into a region.</p>
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-fontSize" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -4496,7 +4495,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-fontStyle" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -4592,7 +4591,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-fontWeight" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -4682,7 +4681,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-lineHeight" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -4804,7 +4803,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-opacity" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -4914,7 +4913,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-origin" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -5006,7 +5005,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-overflow" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -5127,7 +5126,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-padding" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -5252,7 +5251,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-showBackground" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -5340,7 +5339,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-textAlign" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -5439,7 +5438,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-textDecoration" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -5564,7 +5563,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-textOutline" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -5674,7 +5673,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-unicodeBidi" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -5770,7 +5769,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-visibility" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -5896,7 +5895,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-wrapOption" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -5987,7 +5986,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-writingMode" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -6096,7 +6095,7 @@ element type
 that permits use of attributes in the TT Style Namespace; however, this attribute applies
 as a style property only to those element types indicated in the following table.</p>
 <table id="style-property-details-zIndex" role="common">
-<col width="25%"/>
+<col css="width: 25%;"/>
 <col/>
 <tbody>
 <tr>
@@ -7586,14 +7585,13 @@ sub-tree
 headed by the <el>body</el> element;</p>
 </item>
 <item>
-<p>evaluating this sub-tree in a postorder traversal, prune elements if any of the following conditions is true:
+<p>evaluating this sub-tree in a postorder traversal, prune elements if any of the following conditions is true:</p>
 <olist>
 <item><p>they are neither <loc href="#element-vocab-type-content">Content</loc> nor <loc href="#element-vocab-type-animation">Animation</loc> elements; or</p></item>
 <item><p>they are temporally inactive; or</p></item>
 <item><p>they are empty and neither <loc href="#element-vocab-type-animation">Animation</loc> elements nor <loc href="#content-vocabulary-br">br</loc> elements; or</p></item>
 <item><p>they are <loc href="#element-vocab-type-content">Content</loc> elements and aren't associated with region <emph>R</emph> according to the <phrase role="strong">[associate region]</phrase> procedure.</p></item>
 </olist>
-</p>
 </item>
 <item>
 <p>if the pruned sub-tree is non-empty, then reparent it to the <emph>R</emph>
@@ -10858,9 +10856,9 @@ whether the feature must be implemented, i.e., is mandatory (M), or may be imple
 is optional (O), for transformation and presentation processors.</p>
 <table id="feature-support-table" role="common">
 <caption>Table D-1 &ndash; Feature Support</caption>
-<col width="60%"/>
-<col width="20%"/>
-<col width="20%"/>
+<col css="width: 60%;"/>
+<col css="width: 20%;"/>
+<col css="width: 20%;"/>
 <tbody>
 <tr>
 <td><phrase role="strong">Feature</phrase></td>
@@ -11449,8 +11447,8 @@ DFXP Transformation Profile is specified in
 </p>
 <table id="feature-transformation-mandatory-table" role="common">
 <caption>Table D-2 &ndash; Mandatory Features - Transformation</caption>
-<col width="60%"/>
-<col width="40%"/>
+<col css="width: 60%;"/>
+<col css="width: 40%;"/>
 <tbody>
 <tr>
 <td><phrase role="strong">Feature</phrase></td>
@@ -11514,8 +11512,8 @@ DFXP Presentation Profile is specified in
 </p>
 <table id="feature-presentation-mandatory-table" role="common">
 <caption>Table D-3 &ndash; Mandatory Features - Presentation</caption>
-<col width="60%"/>
-<col width="40%"/>
+<col css="width: 60%;"/>
+<col css="width: 40%;"/>
 <tbody>
 <tr>
 <td><phrase role="strong">Feature</phrase></td>
@@ -11878,9 +11876,9 @@ a requirement is partially satisfied, and <emph>N</emph> denotes a
 requirement is not satisfied.</p>
 <table id="requirements-table" role="common">
 <caption>Table I-1 &ndash; Requirement Satisfaction</caption>
-<col width="10%"/>
-<col width="40%"/>
-<col width="10%"/>
+<col css="width: 10%;"/>
+<col css="width: 40%;"/>
+<col css="width: 10%;"/>
 <col/>
 <tbody>
 <tr>
@@ -12330,11 +12328,11 @@ that is not specified for use with the <el>xhtml:div</el> model
 element.</p>
 <table id="element-vocab-derivation-table" role="common">
 <caption>Table J-1 &ndash; Elements</caption>
-<col width="20%"/>
-<col width="17%"/>
-<col width="13%" align="center"/>
-<col width="40%"/>
-<col width="10%" align="center"/>
+<col css="width: 20%;"/>
+<col css="width: 17%;"/>
+<col css="width: 13%; text-align: center"/>
+<col css="width: 40%;"/>
+<col css="width: 10%; text-align: center"/>
 <tbody>
 <tr>
 <td><phrase role="strong">Element</phrase></td>
@@ -12620,11 +12618,11 @@ ref="element-vocab-derivation-table"/>
 above.</p>
 <table id="attribute-vocab-derivation-table" role="common">
 <caption>Table J-2 &ndash; Attributes</caption>
-<col width="20%"/>
-<col width="17%"/>
-<col width="13%" align="center"/>
-<col width="40%"/>
-<col width="10%" align="center"/>
+<col css="width: 20%;"/>
+<col css="width: 17%;"/>
+<col css="width: 13%; text-align: center"/>
+<col css="width: 40%;"/>
+<col css="width: 10%; text-align: center"/>
 <tbody>
 <tr>
 <td><phrase role="strong">Attribute</phrase></td>
@@ -13060,11 +13058,11 @@ ref="qaf-sg"/>.</p>
 <head>Requirements</head>
 <table id="qa-framework-requirements-table" role="common">
 <caption>Table K-1 &ndash; QA Framework Requirements Checklist</caption>
-<col width="76%"/>
-<col width="6%" align="center"/>
-<col width="6%" align="center"/>
-<col width="6%" align="center"/>
-<col width="6%" align="center"/>
+<col css="width: 76%;"/>
+<col css="width: 6%; text-align: center"/>
+<col css="width: 6%; text-align: center"/>
+<col css="width: 6%; text-align: center"/>
+<col css="width: 6%; text-align: center"/>
 <tbody>
 <tr>
 <td><phrase role="strong">Requirement</phrase></td>
@@ -13179,11 +13177,11 @@ clause</xspecref></td>
 <head>Guidelines</head>
 <table id="qa-framework-guidelines-table" role="common">
 <caption>Table K-2 &ndash; QA Framework Guidelines Checklist</caption>
-<col width="76%"/>
-<col width="6%" align="center"/>
-<col width="6%" align="center"/>
-<col width="6%" align="center"/>
-<col width="6%" align="center"/>
+<col css="width: 76%;"/>
+<col css="width: 6%; text-align: center"/>
+<col css="width: 6%; text-align: center"/>
+<col css="width: 6%; text-align: center"/>
+<col css="width: 6%; text-align: center"/>
 <tbody>
 <tr>
 <td><phrase role="strong">Guideline</phrase></td>

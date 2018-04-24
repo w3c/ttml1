@@ -16,7 +16,7 @@
 
 <!-- spec: the specification itself -->
 <xsl:template match="spec">
-  <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+  <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
   <html>
     <xsl:if test="header/langusage/language">
       <xsl:attribute name="lang">
@@ -75,7 +75,7 @@
 
 <!-- css: styling of spec -->
 <xsl:template name="css">
-  <style type="text/css">
+  <style>
     <xsl:text>
 code
 {
@@ -418,6 +418,11 @@ width: 100%;
 }
     </xsl:text>
   </style>
+  <link rel="canonical">
+    <xsl:attribute name="href">
+      <xsl:value-of select="/spec/header/w3c-designation"/>
+    </xsl:attribute>
+  </link> 
   <link rel="stylesheet" type="text/css">
     <xsl:attribute name="href">
       <xsl:text>https://www.w3.org/StyleSheets/TR/2016/</xsl:text>
@@ -457,15 +462,15 @@ width: 100%;
         <a href="https://www.w3.org/"><img height="48" width="72" alt="W3C" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C"/></a>
         <xsl:choose>
           <xsl:when test="/spec/@w3c-doctype='memsub'">
-            <a href='http://www.w3.org/Submission/'>
+            <a href='https://www.w3.org/Submission/'>
               <img alt='Member Submission'
-                   src='http://www.w3.org/Icons/member_subm'/>
+                   src='https://www.w3.org/Icons/member_subm'/>
             </a>
           </xsl:when>
           <xsl:when test="/spec/@w3c-doctype='teamsub'">
-            <a href='http://www.w3.org/2003/06/TeamSubmission'>
+            <a href='https://www.w3.org/2003/06/TeamSubmission'>
               <img alt='Team Submission'
-                   src='http://www.w3.org/Icons/team_subm'/>
+                   src='https://www.w3.org/Icons/team_subm'/>
             </a>
           </xsl:when>
         </xsl:choose>
@@ -542,34 +547,34 @@ width: 100%;
       </xsl:when>
       <xsl:otherwise>
         <p class="copyright">
-          <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">
+          <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">
             <xsl:text>Copyright</xsl:text>
           </a>
           <xsl:text>&#xa0;&#xa9;&#xa0;</xsl:text>
           <xsl:apply-templates select="pubdate/year"/>
           <xsl:text>&#xa0;</xsl:text>
-          <a href="http://www.w3.org/">
+          <a href="https://www.w3.org/">
             <abbr title="World Wide Web Consortium">W3C</abbr>
           </a>
           <sup>&#xae;</sup>
           <xsl:text> (</xsl:text>
-          <a href="http://www.csail.mit.edu/">
+          <a href="https://www.csail.mit.edu/">
             <abbr title="Massachusetts Institute of Technology">MIT</abbr>
           </a>
           <xsl:text>, </xsl:text>
-          <a href="http://www.ercim.eu/">
+          <a href="https://www.ercim.eu/">
             <abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr>
           </a>
           <xsl:text>, </xsl:text>
-          <a href="http://www.keio.ac.jp/">Keio</a>
+          <a href="https://www.keio.ac.jp/">Keio</a>
           <xsl:text>, </xsl:text>
           <a href="http://ev.buaa.edu.cn/">Beihang</a>
           <xsl:text>). W3C </xsl:text>
-          <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>
+          <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>
           <xsl:text>, </xsl:text>
-          <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a>
+          <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a>
           <xsl:text> and </xsl:text>
-          <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a>
+          <a href="https://www.w3.org/Consortium/Legal/copyright-documents">document use</a>
           <xsl:text> rules apply.</xsl:text>
         </p>
       </xsl:otherwise>

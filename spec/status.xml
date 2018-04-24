@@ -5,62 +5,51 @@
 time of its publication. Other documents may supersede this document.
 A list of current W3C publications and the latest revision of this
 technical report can be found in the <loc
-href="http://www.w3.org/TR/">W3C technical reports index</loc> at
-http://www.w3.org/TR/.</emph></p>
+href="https://www.w3.org/TR/">W3C technical reports index</loc> at
+https://www.w3.org/TR/.</emph></p>
 
-<p>This document has been reviewed by W3C Members, by software developers,
-and by other W3C groups and interested parties, and is endorsed by the Director
-as a W3C Recommendation. It is a stable document and may be used as reference
-material or cited from another document. W3C's role in making the Recommendation
-is to draw attention to the specification and to promote its widespread
-deployment. This enhances the functionality and interoperability of the Web.</p>
+<p>This document was published by the <loc href="http://www.w3.org/AudioVideo/TT/">Timed Text Working Group</loc> as a Candidate Recommendation. 
+This document is intended to become a W3C Recommendation. Comments regarding this document are welcome. 
+Please send them to <loc href="mailto:public-tt@w3.org?subject=%5Bttml1%5D">public-tt@w3.org</loc> 
+(<loc href="mailto:public-tt-request@w3.org?subject=subscribe">subscribe</loc>,
+<loc href="https://lists.w3.org/Archives/Public/public-tt/">archives</loc>) with <code>[ttml1]</code> at the start of your email's subject.
+W3C publishes a Candidate Recommendation to indicate that the document is believed to be stable 
+and to encourage implementation by the developer community. This Candidate Recommendation is expected to 
+advance to Proposed Recommendation no earlier than &crEnd;.</p>
 
-<p>This version reflects changes made as a result of applying errata and addressing
-comments received since the Recommendation was first published. With one minor
-exception noted below, these changes are editorial.</p>
+<p>This edition of the Timed Text Markup Language (TTML) 1.0
+<bibref ref="ttml10"/> clarifies ambiguities and corrects errors identified in the 
+<loc href="&prevrec;">previous
+edition</loc>, which this edition supersedes. No feature is added or removed in this edition.</p>
 
-<p>This document is a revision of Timed Text Markup Language (TTML) 1.0
-<bibref ref="ttml10"/>, superseding that <loc href="http://www.w3.org/TR/2010/REC-ttaf1-dfxp-20101118/">previous
-Recommendation</loc>. The only identified substantive difference between this version and
-its predecessor is a change of the default treatment of the <att>ttp:markerMode</att> parameter attribute
-from <code>continuous</code> to <code>discontinuous</code>. A cumulative summary of all changes applied
-to this version since the Recommendation was first published is available at
-<loc  href="ttml1-changes.html#change-history-rec-to-2e-per">Changes
-from Recommendation to Proposed Edited Recommendation (2nd Ed.)</loc> and
-<loc  href="ttml1-changes.html#change-history-2e-per-to-rec-2e">Changes
-from Proposed Edited Recommendation (2nd Ed.) to Recommendation (2nd Ed.)</loc>.</p>
+<p>For this specification to exit the CR stage, at least 2 independent implementations
+of every <emph>CR exit criteria test</emph> are required, as documented in the Working
+Group's <loc href="https://www.w3.org/wiki/TTML1-3ED_implementation_report">implementation report</loc>. These <emph>CR exit criteria tests</emph> are intended to cover
+the ambiguities and errors corrected by this edition, and the implementation report will be limited to these tests. The Working Group does not require 
+that implementations are publicly available but encourages them to be so.</p>
 
-<p>A <loc href="http://www.w3.org/2008/10/dfxp-testsuite.zip">sample test suite</loc> is available. This set of tests is not intended to
-be exhaustive. The <loc href="http://www.w3.org/2009/05/dfxp-results.html">implementation report</loc> used by the director to
-transition to Recommendation has been made available. There have been no formal objections
-to the publication of this document.</p>
+<p>Substantive changes applied since the <loc href="&prevloc;">previous version of this specification</loc> are listed at 
+<loc href="substantive-changes-summary.txt">substantive-changes-summary.txt</loc>.</p>
 
-<p>This document was produced by the <loc
-href="http://www.w3.org/AudioVideo/TT/">Timed Text (TT) Working Group</loc> as
-part of the W3C <loc href="http://www.w3.org/2008/WebVideo/">Video
-in the Web Activity</loc>, following the procedures set out for the W3C <loc
-href="http://www.w3.org/Consortium/Process/">Process</loc>.  The authors of this
-document are listed in the header of this document, including input and review
-by liaisons from the <loc href="http://www3.ebu.ch/cms/en/home">European
-Broadcasting Union (EBU)</loc>, and the <loc href="https://www.smpte.org">Society
-of Motion Picture &amp; Television Engineers (SMPTE)</loc>.</p>
+<p>For convenience, a diff between this and the <loc href="&prevrec;">previous edition</loc> 
+is offered at the <loc href="https://services.w3.org/htmldiff?doc1=&amp;doc2=https%3A%2F%2Fwww.w3.org%2FTR%2F2018%2FCR-ttml1-20180424%2F">W3C HTML Diff service</loc>.</p>
 
-<p>If you wish to report errors in or submit comments on this document, then please
-submit them to <loc href="mailto:public-tt@w3.org">public-tt@w3.org</loc>
-(<loc href="mailto:public-tt-request@w3.org">subscribe</loc>,
-<loc href="http://lists.w3.org/Archives/Public/public-tt/">archive</loc>). All comments are welcome.</p>
+<p>The Working Group has not identified features "at risk" for this specification.</p>
+
+<p>Publication as a Candidate Recommendation does not imply endorsement by the W3C Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.</p>
 
 <p>This document was produced by a group operating under the <loc
-href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February
-2004 W3C Patent Policy</loc>. W3C maintains a <loc role="disclosure"
-href="http://www.w3.org/2004/01/pp-impl/34314/status#disclosures">public list of any patent
+href="https://www.w3.org/Consortium/Patent-Policy/">W3C Patent Policy</loc>. W3C maintains a <loc role="disclosure"
+href="https://www.w3.org/2004/01/pp-impl/34314/status#disclosures">public list of any patent
 disclosures</loc> made in connection with the deliverables of the group;
 that page also includes instructions for disclosing a patent. An
 individual who has actual knowledge of a patent which the individual
 believes contains <loc
-href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential
+href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential
 Claim(s)</loc> must disclose the information in accordance with <loc
-href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
+href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section
 6 of the W3C Patent Policy</loc>.</p>
 
+<p>This document is governed by the <loc id="w3c_process_revision"
+href="https://www.w3.org/2018/Process-20180201/">1 February 2018 W3C Process Document</loc>. </p>
 </status>
