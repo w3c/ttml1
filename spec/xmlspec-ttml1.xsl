@@ -498,7 +498,7 @@ width: 100%;
           <xsl:with-param name="conditional" select="0"/>
           <xsl:with-param name="default.id" select="'subtitle'"/>
         </xsl:call-template>
-        <xsl:apply-templates select="subtitle"/>
+        <xsl:value-of select="subtitle"/>
       </h2>
     </xsl:if>
     <xsl:text>&#10;</xsl:text>

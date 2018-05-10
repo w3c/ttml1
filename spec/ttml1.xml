@@ -6,6 +6,7 @@
 <!ENTITY status SYSTEM "status.xml">
 <!ENTITY document.status "W3C Editors' Draft">
 <!ENTITY title "&title;">
+<!ENTITY subtitle "&subtitle;">
 <!ENTITY prevloc "http://www.w3.org/TR/2013/REC-ttml1-20130924/">
 <!ENTITY latestedloc "https://w3c.github.io/ttml1/index.html">
 <!ENTITY versionOfTT "1">
@@ -51,6 +52,7 @@
 <spec w3c-doctype="&doctype;" role="&document.role;">
 <header>
 <title>&title;</title>
+<subtitle>&subtitle;</subtitle>
 <w3c-designation>&w3c-designation;</w3c-designation>
 <w3c-doctype>&document.status;</w3c-doctype>
 <pubdate>
