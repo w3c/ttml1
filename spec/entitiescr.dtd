@@ -4,14 +4,14 @@
   Date parameters
   -->
 <!ENTITY draft.year "2018">
-<!ENTITY draft.month "April">
-<!ENTITY draft.mm "04">
-<!ENTITY draft.day "24">
-<!ENTITY draft.dd "24">
+<!ENTITY draft.month "July">
+<!ENTITY draft.mm "07">
+<!ENTITY draft.day "26">
+<!ENTITY draft.dd "26">
 
 <!ENTITY draft.date "&draft.year;&draft.mm;&draft.dd;">
 
-<!ENTITY crEnd "22 May 2018">
+<!ENTITY crEnd "06 September 2018">
 
 <!ENTITY prefix "ttml1">
 
@@ -32,5 +32,5 @@
 <!ENTITY w3c-designation
   "&w3c.tr.latest;/&draft.year;/&w3c.status;-&prefix;-&draft.date;/">
 
-<!-- <!ENTITY prevloc "http://www.w3.org/TR/2013/PER-ttaf1-dfxp-20130709/"> -->
+<!ENTITY prevloc "https://www.w3.org/TR/2018/CR-ttml1-20180424/">
 <!ENTITY prevrec "https://www.w3.org/TR/2013/REC-ttml1-20130924/">
