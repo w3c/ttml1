@@ -5611,6 +5611,8 @@ term, if present, indicates the blur radius.</p>
 <p>When a relative <loc href="#style-value-length">&lt;length&gt;</loc> value is specified for outline thickness or blur radius, then it is resolved in terms of the height component
 of the referenced font size or <emph>Computed Cell Size</emph>.</p>
 <p>The <loc href="#style-value-length">&lt;length&gt;</loc> value(s) used to express thickness and blur radius must be non-negative.</p>
+<p>If no blur radius is specified, i.e., only one <loc href="#style-value-length">&lt;length&gt;</loc> term is present,
+then the computed value of <code>0px</code> applies.</p>
 <note role="elaboration">
 <p>When a <loc href="#style-value-length">&lt;length&gt;</loc> expressed in
 cells is used in a <att>tts:textOutline</att> value,
