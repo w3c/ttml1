@@ -4716,15 +4716,43 @@ as a style property only to those element types indicated in the following table
 </tbody>
 </table>
 <p>If the value of this attribute is <code>normal</code>, then the
-computed value of the style property must be considered to be no less than the
-size of the largest font size that applies to the element and its
-descendant elements in the intermediate synchronic document as determined by
-<specref ref="semantics-region-layout-step-1"/>.</p>
+resolved computed value of this style property should be determined as follows:</p>
+<olist>
+<item><p>
+Let <emph>P</emph> be the <loc href="#content-vocabulary-p"><el>p</el></loc> element to which this style property applies.
+</p></item>
+<item><p>
+Let <emph>FF</emph> be the computed value of the <loc href="#style-attribute-fontFamily"><att>tts:fontFamily</att></loc>
+style property of <emph>P</emph>.
+</p></item>
+<item><p>
+Let <emph>FS</emph> be the computed value of the <loc href="#style-attribute-fontSize"><att>tts:fontSize</att></loc> style property of <emph>P</emph>.
+</p></item>
+<item><p>
+Let <emph>F0</emph> be the first font obtained when sequentially mapping each font family in <emph>FF</emph> to a set of available fonts,
+where this set of available fonts is constrained as needed to satisfy the computed values of the
+<loc href="#style-attribute-fontStyle"><att>tts:fontStyle</att></loc> and 
+<loc href="#style-attribute-fontWeight"><att>tts:fontWeight</att></loc>
+style properties of <emph>P</emph>.
+</p></item>
+<item><p>
+If <emph>F0</emph> is associated with font metrics that specify altitude <emph>A</emph>, descent <emph>D</emph>, and line gap <emph>G</emph>,
+then set <emph>LH</emph> to the sum of scaled(<emph>A</emph>), scaled(<emph>D</emph>), and scaled(<emph>G</emph>),
+where scaled(<emph>X</emph>) denotes font metric <emph>X</emph> scaled according to font size <emph>FS</emph>.
+</p></item>
+<item><p>Otherwise, <emph>LH</emph> is considered to be implementation dependent; however, in the absence of implementation specific requirements,
+<emph>LH</emph> is recommended to be set to 125% of <emph>FS</emph>.
+</p></item>
+<item><p>
+Set the resolved computed value of this style property to <emph>LH</emph>.
+</p></item>
+</olist>
 <note role="elaboration">
-<p>It is recommended that presentation processors use a computed line height that is
-125% of the size of the largest applicable font size when the value <code>normal</code>
-is specified. The choice of 125% allows use of a font size of <code>0.8c</code> in order
-to obtain a line height of <code>1c</code>.</p>
+<p>If a content author wishes to avoid the possibility of different interpretations of <code>normal</code>, for example, due to differences in
+the set of available fonts, then it is recommended that a 
+<loc href="#style-value-length">&lt;length&gt;</loc> value expression be used to explicitly specify line height value.</p>
+<p>It is the intention of this specification that the above algorithm be compatible with <bibref ref="xsl11"/> and
+<bibref ref="css2"/>.</p>
 </note>
 <p>If specified as a <loc
 href="#style-value-length">&lt;length&gt;</loc>, then the length must
@@ -5611,6 +5639,8 @@ term, if present, indicates the blur radius.</p>
 <p>When a relative <loc href="#style-value-length">&lt;length&gt;</loc> value is specified for outline thickness or blur radius, then it is resolved in terms of the height component
 of the referenced font size or <emph>Computed Cell Size</emph>.</p>
 <p>The <loc href="#style-value-length">&lt;length&gt;</loc> value(s) used to express thickness and blur radius must be non-negative.</p>
+<p>If no blur radius is specified, i.e., only one <loc href="#style-value-length">&lt;length&gt;</loc> term is present,
+then the computed value of <code>0px</code> applies.</p>
 <note role="elaboration">
 <p>When a <loc href="#style-value-length">&lt;length&gt;</loc> expressed in
 cells is used in a <att>tts:textOutline</att> value,

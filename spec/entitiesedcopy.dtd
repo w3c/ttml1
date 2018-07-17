@@ -21,7 +21,7 @@
 
 <!-- Latest version links. don't touch -->
 <!ENTITY latest "&w3c.tr.latest;">
-<!ENTITY prevloc "https://www.w3.org/TR/2013/REC-ttml1-20130924/">
+<!ENTITY prevloc "https://www.w3.org/TR/2018/CR-ttml1-20180424/">
 <!ENTITY prevrec "https://www.w3.org/TR/2013/REC-ttml1-20130924/">
 
 <!ENTITY w3c.tr  "">	
