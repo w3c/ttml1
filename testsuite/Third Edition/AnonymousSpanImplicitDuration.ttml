@@ -8,7 +8,7 @@
   <body>
     <div>
       <p begin="0s" end="1s" timeContainer="seq" tts:backgroundColor="blue">
-        No text should be displayed.
+        This text should not be displayed.
       </p>
     </div>
     <div>

@@ -10,7 +10,7 @@
   </head>
   <body>
     <div>
-      <p begin="0s" end="10s">The last words must be <span tts:fontFamily='InexistantFont, proportionalSerif'>using a proportional serif font</span>.</p>
+      <p begin="0s" end="10s">The last words must be <span tts:fontFamily="InexistantFont, proportionalSerif">using a proportional serif font</span>.</p>
     </div>
   </body>
 </tt>

@@ -10,7 +10,7 @@
       <p begin="0s" end="1s" timeContainer="seq" tts:backgroundColor="blue">
         No text or linebreak<br/>should be displayed.
       </p>
-      <p begin="0s" end="1s" tts:backgroundColor="blue">
+      <p begin="0s" end="1s" tts:backgroundColor="red">
         Text with a linebreak<br/>should be displayed.
       </p>
     </div>

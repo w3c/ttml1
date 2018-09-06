@@ -9,7 +9,7 @@
     <div>
       <p tts:direction="rtl">
         Left to right<br/>
-        משמאל לימין<br/>
+        מימין לשמאל<br/>
         <span tts:unicodeBidi="bidiOverride" tts:direction="rtl">Right to left</span>
       </p>
     </div>
