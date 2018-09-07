@@ -8,12 +8,12 @@
   <body>
     <div>
       <p begin="0s" end="1s" timeContainer="seq" tts:backgroundColor="blue">
-        <span>No text should be displayed.</span>
+        <span>This text should not be displayed.</span>
       </p>
     </div>
     <div>
       <p begin="0s" end="1s" tts:backgroundColor="blue">
-        <span>Text should displayed.</span>
+        <span>This text should displayed.</span>
       </p>
     </div>
   </body>

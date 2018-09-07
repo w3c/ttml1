@@ -8,7 +8,7 @@
        xml:lang="en">
 	<head>
 		<metadata>
-			<ttm:desc>Various values of zIndex</ttm:desc>
+			<ttm:desc>Various values of zIndex; all the values are valid and should yield a visible region. Not intended to test correct drawing order of overlapping regions.</ttm:desc>
 		</metadata>
 		<layout>
 			<tt:region xml:id="r1" tts:extent="100% 100%" tts:backgroundColor="black" tts:zIndex="1000" tts:showBackground="whenActive"/>

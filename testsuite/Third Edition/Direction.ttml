@@ -8,6 +8,9 @@
   <body>
     <div>
       <p tts:direction="rtl">
+        <metadata>
+          <ttm:desc>tts:direction defines weak directionality so the latin script text appears left to right.</ttm:desc>
+        </metadata>
         Left to right<br/>
         מימין לשמאל<br/>
         <span tts:unicodeBidi="bidiOverride" tts:direction="rtl">Right to left</span>
