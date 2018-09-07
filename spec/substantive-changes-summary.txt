@@ -16,7 +16,7 @@ From CR1 (20180424)
 
 - clarified default value blur radius in tts:textOutline (#351)
 
-- update tts:lineHeight='normal' algorithm to match TTML2 (#355)
+- update tts:lineHeight='normal' algorithm to match TTML2 (#354)
 
 From Second Edition (20130924)
 ==============================
