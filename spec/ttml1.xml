@@ -4716,7 +4716,7 @@ as a style property only to those element types indicated in the following table
 </tbody>
 </table>
 <p>If the value of this attribute is <code>normal</code>, then the
-resolved computed value of this style property should be determined as follows:</p>
+<loc href="#semantics-style-resolved-value-category-used">used value</loc> of this style property should be determined as follows:</p>
 <olist>
 <item><p>
 Let <emph>P</emph> be the <loc href="#content-vocabulary-p"><el>p</el></loc> element to which this style property applies.
@@ -4744,7 +4744,7 @@ where scaled(<emph>X</emph>) denotes font metric <emph>X</emph> scaled according
 <emph>LH</emph> is recommended to be set to 125% of <emph>FS</emph>.
 </p></item>
 <item><p>
-Set the resolved computed value of this style property to <emph>LH</emph>.
+Set the <loc href="#semantics-style-resolved-value-category-used">used value</loc> of this style property to <emph>LH</emph>.
 </p></item>
 </olist>
 <note role="elaboration">
@@ -4815,7 +4815,7 @@ as defined by <bibref ref="xsl11"/>, &sect; 4.5, i.e., that a CSS-style line box
 </note>
 <div4 id="style-attribute-lineHeight-special-semantics">
 <head>Special Inheritance Semantics</head>
-<p>When the value of the attribute is <code>normal</code> and when applying inheritance semantics, the value <code>normal</code>, not the computed value, is inherited.</p>
+<p>When the value of the attribute is <code>normal</code> and when applying inheritance semantics, the value <code>normal</code>, not the computed value, is inherited. However, when this computed value is to be used to perform paragraph layout, it is further processed to obtain a <loc href="#semantics-style-resolved-value-category-used">used value</loc> as described above.</p>
 </div4>
 </div3>
 <div3 id="style-attribute-opacity">
@@ -6984,6 +6984,7 @@ follows:</p>
 <ulist>
 <item><p><loc href="#semantics-style-resolved-value-category-specified">specified values</loc></p></item>
 <item><p><loc href="#semantics-style-resolved-value-category-computed">computed values</loc></p></item>
+<item><p><loc href="#semantics-style-resolved-value-category-used">used values</loc></p></item>
 <item><p><loc href="#semantics-style-resolved-value-category-actual">actual values</loc></p></item>
 </ulist>
 <div4 id="semantics-style-resolved-value-category-specified">
@@ -7010,6 +7011,17 @@ element. This is required since the resolution of certain relative units,
 such as percentage, require evaluating the expression in the immediate
 (local) context of reference, and not in a distant (remote) context of
 reference where the related (resolving) expression is not available.</p>
+</div4>
+<div4 id="semantics-style-resolved-value-category-used">
+<head>Used Values</head>
+<p>Subsequent to style inheritance, a computed value may require further resolution at layout or presentation time when such resolution is required by the semantics of a specific property or the information required to perform the resolution is not available until layout or presentation processing occurs. Such a value is referred to as a <emph>used value</emph>, which need not be the same value as the final <loc href="#semantics-style-resolved-value-category-actual">actual value</loc> described below.</p>
+<note role="elaboration">
+<p>The determination of a <loc href="#semantics-style-resolved-value-category-used">used value</loc> is always preceded by the inheritance of a <loc href="#semantics-style-resolved-value-category-computed">computed value</loc>; that is to say, <loc href="#semantics-style-resolved-value-category-used">used value</loc> computation is nominally performed after the <specref
+ref="semantics-style-resolution-processing"/> completes.</p>
+</note>
+<note role="elaboration">
+<p>See also <bibref ref="css2"/>, §6.1.3..</p>
+</note>
 </div4>
 <div4 id="semantics-style-resolved-value-category-actual">
 <head>Actual Values</head>
