@@ -23,6 +23,13 @@ Please send them to <loc href="mailto:public-tt@w3.org?subject=%5Bttml1%5D">publ
 <loc href="&prevrec;">previous
 edition</loc>, which this edition supersedes. No feature is added or removed in this edition.</p>
 
+<p>Please see the Working Group's <loc href="https://www.w3.org/wiki/TTML1-3ED_implementation_report">implementation report</loc>.</p>
+
+<p>The implementation report documents that there are at least 2 independent implementations 
+of every <emph>CR exit criteria test</emph>. Those <emph>CR exit criteria tests</emph> are intended to cover
+the ambiguities and errors corrected by this edition, and are limited to those tests. The Working Group does not require
+that implementations are publicly available but encourages them to be so.</p>
+
 <p>Substantive changes applied since the <loc href="&prevloc;">previous version of this specification</loc> are listed at 
 <loc href="substantive-changes-summary.txt">substantive-changes-summary.txt</loc>.</p>
 
