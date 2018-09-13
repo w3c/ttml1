@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tt:tt xmlns:tt="http://www.w3.org/ns/ttml" xmlns:ttp="http://www.w3.org/ns/ttml#parameter" xmlns="http://www.w3.org/ns/ttml" xmlns:tts="http://www.w3.org/ns/ttml#styling" xmlns:ttm="http://www.w3.org/ns/ttml#metadata" xml:lang="en">
+  <head tts:fontSize="7.5c">
+    <metadata> 
+      <ttm:desc>Test TT attributes outside of the content model.</ttm:desc>
+    </metadata>
+  </head>
+  <body>
+    <div>
+      <p>This text must not be half the height of the root container.</p>
+    </div>
+  </body>
+</tt:tt>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tt:tt xmlns:tt="http://www.w3.org/ns/ttml" xmlns:ttp="http://www.w3.org/ns/ttml#parameter" xmlns="http://www.w3.org/ns/ttml" xmlns:tts="http://www.w3.org/ns/ttml#styling" xmlns:ttm="http://www.w3.org/ns/ttml#metadata" xml:lang="en">
+  <head>
+    <metadata>
+      <ttm:desc>Span with only text nodes implicit duration</ttm:desc>
+    </metadata>
+  </head>
+  <body>
+    <div>
+      <p begin="0s" end="1s" timeContainer="seq" tts:backgroundColor="blue">
+        <span>This text should not be displayed.</span>
+      </p>
+    </div>
+    <div>
+      <p begin="0s" end="1s" tts:backgroundColor="blue">
+        <span>This text should displayed.</span>
+      </p>
+    </div>
+  </body>
+</tt:tt>

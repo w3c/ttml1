@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tt:tt xmlns:tt="http://www.w3.org/ns/ttml" xmlns:ttp="http://www.w3.org/ns/ttml#parameter" xmlns="http://www.w3.org/ns/ttml" xmlns:tts="http://www.w3.org/ns/ttml#styling" xmlns:ttm="http://www.w3.org/ns/ttml#metadata" xml:lang="en">
+  <head>
+    <metadata> 
+      <ttm:desc>Test non-inherited initial style values.</ttm:desc>
+    </metadata>
+    
+    <layout>
+      <tt:region tts:extent="100% 100%" xml:id="r1"/>
+    </layout>
+  </head>
+  <body>
+    <div>
+      <p begin="0s" end="10s" region="r1">This text is aligned with<br/>the before edge of the region.</p>
+    </div>
+  </body>
+</tt:tt>

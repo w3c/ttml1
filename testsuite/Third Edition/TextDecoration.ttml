@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tt:tt xmlns:tt="http://www.w3.org/ns/ttml" xmlns:ttp="http://www.w3.org/ns/ttml#parameter" xmlns="http://www.w3.org/ns/ttml" xmlns:tts="http://www.w3.org/ns/ttml#styling" xmlns:ttm="http://www.w3.org/ns/ttml#metadata" xml:lang="en">
+  <head>
+    <metadata> 
+      <ttm:desc>Test tts:textDecoration attribute inheritance.</ttm:desc>
+    </metadata>
+    
+    <styling>
+    	<style xml:id="s1" tts:textDecoration="underline lineThrough"/>
+    </styling>
+  </head>
+  <body>
+    <div style="s1">
+      <p begin="0s" end="10s">The last two words in this caption are<span tts:textDecoration="noUnderline"> <br/>not underlined.</span></p>
+    </div>
+  </body>
+</tt:tt>
