@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tt:tt xmlns:tt="http://www.w3.org/ns/ttml" xmlns:ttp="http://www.w3.org/ns/ttml#parameter" xmlns="http://www.w3.org/ns/ttml" xmlns:tts="http://www.w3.org/ns/ttml#styling" xmlns:ttm="http://www.w3.org/ns/ttml#metadata" xml:lang="en">
+  <head>
+    <metadata>
+      <ttm:desc>Set implicit duration</ttm:desc>
+    </metadata>
+  </head>
+  <body>
+    <div>
+      <p begin="0s" end="1s" timeContainer="seq">
+        <set tts:backgroundColor="blue"/>
+        <span dur="1s">Background should not be blue.</span>
+      </p>
+    </div>
+    <div>
+      <p begin="0s" end="1s">
+        <set tts:backgroundColor="blue"/>
+        <span dur="1s">Background should be blue.</span>
+      </p>
+    </div>
+  </body>
+</tt:tt>

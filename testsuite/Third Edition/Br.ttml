@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tt:tt xmlns:tt="http://www.w3.org/ns/ttml" xmlns:ttp="http://www.w3.org/ns/ttml#parameter" xmlns="http://www.w3.org/ns/ttml" xmlns:tts="http://www.w3.org/ns/ttml#styling" xmlns:ttm="http://www.w3.org/ns/ttml#metadata" xml:lang="en">
+  <head>
+    <metadata> 
+      <ttm:desc>Test the br element.</ttm:desc>
+    </metadata>
+  </head>
+  <body>
+    <div>
+      <p begin="0s" end="10s">This text must be on the first line.<br tts:display="none"/>This text on a second line.</p>
+    </div>
+  </body>
+</tt:tt>

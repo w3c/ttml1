@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tt:tt xmlns:tt="http://www.w3.org/ns/ttml" xmlns:ttp="http://www.w3.org/ns/ttml#parameter" xmlns="http://www.w3.org/ns/ttml" xmlns:tts="http://www.w3.org/ns/ttml#styling" xmlns:ttm="http://www.w3.org/ns/ttml#metadata" xml:lang="en" ttp:cellResolution="30 15">
+  <head>
+    <metadata> 
+      <ttm:desc>Test two-value font sizes in 'c' units</ttm:desc>
+    </metadata>
+    <layout>
+       <region xml:id="r1" tts:backgroundColor="black"/>
+    </layout>
+  </head>
+  <body>
+    <div region="r1">
+      <p>
+        <span tts:fontSize="1c">Normal text</span><br/>
+        <span tts:fontSize="0.5c 1c">Narrow text</span><br/>
+        <span tts:fontSize="2c 1c">Wide text</span>
+      </p>
+    </div>
+  </body>
+</tt:tt>

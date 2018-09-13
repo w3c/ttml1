@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tt:tt xmlns:tt="http://www.w3.org/ns/ttml" xmlns:ttp="http://www.w3.org/ns/ttml#parameter" xmlns="http://www.w3.org/ns/ttml" xmlns:tts="http://www.w3.org/ns/ttml#styling" xmlns:ttm="http://www.w3.org/ns/ttml#metadata" xml:lang="en">
+  <head>
+    <metadata> 
+      <ttm:desc>Test unknown attributes in the TT namespaces.</ttm:desc>
+    </metadata>
+  </head>
+  <body>
+    <div>
+      <p tts:foo="7.5c">This text must appear.</p>
+    </div>
+  </body>
+</tt:tt>

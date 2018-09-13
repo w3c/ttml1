@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tt:tt xmlns:tt="http://www.w3.org/ns/ttml" xmlns:ttp="http://www.w3.org/ns/ttml#parameter" xmlns="http://www.w3.org/ns/ttml" xmlns:tts="http://www.w3.org/ns/ttml#styling" xmlns:ttm="http://www.w3.org/ns/ttml#metadata" xml:lang="en">
+  <head>
+    <metadata> 
+      <ttm:desc>Test tts:textOutline attribute using 'c' value for the outline thickness.</ttm:desc>
+    </metadata>
+
+    <styling>
+      <style xml:id="s1" tts:fontSize="1c" tts:textOutline="red 0.1c"/>
+    </styling>
+  </head>
+  <body>
+    <div>
+      <p begin="0s" end="10s" style="s1">This text has a red outline with a radius equal to 10% of the font size.</p>
+    </div>
+  </body>
+</tt:tt>
