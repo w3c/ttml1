@@ -11690,10 +11690,10 @@ Module Level 3</titleref>, W3C Recommendation, 07 June 2011. (See
 <xspecref href="http://www.w3.org/TR/2011/REC-css3-color-20110607/">http://www.w3.org/TR/2011/REC-css3-color-20110607/</xspecref>.)
 </bibl>
 <bibl id="gps" key="GPS">
-<titleref href="http://tycho.usno.navy.mil/gpsinfo.html">Global
+<titleref href="https://tycho.usno.navy.mil/gpsinfo.html">Global
 Positioning System</titleref>, US Naval Observatory.
 (See
-<xspecref href="http://tycho.usno.navy.mil/gpsinfo.html">http://tycho.usno.navy.mil/gpsinfo.html</xspecref>.)
+<xspecref href="https://tycho.usno.navy.mil/gpsinfo.html">https://tycho.usno.navy.mil/gpsinfo.html</xspecref>.)
 </bibl>
 <bibl id="media-types" key="Media Types">Ned Freed and Nathaniel Borenstein,  
 <titleref
