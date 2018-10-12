@@ -117,6 +117,7 @@
 <affiliation>Invited Expert</affiliation>
 </author>
 </authlist>
+<errataloc href="http://www.w3.org/2018/11/ttml1-3ed-errata.html"/>
 <translationloc href="http://www.w3.org/2003/03/Translations/byTechnology?technology=ttml1"/>
 <abstract id="abstract">
 <p>This document specifies Timed Text Markup Language (TTML), Version 1, also known as TTML1, in
@@ -135,6 +136,10 @@ for example, providing a standard content format to reference from a <el>&lt;tra
 element in an HTML5 document, or a <el>&lt;text&gt;</el> or 
 <el>&lt;textstream&gt;</el> media element in a <bibref
 ref="smil21"/> document.</p>
+<p>This edition of the Timed Text Markup Language (TTML) 1.0
+<bibref ref="ttml10"/> clarifies ambiguities and corrects errors identified in the 
+<loc href="&prevrec;">previous
+edition</loc>, which this edition supersedes. No feature is added or removed in this edition.</p>
 </abstract>
 &status;
 <langusage><language id='en-us'>English</language></langusage>

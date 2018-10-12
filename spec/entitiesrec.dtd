@@ -3,11 +3,11 @@
 <!--
   Date parameters
   -->
-<!ENTITY draft.year "2013">
-<!ENTITY draft.month "September">
-<!ENTITY draft.mm "09">
-<!ENTITY draft.day "24">
-<!ENTITY draft.dd "24">
+<!ENTITY draft.year "2018">
+<!ENTITY draft.month "November">
+<!ENTITY draft.mm "11">
+<!ENTITY draft.day "13">
+<!ENTITY draft.dd "13">
 
 <!ENTITY draft.date "&draft.year;&draft.mm;&draft.dd;">
 
@@ -30,5 +30,5 @@
 <!ENTITY w3c-designation
   "&w3c.tr.latest;/&draft.year;/&w3c.status;-&prefix;-&draft.date;/">
 
-<!ENTITY prevloc "http://www.w3.org/TR/2013/PER-ttaf1-dfxp-20130709/">
-<!ENTITY prevrec "http://www.w3.org/TR/2010/REC-ttaf1-dfxp-20101118/">
+<!ENTITY prevloc "https://www.w3.org/TR/2018/PR-ttml1-20181004/">
+<!ENTITY prevrec "https://www.w3.org/TR/2013/REC-ttml1-20130924/">

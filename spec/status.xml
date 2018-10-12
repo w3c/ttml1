@@ -8,37 +8,24 @@ technical report can be found in the <loc
 href="https://www.w3.org/TR/">W3C technical reports index</loc> at
 https://www.w3.org/TR/.</emph></p>
 
-<p>This document was published by the <loc href="http://www.w3.org/AudioVideo/TT/">Timed Text Working Group</loc> as a Proposed Recommendation. 
-This document is intended to become a W3C Recommendation. Comments regarding this document are welcome. 
-Please send them to <loc href="mailto:public-tt@w3.org?subject=%5Bttml1%5D">public-tt@w3.org</loc> 
+<p>This document was published by the <loc href="http://www.w3.org/AudioVideo/TT/">Timed Text Working Group</loc> as a Recommendation.</p>
+
+<p><loc href="https://github.com/w3c/ttml1/issues">GitHub Issues</loc> are preferred for discussion of this specification. Alternatively, you can send comments to our mailing list. Please send them to <loc href="mailto:public-tt@w3.org?subject=%5Bttml1%5D">public-tt@w3.org</loc> 
 (<loc href="mailto:public-tt-request@w3.org?subject=subscribe">subscribe</loc>,
-<loc href="https://lists.w3.org/Archives/Public/public-tt/">archives</loc>) with <code>[ttml1]</code> at the start of your email's subject.
-</p>
-
-<p>W3C Advisory Committee representatives should add their review comments to the 
-<loc href="https://www.w3.org/2002/09/wbs/33280/TTML13ED/">AC review survey</loc> by 1 November 2018.</p>
-
-<p>This edition of the Timed Text Markup Language (TTML) 1.0
-<bibref ref="ttml10"/> clarifies ambiguities and corrects errors identified in the 
-<loc href="&prevrec;">previous
-edition</loc>, which this edition supersedes. No feature is added or removed in this edition.</p>
+<loc href="https://lists.w3.org/Archives/Public/public-tt/">archives</loc>) with <code>[ttml1]</code> at the start of your email's subject.</p>
 
 <p>Please see the Working Group's <loc href="https://www.w3.org/wiki/TTML1-3ED_implementation_report">implementation report</loc>.</p>
-
-<p>The implementation report documents that there are at least 2 independent implementations 
-of every <emph>CR exit criteria test</emph>. Those <emph>CR exit criteria tests</emph> are intended to cover
-the ambiguities and errors corrected by this edition, and are limited to those tests. The Working Group does not require
-that implementations are publicly available but encourages them to be so.</p>
 
 <p>Substantive changes applied since the <loc href="&prevloc;">previous version of this specification</loc> are listed at 
 <loc href="substantive-changes-summary.txt">substantive-changes-summary.txt</loc>.</p>
 
 <p>For convenience, a diff between this and the <loc href="&prevrec;">previous edition</loc> 
-is offered at the <loc href="https://services.w3.org/htmldiff?doc1=https%3A%2F%2Fwww.w3.org%2FTR%2F2018%2FCR-ttml1-20180809%2F&amp;doc2=https%3A%2F%2Fwww.w3.org%2FTR%2F2018%2FPR-ttml1-20181004%2F">W3C HTML Diff service</loc>.</p>
+is offered at the <loc href="https://services.w3.org/htmldiff?doc1=https%3A%2F%2Fwww.w3.org%2FTR%2F2018%2FCR-ttml1-20180809%2F&amp;doc2=https%3A%2F%2Fwww.w3.org%2FTR%2F2018%2FREC-ttml1-20181113%2F">W3C HTML Diff service</loc>.</p>
 
-<p>The Working Group has not identified features "at risk" for this specification.</p>
-
-<p>Publication as a Proposed Recommendation does not imply endorsement by the W3C Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.</p>
+<p>This document has been reviewed by W3C Members, by software developers, and by other W3C groups and interested parties, and is
+endorsed by the Director as a W3C Recommendation. It is a stable document and may be used as reference material or cited from another
+document. W3C's role in making the Recommendation is to draw attention to the specification and to promote its widespread
+deployment. This enhances the functionality and interoperability of the Web.</p>
 
 <p>This document was produced by a group operating under the <loc
 href="https://www.w3.org/Consortium/Patent-Policy/">W3C Patent Policy</loc>. W3C maintains a <loc role="disclosure"
