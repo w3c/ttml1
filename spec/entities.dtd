@@ -3,9 +3,9 @@
 <!-- <!ENTITY % sub.entities SYSTEM "entitiesedcopy.dtd" > -->
 <!-- <!ENTITY % sub.entities SYSTEM "entitieswd.dtd" > -->
 <!-- <!ENTITY % sub.entities SYSTEM "entitiescr.dtd" > -->
-<!ENTITY % sub.entities SYSTEM "entitiespr.dtd" > 
+<!-- <!ENTITY % sub.entities SYSTEM "entitiespr.dtd" > -->
 <!-- <!ENTITY % sub.entities SYSTEM "entitiesper.dtd" > -->
-<!-- <!ENTITY % sub.entities SYSTEM "entitiesrec.dtd" > -->
+<!ENTITY % sub.entities SYSTEM "entitiesrec.dtd" >
 %sub.entities;
 
 <!-- Titles -->
