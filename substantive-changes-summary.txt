@@ -1,0 +1,74 @@
+**********************************
+*                                *
+* Summary of substantive changes *
+*                                *
+**********************************
+
+
+NOTE 1: This summary is provided for illustration only. For an exhaustive list of changes, please
+refer to the changesets at https://github.com/w3c/ttml1 or use the W3C diff tool at
+http://services.w3.org/htmldiff across published versions of the specification.
+
+NOTE 2: Issues and their dispositions are documented at https://github.com/w3c/ttml1/issues
+
+
+From PR (20181004)
+==================
+
+No substantive changes made.
+
+
+From CR2 (20180809)
+===================
+
+No substantive changes made.
+
+
+From CR1 (20180424)
+===================
+
+- clarified default value blur radius in tts:textOutline (#351)
+
+- update tts:lineHeight='normal' algorithm to match TTML2 (#354)
+
+
+From Second Edition (20130924)
+==============================
+
+- clarified tts:fontSize semantics (#206, #214 and #215)
+
+- specified timing semantics for <br> elements (#339)
+
+- clarified tts:direction on <p> elements (#324)
+
+- clarified LWSP in color expressions (#322)
+
+- clarified validation of undefined items in TT namespaces (#251)
+
+- clarified anonymous span construction, implicit duration for anonymous spans,
+  implicit duration for spans with text nodes exclusively, and implicit duration 
+  for <set> (#310, #193)
+  
+- clarified that LWSPs are permitted in tts:fontFamily (#248)
+
+- added initial value fallback to non-inheritable properties (#200)
+
+- added <br> to elements to which style applies (#249)
+
+- specified application defaults for frame rate multiplier and sub-framerate (#192)
+
+- prevent pruning of <br> elements (#197)
+
+- handled forward interoperability of attribute extensions in TT namespaces (#196)
+
+- prevent <set> elements from being pruned in ISD construction (#216)
+
+- clarified that the inherited value of tts:lineHeight='normal' is 'normal' (#220)
+
+- clarified application of tts:visibility to child elements (#207)
+
+- clarified tts:textDecoration inheritance (#219)
+
+- clarified cell metrics for tts:textOutline (#218)
+
+- clarified tts:zIndex stacking context (#241)
