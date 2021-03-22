@@ -25,7 +25,7 @@
 <!ENTITY document.role "public">
 
 <!-- The following is used for document .-->
-<!ENTITY document.status "W3C Candidate Recommendation">
+<!ENTITY document.status "W3C Candidate Recommendation Snapshot">
 <!ENTITY w3c.status "CR">
 <!ENTITY doctype "cr">
 
