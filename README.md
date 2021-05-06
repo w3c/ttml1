@@ -16,7 +16,7 @@ This branch was automatically built by Travis CI. <b>DO NOT EDIT</b>.
  Pull request: [#378](https://github.com/w3c/ttml1/pull/378)
 
 
- Commit: [83a62216de1e92f6edc9c8404f8863211ab3d6be](https://github.com/w3c/ttml1/commit/83a62216de1e92f6edc9c8404f8863211ab3d6be)
+ Commit: [2c92ed2830c8bc7e2f08ded0f437add8e6b12658](https://github.com/w3c/ttml1/commit/2c92ed2830c8bc7e2f08ded0f437add8e6b12658)
 
 Pull request specification can be previewed at https://rawgit.com/w3c/ttml1/update-processor-build/index.html
 
