@@ -7,6 +7,9 @@
 <!ENTITY document.status "W3C Editors' Draft">
 <!ENTITY title "&title;">
 <!ENTITY latestedloc "https://w3c.github.io/ttml1/index.html">
+<!ENTITY implreport "https://www.w3.org/wiki/TTML1-3ED_implementation_report">
+<!ENTITY ghrepo "w3c/ttml1">
+<!ENTITY ghbranch "main">
 <!ENTITY versionOfTT "1">
 <!ENTITY tbd "<phrase role='tbd'>To Be Defined</phrase>">
 <!ENTITY sp "&#x0020;">
@@ -63,6 +66,12 @@
 <latestedloc>
 <loc href="&latestedloc;">&latestedloc;</loc>
 </latestedloc>
+<implreploc>
+<loc href="&implreport;">&implreport;</loc>
+</implreploc>
+<ghrepoloc>
+<ghloc repo="&ghrepo;" branch="&ghbranch;" />
+</ghrepoloc>
 <latestloc>
 <loc href="&latest;">&latest;</loc>
 </latestloc>
@@ -73,11 +82,11 @@
 <loc href="&prevloc;">&prevloc;</loc>
 </prevlocs>
 <authlist id="editors" role="editor">
-<author>
+<author w3c-uid="34030">
 <name>Glenn Adams</name>
 <affiliation>Skynav</affiliation>
 </author>
-<author>
+<author w3c-uid="57073">
 <name>Pierre-Anthony Lemieux</name>
 <affiliation>MovieLabs</affiliation>
 </author>
